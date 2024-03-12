@@ -1,0 +1,326 @@
+.video-fullscreen-wrap {
+    height: 100vh;
+    overflow: hidden;
+}
+
+[data-overlay-dark] {
+    position: relative;
+}
+
+[data-overlay-dark]:before {
+    background: #000;
+}
+
+[data-overlay-dark="2"]:before {
+    opacity: 0.3;
+}
+
+.video-fullscreen-video {
+    height: 100%;
+    width: 100%;
+}
+
+.video-fullscreen-video img {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.video-fullscreen-wrap .overlay {
+    opacity: 1;
+    position: absolute !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    z-index: 4;
+}
+
+.video-fullscreen-video .owl-nav [class*=owl-] {
+    width: 40px;
+    height: 40px;
+    background: transparent !important;
+    border-radius: 100%;
+    margin-right: 10px;
+    cursor: pointer;
+    line-height: 1 !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.0);
+}
+
+.video-fullscreen-video .owl-nav {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+    color: white;
+    margin: 4px;
+    font-size: 30px;
+    z-index: 99999999 !important;
+}
+
+.video-fullscreen-wrap .caption {
+    position: relative;
+}
+
+.v-middle {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+}
+
+.caption span i.star-rating {
+    animation-delay: .8s;
+}
+
+.star-rating {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.9em;
+    margin-right: 0.9em;
+    margin-bottom: 2em;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0.7em solid #e4a853;
+    border-left: 0.3em solid transparent;
+    font-size: 8px;
+}
+
+.star-rating:before,
+.star-rating:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0.6em;
+    left: -1em;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid #e4a853;
+    border-left: 1em solid transparent;
+    transform: rotate(-35deg);
+}
+
+.star-rating:after {
+    transform: rotate(35deg);
+}
+
+.caption h4 {
+    font-family: 'Barlow Condensed', serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: #fff;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.caption h1 {
+    font-family: 'Gilda Display', serif;
+    font-size: 55px;
+    text-transform: uppercase;
+    /* line-height: 1.35em; */
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 15px;
+}
+
+.caption .butn-dark {
+    animation-delay: .8s;
+}
+
+.butn-dark {
+    position: relative;
+    line-height: 1.2em;
+}
+
+.video-fullscreen-wrap .butn-dark a {
+    color: #fff;
+}
+
+.butn-dark a {
+    font-weight: 400;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    background: #aa8453;
+    color: #fff;
+    padding: 13px 22px;
+    margin: 0;
+    position: relative;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+
+.butn-dark a span {
+    position: relative;
+    z-index: 2;
+}
+
+.butn-dark a:hover span {
+    color: #fff;
+}
+
+.butn-dark a:after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    z-index: 1;
+    background: #3b3b3b;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.arrow i:hover {
+    border: 1px solid #aa8453;
+}
+
+.butn-dark a:hover:after {
+    width: 100%;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.arrow {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    z-index: 8;
+}
+
+.arrow i {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100%;
+}
+
+.arrow.bounce {
+    animation: bounce 2s infinite;
+}
+
+.bounce {
+    animation-name: bounce;
+    transform-origin: center bottom;
+}
+
+@keyframes bounce {
+
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+div.reservation {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-orientation: sideways;
+    text-orientation: sideways;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    height: 60%;
+    z-index: 9;
+}
+
+div.reservation .icon {
+    position: absolute;
+    left: -1px;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    animation: pulse 2s infinite;
+    border-radius: 100%;
+}
+
+div.reservation a .icon i {
+    color: #FFF;
+    display: flex;
+    text-align: center;
+    font-size: 24px;
+    transform: rotate(180deg);
+}
+
+div.reservation .call {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    letter-spacing: 5px;
+    font-size: 12px;
+    line-height: 25px;
+    margin-top: 15px;
+}
+
+div.reservation .call span {
+    font-family: 'Gilda Display', serif;
+    font-size: 24px;
+    color: #aa8453;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 991px) {
+    .caption h1 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .caption h1 {
+        font-size: 30px;
+        margin-bottom: 15px;
+        letter-spacing: 10px;
+        line-height: 1.35em;
+    }
+
+    div.reservation {
+        display: none;
+    }
+
+    .caption h4 {
+        font-size: 12px;
+    }
+
+    .video-fullscreen-video .owl-nav {
+        display: none;
+    }
+}

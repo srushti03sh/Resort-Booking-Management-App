@@ -1,0 +1,255 @@
+.navbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    /* background: rgba(0, 0, 0, 0.2); */
+    z-index: 99;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+}
+
+.navbar .navbar-toggler-icon {
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler {
+    margin-right: 15px;
+    border: none;
+    font-size: 25px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 5px;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    margin: 1px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: .4s;
+    padding: 0 12px;
+}
+
+.logbtn {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    width: 120px;
+    background: #aa8453;
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 17px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 3px;
+    transition: 0.5s;
+}
+
+.navbar .navbar-nav .nav-link.nav-color {
+    color: #fff;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #aa8453 !important;
+}
+
+.navbar .navbar-nav .nav-link:hover i {
+    color: #aa8453 !important;
+}
+
+.navbar .navbar-nav .active {
+    color: #aa8453 !important;
+}
+
+.navbar .navbar-nav .active i {
+    color: #aa8453;
+}
+
+.logo-wrapper {
+    float: left;
+}
+
+.logo-wrapper .logo h2 {
+    font-family: 'Gilda Display', serif;
+    font-size: 27px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    position: relative;
+    color: #aa8453;
+    margin-bottom: 0;
+    padding: 20px 0;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.logo-wrapper .logo h2 a i {
+    color: #fff;
+    font-size: 20px;
+    vertical-align: super;
+}
+
+.logo-wrapper .logo span {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 0px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.logo {
+    padding: 0;
+}
+
+.logo-img {
+    padding: 20px 0;
+    width: 160px;
+    text-align: center;
+}
+
+.sticky-nav {
+    background: #1b1b1b !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: moveDown 0.5s ease-in-out;
+}
+
+.dropdown {
+    position: absolute;
+    transform: translateY(10px);
+    font-family: 'Barlow', sans-serif;
+    opacity: 0;
+    transition: .5s;
+    background: #1b1b1b;
+    padding: 10px 15px;
+    visibility: hidden;
+}
+
+.dropdown li a {
+    color: #fff;
+    transition: .4s;
+}
+
+.dropdown li a:hover {
+    color: #aa8453;
+}
+
+.dropdown li {
+    padding: 7px 0;
+    border-bottom: 1px solid #222;
+}
+
+.dropdown li:last-child {
+    border-bottom: none !important;
+}
+
+.navbar .navbar-nav li:hover .dropdown {
+    transform: translate(0, 0);
+    opacity: 1 !important;
+    visibility: visible;
+}
+
+.user {
+    margin-left: 15px;
+    height: 40px;
+    width: 40px;
+}
+
+@keyframes moveDown {
+    from {
+        transform: translateY(-5rem);
+    }
+
+    to {
+        transform: translateY(0rem);
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .logbtn {
+        display: none;
+    }
+
+    .navbar {
+        padding-left: 0px;
+        padding-right: 0px;
+        background: transparent;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .navbar-nav {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    .navbar .navbar-collapse {
+        max-height: 430px;
+        overflow: auto;
+        background: #1b1b1b;
+        text-align: left;
+        padding: 20px;
+        transition: height 0.35s ease;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        padding-right: 0px;
+        padding-left: 0px;
+        color: #fff;
+    }
+
+    .navbar-nav .nav-item:last-child {
+        padding-bottom: 16px;
+    }
+
+    .navbar .dropdown {
+        position: relative;
+        display: none;
+        visibility: hidden;
+        top: 0;
+        right: 0;
+        width: 100%;
+        transform: none;
+    }
+
+    .navbar .dropdown.show {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown li:last-child {
+        padding-bottom: 0;
+    }
+}

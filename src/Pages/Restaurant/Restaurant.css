@@ -1,0 +1,100 @@
+.res {
+    background: #222;
+}
+
+.res-menu {
+    background: #1b1b1b;
+}
+
+.res h6 {
+    position: relative;
+    font-family: 'Gilda Display', serif;
+    font-size: 24px;
+    color: #fff;
+}
+
+.section-title span {
+    color: #aa8453;
+}
+
+.menu-title {
+    padding: 30px 0 60px 0;
+}
+
+.menu-name {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 0;
+    font-family: 'Gilda Display', serif;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.menu-name.active {
+    position: relative;
+    background: transparent;
+    border: 1px solid #aa8453;
+}
+
+.menu-title .owl-nav [class*=owl-] {
+    width: 40px;
+    height: 40px;
+    background: #1b1b1b !important;
+    border-radius: 100%;
+    margin-right: 10px;
+    cursor: pointer;
+    line-height: 1 !important;
+    border: 1px solid #aa8453 !important;
+}
+
+.menu-title .owl-nav button.owl-prev {
+    position: absolute;
+    top: 40px;
+    left: -60px;
+    z-index: 99999999 !important;
+}
+
+.menu-title .owl-nav button.owl-next {
+    position: absolute;
+    top: 40px;
+    right: -70px;
+    z-index: 99999999 !important;
+}
+
+.menu-title .owl-nav {
+    color: white;
+    margin: 4px;
+    font-size: 30px;
+}
+
+.menu-title .owl-dots {
+    display: none;
+}
+
+.cont {
+    display: none;
+}
+
+.cont.active {
+    display: block;
+}
+
+.restaurant-menu-content .cont h5 {
+    font-size: 20px;
+    color: #aa8453;
+    margin-bottom: 10px;
+    text-align: left;
+    border-bottom: 1px dashed #aa8453;
+    line-height: 2em;
+}
+
+.restaurant-menu-content .cont h5 .price {
+    color: #adadad;
+    float: right;
+}
+
+.restaurant-menu-content .cont p {
+    font-size: 15px;
+    color: #adadad;
+}

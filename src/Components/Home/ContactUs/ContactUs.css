@@ -1,0 +1,251 @@
+.contactus {
+    background-image: url('../../../Images/pvideo.jpg');
+}
+
+.bg-fixed {
+    background-attachment: fixed;
+}
+
+.bg-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+[data-overlay-dark="2"]:before,
+[data-overlay-darkgray="2"]:before,
+[data-overlay-light="2"]:before {
+    opacity: 0.2;
+}
+
+[data-overlay-dark] p {
+    color: #fff;
+}
+
+.contactus h5 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+[data-overlay-dark] p {
+    color: #fff !important;
+}
+
+.reservations .icon {
+    position: relative;
+    top: 3px;
+}
+
+.color-1 {
+    color: #fff;
+}
+
+.reservations .icon.color-1 span {
+    font-size: 40px;
+    color: #fff;
+}
+
+.reservations .text {
+    margin-left: 10px;
+}
+
+.reservations .text p {
+    font-size: 15px;
+    margin: 0;
+}
+
+.reservations .text a.color-1 {
+    color: #fff;
+}
+
+.reservations .text a {
+    font-size: 19px;
+    color: #aa8453;
+    letter-spacing: -1px;
+}
+
+.booking-box {
+    position: relative;
+    background: #1b1b1b;
+    padding: 45px;
+    margin-bottom: -75px;
+}
+
+.booking-inner {
+    position: relative;
+    border-radius: 0;
+}
+
+.booking-box .head-box h6 {
+    font-size: 15px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    color: #aa8453;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+}
+
+.booking-box .head-box h4 {
+    font-family: 'Gilda Display', serif;
+    font-size: 27px;
+    font-weight: 400;
+    color: #fff;
+    border-bottom: 1px solid #2b2b2b;
+    padding-bottom: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 0;
+}
+
+.booking-box input,
+.booking-box select {
+    font-size: 14px;
+    background: #222;
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+select:focus-visible {
+    outline: none;
+}
+
+select {
+    appearance: none;
+}
+
+.booking-box select {
+    color: #757575;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container .react-datepicker__calendar-icon {
+    right: 10px;
+    top: 14px;
+}
+
+.datepic {
+    background: #222;
+    font-family: 'Gilda Display', serif;
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected,
+.react-datepicker__day--selected {
+    background-color: #aa8453;
+    color: #fff;
+}
+
+.react-datepicker__day--disabled,
+.react-datepicker__month-text--disabled,
+.react-datepicker__quarter-text--disabled,
+.react-datepicker__year-text--disabled {
+    cursor: default;
+    color: #4b4b4b !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+    background: #aa8453;
+}
+
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range,
+    .react-datepicker__month-text--in-range,
+    .react-datepicker__quarter-text--in-range,
+    .react-datepicker__year-text--in-range) {
+    background: #aa8453;
+}
+
+.react-datepicker__day,
+.react-datepicker__month-text,
+.react-datepicker__quarter-text,
+.react-datepicker__year-text {
+    color: #fff;
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover,
+.react-datepicker__year-text:hover {
+    background-color: #aa8453;
+}
+
+.react-datepicker__header {
+    background: #aa8453;
+    color: #fff;
+}
+
+.react-datepicker-popper[data-placement^=top] .react-datepicker__triangle {
+    fill: #222;
+    color: #222;
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle {
+    fill: #aa8453;
+    color: #aa8453;
+}
+
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+    color: #fff;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+    color: #fff;
+}
+
+.btn-form1-submit {
+    display: block;
+    padding: 0;
+    border: none;
+    margin: 0;
+    width: 100%;
+    background: #aa8453;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+    line-height: 62px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.mt-15 {
+    margin-top: 15px !important;
+}
+
+.btn-form1-submit:hover {
+    background: #222;
+}
+
+@media screen and (max-width: 991px) {
+    .booking-box {
+        margin-bottom: 90px;
+        padding: 35px 20px;
+    }
+}

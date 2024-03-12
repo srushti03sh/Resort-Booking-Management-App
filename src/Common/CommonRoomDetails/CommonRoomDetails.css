@@ -1,0 +1,69 @@
+.outer {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slider {
+    height: 100%;
+    width: 100%;
+}
+
+.slider img {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.slider .owl-nav.disabled+.owl-dots {
+    margin-top: 0px;
+    line-height: 1.5;
+    display: block;
+    outline: none;
+}
+
+.slider .owl-dots {
+    position: absolute;
+    width: 100%;
+    bottom: 3%;
+    right: 12%;
+    text-align: right;
+}
+
+.rooms-page {
+    background: #1b1b1b;
+}
+
+.rooms-page h6 {
+    position: relative;
+    font-family: 'Gilda Display', serif;
+    font-size: 24px;
+    color: #fff;
+}
+
+.page-list {
+    position: relative;
+    display: block;
+}
+
+.page-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.page-list-icon {
+    display: flex;
+    align-items: center;
+}
+
+.page-list-icon span {
+    font-size: 25px;
+    color: #aa8453;
+}
+
+.page-list-text p {
+    font-size: 15px;
+    margin: 10px;
+}

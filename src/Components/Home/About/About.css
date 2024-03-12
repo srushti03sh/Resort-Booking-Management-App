@@ -1,0 +1,87 @@
+.about {
+    background: #222;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.mb-30 {
+    margin-bottom: 30px !important;
+}
+
+.mt-90 {
+    margin-top: 90px !important;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-subtitle {
+    font-size: 15px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    color: #aa8453;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+}
+
+.section-title {
+    font-size: 46px;
+    font-family: 'Gilda Display', serif;
+    font-weight: 400;
+    color: #fff;
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 1.25em;
+}
+
+p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.75em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.reservations {
+    display: flex;
+    align-items: center;
+}
+
+.reservations .icon {
+    position: relative;
+    top: 3px;
+}
+
+.reservations .icon span {
+    font-size: 40px;
+    color: #aa8453;
+}
+
+.reservations .text {
+    margin-left: 10px;
+}
+
+.reservations .text p {
+    font-size: 15px;
+    margin: 0;
+}
+
+.reservations .text a {
+    line-height: 1;
+    font-size: 24px;
+    color: #aa8453;
+    letter-spacing: -1px;
+}
+
+@media screen and (max-width: 767px) {
+    .section-title {
+        font-size: 40px;
+    }
+}

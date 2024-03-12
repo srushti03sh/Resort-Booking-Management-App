@@ -1,0 +1,156 @@
+.banner-header {
+    background-image: url('../../Images/cbanner.jpg');
+    height: 60vh;
+}
+
+.banner-header .cap {
+    position: relative;
+}
+
+.banner-header h5 {
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+}
+
+.banner-header h1 {
+    font-size: 60px;
+    color: #fff;
+    position: relative;
+}
+
+.mb-90 {
+    margin-bottom: 90px !important;
+}
+
+.mb-60 {
+    margin-bottom: 60px !important;
+}
+
+.mb-30 {
+    margin-bottom: 30px !important;
+}
+
+.contact h3 {
+    font-size: 24px;
+    color: #fff;
+    padding: 10px;
+}
+
+.contact {
+    background: #1b1b1b;
+}
+
+.alert-success {
+    display: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #aa8453;
+    border-radius: 0px;
+}
+
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group textarea {
+    max-width: 100%;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    height: auto;
+    background-color: transparent;
+    box-shadow: none !important;
+    border-width: 0 0 1px !important;
+    border-style: solid !important;
+    display: block;
+    width: 100%;
+    line-height: 1.5em;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    background-image: none;
+    border-bottom: 1px solid #333;
+    border-color: ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-bottom: 1px solid #aa8453;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    border: none;
+}
+
+.butn-dark2 {
+    position: relative;
+    line-height: 1.2em;
+    font-weight: 400;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    background: #ab8a62;
+    color: #fff;
+    padding: 13px 22px;
+    margin: 0;
+    position: relative;
+    font-size: 15px;
+    letter-spacing: 3px;
+    border: 0px solid transparent;
+}
+
+.butn-dark2 span {
+    position: relative;
+    z-index: 2;
+}
+
+.butn-dark2:after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    z-index: 1;
+    background: #222;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover {
+    border: 0px solid transparent;
+}
+
+.butn-dark2:hover:after {
+    width: 100%;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.reservations .icon {
+    position: relative;
+    top: 3px;
+}
+
+.reservations .icon span {
+    font-size: 35px;
+    color: #aa8453;
+}
+
+.reservations .text p {
+    font-size: 15px;
+    margin: 0;
+}
+
+.reservations .text {
+    margin-left: 10px;
+}

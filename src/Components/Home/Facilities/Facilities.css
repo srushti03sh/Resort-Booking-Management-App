@@ -1,0 +1,56 @@
+.facilties {
+    background: #222;
+}
+
+.facilties .single-facility {
+    background: transparent;
+    padding: 30px 20px;
+    transition: .5s;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+    line-height: 1;
+    border: 1px solid #4b4b4b;
+    border-radius: 10px;
+}
+
+.facilties .single-facility:hover {
+    cursor: pointer;
+    margin-top: -10px;
+    box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.2);
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.facilties .single-facility span {
+    font-size: 45px;
+    color: #aa8453;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: inline-block;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.facilties .single-facility h5 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.facilties .single-facility p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.facilties .single-facility .facility-shape {
+    position: absolute;
+    opacity: 0.02;
+    z-index: -1;
+    bottom: 15px;
+    left: 120px;
+}
+
+.facilties .single-facility .facility-shape span {
+    font-size: 140px;
+    color: #222;
+}
