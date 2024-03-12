@@ -1,58 +1,51 @@
-import React, { useState } from 'react'
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import { Link } from 'react-router-dom'
-import logo from "../../Images/logo.png"
-import { CgMenuGridO } from "react-icons/cg";
-import { IoIosArrowDropleftCircle } from "react-icons/io";
+import React from 'react'
+import "./Sidebar.css"
+import slogo from "../../Images/logo.png"
 import { MdDashboard } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
-import { IoMdSettings } from "react-icons/io";
-import "./Sidebar.css"
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
-function Sidebar1() {
+function Sidebar() {
 
-    const [menuCollapse, setMenuCollapse] = useState(false)
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('loginData');
+    navigate("/");
+  }
 
-    const menuIconClick = () => {
-        menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
-    };
-
-    return (
-        <>
-            <Sidebar collapsed={menuCollapse} collapsedWidth="70px">
-                <div onClick={menuIconClick}>
-                    {!menuCollapse ? (
-                        <>
-                            <div className='logo'>
-                                <img src={logo} />
-                            </div>
-                            <div className='closemenu'>
-                                <IoIosArrowDropleftCircle />
-                            </div>
-                        </>
-                    ) : (
-                        <div className='menu-logo'>
-                            <CgMenuGridO />
-                        </div>
-                    )}
-                </div>
-                <Menu>
-                    <MenuItem component={<Link to="/Dashboard" />}>
-                        <i className='list-icon'><MdDashboard /></i>
-                        Dashboard
-                    </MenuItem>
-                    <MenuItem component={<Link to="/Bookings" />}>
-                        <i className='list-icon'><FaListCheck /></i>
-                        Bookings
-                    </MenuItem>
-                    <MenuItem component={<Link to="/Settings" />}>
-                        <i className='list-icon'><IoMdSettings /></i>
-                        Settings
-                    </MenuItem>
-                </Menu>
-            </Sidebar>
-        </>
-    )
+  return (
+    <>
+      <div className="sidebar-container">
+        <div className="brand">
+          <Link to="/">
+            <img src={slogo} />
+          </Link>
+        </div>
+        <div className='sidebar-content'>
+          <div className="sidebar-menu">
+            <ul>
+              <li><Link to="/UserPanel/Dashboard" className="active">
+                <span>
+                  <MdDashboard />
+                </span>
+                <span>Dashboard</span>
+              </Link>
+              </li>
+              <li><Link to="/UserPanel/Bookings">
+                <span>
+                  <FaListCheck />
+                </span>
+                <span>Bookings</span>
+              </Link>
+              </li>
+            </ul>
+          </div>
+          <button className="btn-sidebar btn-block" onClick={handleLogout}>Logout</button>
+        </div>
+      </div>
+    </>
+  )
 }
 
-export default Sidebar1
+export default Sidebar

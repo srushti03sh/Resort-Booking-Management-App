@@ -1,0 +1,33 @@
+#menu-toggle:checked~.sidebar {
+    left: -300px;
+}
+
+#menu-toggle:checked~.main-content {
+    margin-left: 0;
+    width: 100vw;
+}
+
+.main-content {
+    height: 100vh;
+    background: #222;
+    margin-left: 300px;
+    width: calc(100vw - 300px);
+    padding: 20px 30px;
+    transition: margin-left 300ms;
+}
+
+@media only screen and (max-width: 1224px) {
+    #menu-toggle:checked~.sidebar {
+        left: 0;
+    }
+
+    #menu-toggle:checked~.soverlay {
+        display: block;
+        text-align: right;
+    }
+
+    .main-content {
+        width: 100vw;
+        margin-left: 0;
+    }
+}

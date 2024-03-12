@@ -29,7 +29,6 @@ function Login() {
   const [selectedCity, setSelectedCity] = useState('');
   const [mobilen, setMobilen] = useState("");
   const [gender, setGender] = useState('');
-  const [lgender, setLgender] = useState('');
   const navigate = useNavigate();
 
   const handleSignUpClick = () => {
@@ -63,6 +62,9 @@ function Login() {
 
 
       const genderLogin = response.data.gender;
+      const fnameLogin = response.data.fname;
+      const lnameLogin = response.data.lname;
+      const role = response.data.role;
 
       if (response.data.status === "no") {
         navigate("/Login");
@@ -78,7 +80,7 @@ function Login() {
           transition: Slide,
         });
       } else if (response.data.status === "yes") {
-        localStorage.setItem('loginData', JSON.stringify({ email, password, genderLogin }));
+        localStorage.setItem('loginData', JSON.stringify({ email, genderLogin, fnameLogin, lnameLogin, role }));
         navigate("/");
       }
     }

@@ -1,0 +1,69 @@
+.edit-profile {
+    margin-top: 42px;
+}
+
+.edit-field,
+.edit-select {
+    display: flex;
+    width: 100%;
+    background-color: #1b1b1b;
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 10px;
+    padding: 0 0.4rem;
+    position: relative;
+}
+
+.edit-field i,
+.edit-select i {
+    margin-left: 10px;
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    transition: 0.5s;
+    font-size: 15px;
+}
+
+.edit-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0 10px;
+    color: #aaa;
+    width: 100%;
+}
+
+.edit-select select {
+    color: #aaa;
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: #1b1b1b;
+    height: 55px;
+    border-radius: 55px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.edit-btn-div {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-btn {
+    padding: 10px 45px;
+    background: #aa8453;
+    border: none;
+    outline: none;
+    height: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.5s;
+    display: block;
+}

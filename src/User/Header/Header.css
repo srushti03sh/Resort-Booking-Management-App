@@ -1,0 +1,58 @@
+.header-wrapper {
+    display: flex;
+    padding-top: 0.5rem;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.header-wrapper label {
+    display: inline-block;
+    color: #aa8453;
+    margin-right: 2rem;
+    font-size: 30px;
+}
+
+.header-wrapper label span:hover {
+    cursor: pointer;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+}
+
+.header-title h4 {
+    color: #aa8453;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.pdata {
+    display: flex;
+    float: right;
+    align-items: baseline;
+}
+
+.pdata i {
+    font-size: 20px;
+    color: #aaa;
+    position: absolute;
+    top: 45px;
+    right: 25px;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .header,
+    .header-wrapper {
+        align-items: center;
+    }
+
+    .header-title h1 {
+        font-size: 1.2em;
+    }
+}

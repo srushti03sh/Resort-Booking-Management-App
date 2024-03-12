@@ -1,49 +1,209 @@
-.ps-sidebar-container {
-    background: #1b1b1b !important;
-    color: #aaa;
-    height: 100vh !important;
-    position: sticky !important;
+/*
+Basic
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+    --shadow: rgba(17, 17, 26, 0.1) 2px 0px 16px;
 }
 
-.css-1ujdo76.ps-broken {
-    position: fixed !important;
+body {
+    /* background-color: var(--bg); */
+    overflow-x: hidden;
 }
 
-.logo {
-    padding: 15px 38px;
-    margin-bottom: 25px;
-}
-
-.logo img {
+.brand img {
     height: 40px;
     width: auto;
 }
 
-.closemenu {
-    color: rgb(161, 161, 161);
-    position: absolute;
-    right: 0;
-    z-index: 9999;
-    line-height: 20px;
-    border-radius: 50%;
-    font-weight: bold;
-    font-size: 30px;
-    top: 55px;
-    cursor: pointer;
+#menu-toggle {
+    display: none;
 }
 
-.menu-logo {
+.soverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* helper */
+.text-danger {
+    color: red;
+}
+
+.text-success {
+    color: #2ec3a3;
+}
+
+.text-main {
+    color: var(--color-main);
+}
+
+.sidebar-content {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: left 300ms;
+}
+
+.sidebar-container {
+    height: 100%;
+    width: 100%;
+    background: #1b1b1b;
+    box-shadow: var(--shadow);
+    padding: 1.2rem;
+    overflow-y: auto;
+}
+
+.sidebar-container::-webkit-scrollbar {
+    width: 2px;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+    background-color: #aa8453;
+}
+
+.brand {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand h3 {
+    color: #444;
+    font-size: 3rem;
+}
+
+.brand h3 span {
+    color: var(--color-main);
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.sidebar-menu ul {
+    padding-left: 0;
+}
+
+.sidebar-menu {
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+    color: #fff;
+    display: block;
     padding: 10px;
+    border-radius: 10px;
+}
+
+.sidebar-menu a.active {
+    background-image: linear-gradient(45deg, #aa8453 0%, #222 100%);
+}
+
+.sidebar-menu a span:first-child {
+    display: inline-block;
+    margin-right: 0.8rem;
+    font-size: 1.5rem;
+    color: var(--color-main);
+}
+
+.sidebar-card {
+    background-color: var(--main-accent);
+    padding: 1rem;
+    margin-top: 2rem;
+    box-shadow: var(--shadow);
     text-align: center;
-    font-size: 35px;
+    border-radius: 7px;
 }
 
-.css-1t8x7v1>.ps-menu-button:hover {
-    background: #222 !important;
-    color: white !important;
+.side-card-icon span {
+    font-size: 8rem;
+    color: var(--color-main);
+    display: inline-block;
 }
 
-.list-icon {
-    font-size: 28px;
-    padding-right: 20px;
+.side-card-icon {
+    margin-bottom: 0.8rem;
+}
+
+.side-card-icon+div {
+    margin-bottom: 1rem;
+}
+
+.side-card-icon+div p {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.btn-sidebar {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    background-image: linear-gradient(45deg, #aa8453 0%, #222 100%);
+    border: none;
+    outline: none;
+    height: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+    display: block;
+    width: 100%;
+}
+
+.btn-slider span {
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: 0.7rem;
+}
+
+.soverlay label {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+#menu-toggle:checked~.sidebar {
+    left: -300px;
+}
+
+#menu-toggle:checked~.main-content {
+    margin-left: 0;
+    width: 100vw;
+}
+
+@media only screen and (max-width: 1224px) {
+    .sidebar {
+        left: -345px;
+        z-index: 30;
+    }
+
+    .main-content {
+        width: 100vw;
+        margin-left: 0;
+    }
 }

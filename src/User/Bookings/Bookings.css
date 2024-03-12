@@ -1,0 +1,32 @@
+.booking-table {
+    margin-top: 42px;
+}
+
+.booking-table table tr td,
+.booking-table table thead tr th {
+    background: #1b1b1b;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-bg-type: #1b1b1b;
+}
+
+.cnt-booking {
+    padding: 0.7rem 1rem;
+    background: #aa8453;
+    border: none;
+    outline: none;
+    height: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.5s;
+    display: block;
+}
+
+.cnt-book {
+    display: flex;
+    float: right;
+    margin-top: 50px;
+}

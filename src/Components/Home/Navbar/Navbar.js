@@ -40,7 +40,6 @@ function Navbar() {
   };
 
   const loginData = JSON.parse(localStorage.getItem("loginData"));
-  // console.log(loginData.genderLogin);
   return (
     <>
       <nav className={`navbar navbar-expand-lg ${stickyClass}`}>
@@ -135,14 +134,22 @@ function Navbar() {
                     Book Now
                   </button>
                 </Link>
-                {loginData.genderLogin === "Male" && <Link to="/UserPanel"><img src={Male} className='user' /></Link>}
-                {loginData.genderLogin === "Female" && <Link to="/UserPanel"><img src={Female} className='user' /></Link>}
-                {loginData.genderLogin === "Other" && <Link to="/UserPanel"> <img src={Other} className='user' /></Link>}
+                <Link to={loginData.role === "user" ? "/UserPanel/Dashboard" : "/AdminPanel/Dashboard"}>
+                  {loginData.genderLogin === "Male" &&
+                    <img src={Male} className='user' />
+                  }
+                  {loginData.genderLogin === "Female" &&
+                    <img src={Female} className='user' />
+                  }
+                  {loginData.genderLogin === "Other" &&
+                    <img src={Other} className='user' />
+                  }
+                </Link>
               </>
             }
           </div>
-        </div>
-      </nav>
+        </div >
+      </nav >
     </>
   )
 }
