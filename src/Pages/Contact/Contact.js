@@ -70,10 +70,6 @@ function Contact() {
                 <div className="text">
                   <p>
                     Address
-                    <br />
-                    1616 Broadway NY, New York 10001
-                    <br />
-                    United States of America
                   </p>
                 </div>
               </div>

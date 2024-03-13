@@ -44,13 +44,6 @@ function Restaurant() {
     }
   };
 
-  const [isActive, setActive] = useState(false);
-
-  const handleClick = () => {
-    setActive(true);
-
-    console.log(isActive);
-  };
   return (
     <>
       <Navbar />
@@ -169,28 +162,28 @@ function Restaurant() {
           <div className='row'>
             <div className='col-md-10 offset-md-1 text-center'>
               <OwlCarousel loop={true} {...options1} className='menu-title' nav={true}>
-                <div className={`menu-name ${isActive ? 'active' : ''}`} onClick={() => setActive(true)}>
+                <div className="menu-name" >
                   Starters
                 </div>
-                <div className={`menu-name ${isActive ? 'active' : ''}`} onClick={() => setActive(true)}>
+                <div className="menu-name">
                   Mains
                 </div>
-                <div className={`menu-name ${isActive ? 'active' : ''}`} onClick={() => setActive(true)}>
+                <div className="menu-name">
                   Salads
                 </div>
-                <div className={`menu-name ${isActive ? 'active' : ''}`} onClick={() => setActive(true)}>
+                <div className="menu-name">
                   Wine
                 </div>
-                <div className={`menu-name ${isActive ? 'active' : ''}`} onClick={() => setActive(true)}>
+                <div className="menu-name">
                   Breakfast
                 </div>
-                <div className={`menu-name ${isActive ? 'active' : ''}`} onClick={() => setActive(true)}>
+                <div className="menu-name">
                   Dessert
                 </div>
               </OwlCarousel>
             </div>
             <div className="restaurant-menu-content col-md-12">
-              <div className={`cont ${isActive ? 'active' : ''}`}>
+              <div className="cont active">
                 <div className="row">
                   <div className="col-md-5">
                     <div className="menu-info">
@@ -222,7 +215,7 @@ function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className={`cont ${isActive ? 'active' : ''}`} >
+              <div className="cont" >
                 <div className="row">
                   <div className="col-md-5">
                     <div className="menu-info">
@@ -254,7 +247,7 @@ function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className={`cont ${isActive ? 'active' : ''}`} >
+              <div className="cont" >
                 <div className="row">
                   <div className="col-md-5">
                     <div className="menu-info">
@@ -286,7 +279,7 @@ function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className={`cont ${isActive ? 'active' : ''}`} >
+              <div className="cont" >
                 <div className="row">
                   <div className="col-md-5">
                     <div className="menu-info">
@@ -318,7 +311,7 @@ function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className={`cont ${isActive ? 'active' : ''}`} >
+              <div className="cont" >
                 <div className="row">
                   <div className="col-md-5">
                     <div className="menu-info">
@@ -350,7 +343,7 @@ function Restaurant() {
                   </div>
                 </div>
               </div>
-              <div className={`cont ${isActive ? 'active' : ''}`} >
+              <div className="cont" >
                 <div className="row">
                   <div className="col-md-5">
                     <div className="menu-info">

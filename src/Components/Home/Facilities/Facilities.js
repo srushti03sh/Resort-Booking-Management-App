@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaTruckPlane } from "react-icons/fa6";
+import { IoFitnessOutline } from "react-icons/io5";
 import { IoCarSportOutline } from "react-icons/io5";
 import { IoBedOutline } from "react-icons/io5";
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
@@ -25,11 +25,10 @@ function Facilities() {
                     <div className="col-md-4">
                         <div className="single-facility">
                             <span className="flaticon-world">
-                                <FaTruckPlane />
+                                <IoFitnessOutline />
                             </span>
-                            <h5>Pick Up & Drop</h5>
-                            <p>We'll pick up from airport while you comfy on your ride,
-                                mus nellentesque habitant.
+                            <h5>Fitness Center</h5>
+                            <p> Fully equipped fitness facilities with exercise machines, free weights, or yoga sessions.
                             </p>
                             <div className="facility-shape">
                                 <span className="flaticon-world">
@@ -43,8 +42,7 @@ function Facilities() {
                                 <IoCarSportOutline />
                             </span>
                             <h5>Parking Space</h5>
-                            <p>Fusce tincidunt nis ace park norttito sit amet space,
-                                mus nellentesque habitant.</p>
+                            <p> On-site parking options, with secure and convenient access for guests with vehicles.</p>
                             <div className="facility-shape">
                                 <span className="flaticon-car">
                                 </span>
@@ -57,8 +55,7 @@ function Facilities() {
                                 <IoBedOutline />
                             </span>
                             <h5>Room Service</h5>
-                            <p>Room tincidunt nis ace park norttito sit amet space,
-                                mus nellentesque habitant.</p>
+                            <p>Our dedicated team is at your service to fulfill your culinary desires.</p>
                             <div className="facility-shape">
                                 <span className="flaticon-bed">
                                 </span>
@@ -71,8 +68,7 @@ function Facilities() {
                                 <LiaSwimmingPoolSolid />
                             </span>
                             <h5>Swimming Pool</h5>
-                            <p>Swimming pool tincidunt nise ace park norttito sit space,
-                                mus nellentesque habitant.</p>
+                            <p>Swimming pools, including children's pools, for relaxation and recreation.</p>
                             <div className="facility-shape">
                                 <span className="flaticon-swimming">
                                 </span>
@@ -85,8 +81,7 @@ function Facilities() {
                                 <IoWifiSharp />
                             </span>
                             <h5>Fibre Internet</h5>
-                            <p>Wifi tincidunt nis ace park norttito sit amet space,
-                                mus nellentesque habitant.</p>
+                            <p>Complimentary Wi-Fi access available throughout the premises, including guest rooms, and meeting spaces.</p>
                             <div className="facility-shape">
                                 <span className="flaticon-wifi">
                                 </span>
@@ -98,9 +93,8 @@ function Facilities() {
                             <span className="flaticon-breakfast">
                                 <MdFastfood />
                             </span>
-                            <h5>Breakfast</h5>
-                            <p>Eat tincidunt nisa ace park norttito sit amet space,
-                                mus nellentesque habitant mus habitant.</p>
+                            <h5>Restaurant</h5>
+                            <p>Restaurants, offering a variety of options, including breakfast, lunch, dinner, snacks, and beverages.</p>
                             <div className="facility-shape">
                                 <span className="flaticon-breakfast">
                                 </span>

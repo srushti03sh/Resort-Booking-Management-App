@@ -72,11 +72,11 @@
     display: none;
 }
 
-.cont {
+.restaurant-menu-content .cont {
     display: none;
 }
 
-.cont.active {
+.restaurant-menu-content .cont.active {
     display: block;
 }
 

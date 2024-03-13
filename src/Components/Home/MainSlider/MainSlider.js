@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import About from '../About/About';
+import Rooms from '../Rooms/Rooms';
 import "./MainSlider.css"
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -42,6 +43,13 @@ const MainSlider = () => {
     }
   };
 
+  const RoomRef = useRef(null);
+  const handleBtnClick = () => {
+    if (RoomRef.current) {
+      RoomRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <div className="video-fullscreen-wrap">
@@ -67,7 +75,7 @@ const MainSlider = () => {
                         Enjoy a Luxury Experience
                       </h1>
                       <div className="butn-dark wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".9s">
-                        <Link to="#"><span>Rooms & Suites</span></Link>
+                        <Link to="#" onClick={handleBtnClick}><span>Rooms & Suites</span></Link>
                       </div>
                     </div>
                   </div>
@@ -93,7 +101,7 @@ const MainSlider = () => {
                         The Perfect base for you
                       </h1>
                       <div className="butn-dark wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".9s">
-                        <Link to="#"><span>Rooms & Suites</span></Link>
+                        <Link to="#" onClick={handleBtnClick}><span>Rooms & Suites</span></Link>
                       </div>
                     </div>
                   </div>
@@ -120,7 +128,7 @@ const MainSlider = () => {
                         Enjoy the best moments of life
                       </h1>
                       <div className="butn-dark wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".9s">
-                        <Link to="#"><span>Rooms & Suites</span></Link>
+                        <Link to="#" onClick={handleBtnClick}><span>Rooms & Suites</span></Link>
                       </div>
                     </div>
                   </div>
@@ -145,6 +153,7 @@ const MainSlider = () => {
         </Link>
       </div>
       <About Aboutref={Aboutref} />
+      <Rooms RoomRef={RoomRef} />
     </>
   )
 }

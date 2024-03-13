@@ -22,13 +22,12 @@ const About = ({ Aboutref }) => {
               </span>
               <div className="section-subtitle">The Cappa Luxury Hotel</div>
               <div className="section-title">Enjoy a Luxury Experience</div>
-              <p>Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan
-                vestibulum aliquam justo in sapien rutrum volutpat. Donec in quis the pellentesque velit.
-                Donec id velit ac arcu posuere blane.
+              <p>Escape the ordinary with our Resorts where luxury meets excellence! Enjoy beautiful moments with your loved ones.
+                The Cappa Group has gained remarkable prominence in the hospitality industry and believes in making your stay a memorable one.
+                A staycation to make your weekends filled with joy and happiness.
               </p>
-              <p>Hotel ut nisl quam nestibulum ac quam nec odio elementum sceisue the aucan ligula.
-                Orci varius natoque penatibus et magnis dis parturient monte nascete ridiculus mus
-                nellentesque habitant morbine.
+              <p>Our Resort believes in customer satisfaction and hence offers the best service for 
+                you to have a wonderful stay.
               </p>
               <div className="reservations">
                 <div className="icon">

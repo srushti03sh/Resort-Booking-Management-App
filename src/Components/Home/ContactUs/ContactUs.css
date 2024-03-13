@@ -245,7 +245,13 @@ select {
 
 @media screen and (max-width: 991px) {
     .booking-box {
-        margin-bottom: 90px;
+        margin-bottom: -93px;
         padding: 35px 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .booking-box {
+        margin-bottom: 46px;
     }
 }

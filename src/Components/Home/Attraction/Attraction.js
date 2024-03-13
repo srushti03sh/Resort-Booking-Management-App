@@ -13,7 +13,7 @@ function Attraction() {
                 <div className="row">
                     <div className="col-md-6 p-0">
                         <div className="img left">
-                            <Link to="#">
+                            <Link to="/Restaurant">
                                 <img src={food} alt="" />
                             </Link>
                         </div>
@@ -26,12 +26,12 @@ function Attraction() {
                                 </div>
                                 <h4>The Restaurant</h4>
                                 <p>
-                                    Restaurant inilla duiman at elit finibus viverra nec a lacus themo
-                                    the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue
-                                    duru the ivite dianne onen nivami acsestion augue artine.
+                                    Experience culinary excellence at our resort's restaurant. From breakfast to dinner, enjoy a blend of
+                                    international flavors and local ingredients in a stunning setting. Impeccable service and unforgettable
+                                    flavors await you
                                 </p>
                                 <div className="butn-dark">
-                                    <Link to="#">
+                                    <Link to="/Restaurant">
                                         <span>Learn More</span>
                                     </Link>
                                 </div>
@@ -48,12 +48,12 @@ function Attraction() {
                                 </div>
                                 <h4>Spa Center</h4>
                                 <p>
-                                    Spa center inilla duiman at elit finibus viverra nec a lacus themo
-                                    the nesudea seneoice misuscipit non sagie the fermen ziverra
-                                    tristiue duru the ivite dianne onen nivami acsestion augue artine.
+                                    Relax and rejuvenate with a range of indulgent treatments amidst serene surroundings. Let our expert therapists
+                                    pamper you with massages, facials, and holistic therapies, leaving you feeling refreshed and revitalized.
+                                    Unwind in luxury and embrace serenity at our spa center.
                                 </p>
                                 <div className="butn-dark">
-                                    <Link to="#">
+                                    <Link to="/Spa">
                                         <span>Learn More</span>
                                     </Link>
                                 </div>
@@ -62,7 +62,7 @@ function Attraction() {
                     </div>
                     <div className="col-md-6 p-0 order1">
                         <div className="img">
-                            <Link to="#">
+                            <Link to="/Spa">
                                 <img src={spa} alt="" />
                             </Link>
                         </div>
@@ -71,7 +71,7 @@ function Attraction() {
                 <div className="row">
                     <div className="col-md-6 p-0">
                         <div className="img left">
-                            <Link to="#">
+                            <Link to="/FitnessCenter">
                                 <img src={gym} alt="" />
                             </Link>
                         </div>
@@ -84,12 +84,12 @@ function Attraction() {
                                 </div>
                                 <h4>Fitness Center</h4>
                                 <p>
-                                    Restaurant inilla duiman at elit finibus viverra nec a lacus themo
-                                    the nesudea seneoice misuscipit non sagie the fermen ziverra
-                                    tristiue duru the ivite dianne onen nivami acsestion augue artine.
+                                    Discover state-of-the-art equipment with dynamic environment. Whether you're a fitness enthusiast or just
+                                    starting your journey, our dedicated environment guide you towards your goals. Energize your body, strengthen
+                                    your mind, and embrace a healthier lifestyle at our fitness center.
                                 </p>
                                 <div className="butn-dark">
-                                    <Link to="#">
+                                    <Link to="/FitnessCenter" >
                                         <span>Learn More</span>
                                     </Link>
                                 </div>
@@ -106,12 +106,12 @@ function Attraction() {
                                 </div>
                                 <h4>The Health Club & Pool</h4>
                                 <p>
-                                    The health club & pool at elit finibus viverra nec a lacus themo
-                                    the nesudea seneoice misuscipit non sagie the fermen ziverra
-                                    tristiue duru the ivite dianne onen nivami acsestion augue artine.
+                                    Experience ultimate relaxation and fitness at our resort's health club & pool. Dive into tranquility with a
+                                    refreshing swim or invigorate your body with a workout in our state-of-the-art facilities. Your wellness journey
+                                    begins here.
                                 </p>
                                 <div className="butn-dark">
-                                    <Link to="#">
+                                    <Link to="/HealthClub">
                                         <span>Learn More</span>
                                     </Link>
                                 </div>
@@ -120,7 +120,7 @@ function Attraction() {
                     </div>
                     <div className="col-md-6 p-0 order1">
                         <div className="img">
-                            <Link to="#">
+                            <Link to="/HealthClub">
                                 <img src={pool} alt="" />
                             </Link>
                         </div>

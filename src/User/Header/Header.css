@@ -12,7 +12,7 @@
 .header-wrapper label {
     display: inline-block;
     color: #aa8453;
-    margin-right: 2rem;
+    margin-right: 20px;
     font-size: 30px;
 }
 
@@ -54,5 +54,13 @@
 
     .header-title h1 {
         font-size: 1.2em;
+    }
+
+    .userName {
+        display: none;
+    }
+
+    .header-wrapper label {
+        margin-right: 10px;
     }
 }

@@ -12,7 +12,7 @@
 }
 
 .cnt-booking {
-    padding: 0.7rem 1rem;
+    padding: 0 20px;
     background: #aa8453;
     border: none;
     outline: none;
@@ -29,4 +29,8 @@
     display: flex;
     float: right;
     margin-top: 50px;
+}
+
+.booking-table h2 {
+    color: #aa8453;
 }

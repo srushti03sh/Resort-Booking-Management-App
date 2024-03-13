@@ -1,6 +1,6 @@
 import React from 'react'
 import MainSlider from './MainSlider/MainSlider'
-import Rooms from './Rooms & Suits/Rooms'
+import Rooms from './Rooms/Rooms'
 import Clients from './Clients/Clients'
 import ContactUs from './ContactUs/ContactUs'
 import News from './News/News'
@@ -14,7 +14,6 @@ const Index = () => {
     return (
         <>
             <MainSlider />
-            <Rooms />
             <Pricing />
             <PVideo />
             <Facilities />

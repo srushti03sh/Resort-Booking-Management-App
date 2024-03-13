@@ -23,7 +23,7 @@ function Header(props) {
                     </div>
                 </div>
                 <div className='pdata'>
-                    <div>
+                    <div className='userName'>
                         <h6>{loginData.fnameLogin} {loginData.lnameLogin}</h6>
                     </div>
                     <div>

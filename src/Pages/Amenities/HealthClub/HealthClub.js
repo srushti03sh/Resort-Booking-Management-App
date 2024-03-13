@@ -31,6 +31,20 @@ function HealthClub() {
                 image10={pool10}
                 image11={pool}
                 image12={pool3}
+                service="Health Club & Pool"
+                serviceName1="Dive into Wellness"
+                serviceName2="Make a Splash for Wellness"
+                serviceName3="Escape the Ordinary, Embrace Wellness"
+                aboutTitle="Where Every Stroke Counts"
+                aboutdes="Experience ultimate relaxation and fitness at our resort's health club & pool. Our serene facilities offer a tranquil 
+                escape for guests to rejuvenate mind, body, and soul. Dive into our sparkling pool for a refreshing swim or enjoy a revitalizing 
+                workout at our state-of-the-art health club. Whether you seek tranquility or invigoration, our resort provides the perfect 
+                sanctuary for your well-being."
+                serviceTitle="Feel the Power of Wellness"
+                timedes="From sunrise to sunset, our health club & pool await your wellness journey.Dive into 
+                tranquility or energize your body with a workout session. Whatever your schedule, our facilities are here to accommodate your
+                 needs. Discover relaxation and fitness, available at your convenience."
+                timeTitle="Time to Thrive"
             />
             <Footer />
         </>

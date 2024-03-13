@@ -55,7 +55,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost/php/Login.php", {
+      const response = await axios.post("http://localhost/Resort-API/Login.php", {
         eid: email,
         pwd: password
       });
@@ -64,7 +64,8 @@ function Login() {
       const genderLogin = response.data.gender;
       const fnameLogin = response.data.fname;
       const lnameLogin = response.data.lname;
-      const role = response.data.role;
+      const roleLogin = response.data.role;
+      const id = response.data.id;
 
       if (response.data.status === "no") {
         navigate("/Login");
@@ -80,7 +81,9 @@ function Login() {
           transition: Slide,
         });
       } else if (response.data.status === "yes") {
-        localStorage.setItem('loginData', JSON.stringify({ email, genderLogin, fnameLogin, lnameLogin, role }));
+        localStorage.setItem('loginData', JSON.stringify({
+          email, genderLogin, fnameLogin, lnameLogin, roleLogin, id
+        }));
         navigate("/");
       }
     }
@@ -105,7 +108,7 @@ function Login() {
 
     try {
       if (signup) {
-        const response = await axios.post("http://localhost/php/otp.php", {
+        const response = await axios.post("http://localhost/Resort-API/otp.php", {
           eid: remail
         });
 
@@ -156,7 +159,7 @@ function Login() {
         // Signup
         if (!signup) {
           if (otp == decryptOtp) {
-            const response = await axios.post("http://localhost/php/Registration.php", {
+            const response = await axios.post("http://localhost/Resort-API/Registration.php", {
               eid: remail,
               pwd: rpassword,
               fname: firstn,

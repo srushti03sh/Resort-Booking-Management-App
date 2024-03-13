@@ -134,7 +134,7 @@ function Navbar() {
                     Book Now
                   </button>
                 </Link>
-                <Link to={loginData.role === "user" ? "/UserPanel/Dashboard" : "/AdminPanel/Dashboard"}>
+                <Link to={loginData.roleLogin === "user" ? "/UserPanel/Dashboard" : "/AdminPanel/Dashboard"}>
                   {loginData.genderLogin === "Male" &&
                     <img src={Male} className='user' />
                   }

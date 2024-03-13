@@ -31,26 +31,26 @@ function Clients() {
     };
 
     return (
-        <div className='container clients'>
+        <div className='container-fluid clients'>
             <div className='row'>
                 <div className='col-md-7 '>
                     <OwlCarousel items={4} margin={30} autoplay={true} loop={true} {...options}>
-                        <div >
+                        <div className='cpic'>
                             <img src={c1} alt="" />
                         </div>
-                        <div >
+                        <div className='cpic'>
                             <img src={c2} alt="" />
                         </div>
-                        <div >
+                        <div className='cpic'>
                             <img src={c3} alt="" />
                         </div>
-                        <div >
+                        <div className='cpic'>
                             <img src={c4} alt="" />
                         </div>
-                        <div >
+                        <div className='cpic'>
                             <img src={c5} alt="" />
                         </div>
-                        <div >
+                        <div className='cpic'>
                             <img src={c6} alt="" />
                         </div>
                     </OwlCarousel>

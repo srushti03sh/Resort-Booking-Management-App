@@ -36,7 +36,12 @@ function FitnessCenter() {
         serviceName2="Shape Your Body Now"
         serviceName3="Exercise your mind and body"
         aboutTitle="Your Best Fitness Center"
+        aboutdes="Unleash your vitality at our resort's fitness center. Equipped with state-of-the-art facilities and guided by expert trainers, 
+        our fitness center offers a dynamic space for guests to rejuvenate their bodies and minds. Whether you're seeking an invigorating workout 
+        or a moment of zen, our wellness sanctuary awaits. Embrace your wellness journey and elevate your stay with us."
         serviceTitle="About Our Fitness"
+        timedes="Providing guests with ample opportunity to enjoy their workout at their convenience. Whether you're an early riser looking to energize your morning or prefer an evening session to unwind, 
+        our gym accommodates your schedule. Stay active and invigorated throughout your stay with us."
         timeTitle="Best Fitness Zone"
       />
       <Footer />

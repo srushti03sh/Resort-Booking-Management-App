@@ -54,7 +54,7 @@ function CommonAmenities(props) {
                         {props.service}
                       </h4>
                       <h1>
-                      {props.serviceName1}
+                        {props.serviceName1}
                       </h1>
                     </div>
                   </div>
@@ -70,7 +70,7 @@ function CommonAmenities(props) {
                         {props.service}
                       </h4>
                       <h1>
-                      {props.serviceName2}
+                        {props.serviceName2}
                       </h1>
                     </div>
                   </div>
@@ -87,7 +87,7 @@ function CommonAmenities(props) {
                         {props.service}
                       </h4>
                       <h1>
-                      {props.serviceName3}
+                        {props.serviceName3}
                       </h1>
                     </div>
                   </div>
@@ -114,9 +114,7 @@ function CommonAmenities(props) {
               </span>
               <div className="section-subtitle">The Cappa Luxury Hotel</div>
               <div className="section-title">{props.aboutTitle}</div>
-              <p>Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan
-                vestibulum aliquam justo in sapien rutrum volutpat. Donec in quis the pellentesque velit.
-                Donec id velit ac arcu posuere blane.
+              <p>{props.aboutdes}
               </p>
             </div>
           </div>
@@ -158,10 +156,10 @@ function CommonAmenities(props) {
             <div className="ohrs-text col-md-6">
               <h3>Open Hours</h3>
               <h4>
-              {props.timeTitle}
+                {props.timeTitle}
               </h4>
               <p>
-                Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo
+                {props.timedes}
               </p>
               <p>
                 <i><MdKeyboardArrowRight /></i><b> Mon - Fri :</b> 9:00 AM - 7:00 PM<br />

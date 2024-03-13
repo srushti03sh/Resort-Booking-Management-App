@@ -16,6 +16,10 @@
     margin-left: 10px;
 }
 
+.gender .col-md-3 {
+    padding: 0 !important;
+}
+
 [type="radio"] {
     accent-color: #1b1b1b;
 }
@@ -412,9 +416,9 @@ input::-webkit-inner-spin-button {
     }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .lslider.sign-up-mode {
-        height: 270vh;
+        height: 200vh;
     }
 
     .signin-signup form {
@@ -422,8 +426,15 @@ input::-webkit-inner-spin-button {
     }
 }
 
-@media (max-width: 570px) {
-    form {
+@media screen and (max-width: 576px) {
+    .gender {
+        text-align: justify;
+        display: flex;
+        justify-content: end;
+        padding-left: 2rem;
+    }
+
+    .signin-signup form {
         padding: 0 1.5rem;
     }
 
