@@ -5,6 +5,8 @@ import Dashboard from '../Dashboard/Dashboard'
 import Bookings from '../Bookings/Bookings'
 import "./UserPanel.css"
 import EditProfile from '../EditProfile/EditProfile'
+import ContactUs from '../ContactUs/ContactUs'
+import FAQ from '../FAQ/FAQ'
 
 function UserPanel() {
     return (
@@ -22,6 +24,8 @@ function UserPanel() {
                         <Route path="/Dashboard" element={<Dashboard />} />
                         <Route path="/Bookings" element={<Bookings />} />
                         <Route path="/EditProfile" element={<EditProfile />} />
+                        <Route path="/ContactUs" element={<ContactUs />} />
+                        <Route path="/FAQ" element={<FAQ />} />
                     </Routes>
                 </div>
             </div>

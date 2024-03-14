@@ -24,13 +24,18 @@
     align-items: center;
 }
 
-.navbar-toggler:focus {
+.navbar-toggler-css:focus,
+.navbar-toggle:focus {
     box-shadow: none;
 }
 
-.navbar-toggler {
+.navbar-toggle {
+    border: none !important;
+}
+
+.navbar-toggler-css {
     margin-right: 15px;
-    border: none;
+    border: none !important;
     font-size: 25px;
     background: rgba(0, 0, 0, 0.6);
     padding: 2px 5px;
@@ -41,14 +46,15 @@
     font-size: 15px;
     font-weight: 400;
     color: #fff;
-    margin: 1px;
+    /* margin: 1px; */
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: .4s;
     padding: 0 12px;
 }
 
-.logbtn {
+.logbtn,
+.bookbtn {
     font-family: 'Barlow Condensed', sans-serif;
     text-align: center;
     width: 120px;
@@ -181,6 +187,11 @@
     width: 40px;
 }
 
+.navbar-toggle-user {
+    height: 40px;
+    width: 40px;
+}
+
 @keyframes moveDown {
     from {
         transform: translateY(-5rem);
@@ -191,8 +202,19 @@
     }
 }
 
+@media screen and (max-width: 1060px) {
+    .navbar .navbar-nav .nav-link {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .logbtn {
+        display: none;
+    }
+
+    .user {
         display: none;
     }
 

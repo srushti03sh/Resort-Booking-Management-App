@@ -5,6 +5,9 @@ import { MdDashboard } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { FaFileCircleQuestion } from "react-icons/fa6";
+import { FaHome } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 
 function Sidebar() {
 
@@ -25,6 +28,13 @@ function Sidebar() {
         <div className='sidebar-content'>
           <div className="sidebar-menu">
             <ul>
+              <li><Link to="/">
+                <span>
+                  <FaHome />
+                </span>
+                <span>Home</span>
+              </Link>
+              </li>
               <li><Link to="/UserPanel/Dashboard" className="active">
                 <span>
                   <MdDashboard />
@@ -37,6 +47,20 @@ function Sidebar() {
                   <FaListCheck />
                 </span>
                 <span>Bookings</span>
+              </Link>
+              </li>
+              <li><Link to="/UserPanel/FAQ">
+                <span>
+                  <FaFileCircleQuestion />
+                </span>
+                <span>F.A.Q</span>
+              </Link>
+              </li>
+              <li><Link to="/UserPanel/ContactUs">
+                <span>
+                <FaPhoneAlt />
+                </span>
+                <span>Contact Us</span>
               </Link>
               </li>
             </ul>

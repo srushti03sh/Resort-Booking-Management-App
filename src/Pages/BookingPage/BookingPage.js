@@ -1,16 +1,149 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import "./BookingPage.css"
+import axios from 'axios';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function BookingPage() {
 
-  const [dateRange, setDateRange] = useState([null, null]);
+  const loginData = JSON.parse(localStorage.getItem("loginData"));
+
+  const [dateRange, setDateRange] = useState([,]);
   const [startDate, endDate] = dateRange;
 
+  const [roomData, setRoomData] = useState([]);
+  const [mno, setMno] = useState('');
+  const [email, setEmail] = useState(loginData.email);
+  const [guest, setGuest] = useState('');
+  const [rno, setRno] = useState('');
+  const [rType, setRtype] = useState('');
+  const navigate = useNavigate();
+
+  const fetchData = async () => {
+    const response = await axios.post("http://localhost/Resort-API/showBookingForm.php", {
+      id: loginData.id
+    });
+    // console.log(response);
+    const result = response.data.roomData;
+    setRoomData(result)
+    const lmno = response.data.mno;
+    setMno(lmno)
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const formatDate = (date) => {
+    return date ? date.toLocaleDateString('en-CA') : '';
+  };
+
+  // console.log(formatDate(startDate));
+  // console.log(formatDate(endDate));
+
+  const handleBooking = async (e) => {
+    e.preventDefault();
+
+    // try {
+    const response = await axios.post("http://localhost/Resort-API/bookingForm.php", {
+      email: email,
+      mno: mno,
+      chkin: formatDate(startDate),
+      chkout: formatDate(endDate),
+      rType: rType,
+      rno: rno,
+      guest: guest
+    });
+    console.log(response);
+    // console.log(response.data.avlbl_msg[0]);
+    // const msg = response.data.avlbl_msg[0];
+    if (response.data.status === "no") {
+      toast.error('Something Went Wrong!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+    } else if (response.data.status === "More") {
+      toast.error('No capacity!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+    } else if (response.data.status === "avlbl_msg") {
+      toast.success("hngj", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+    } else if (response.data.status === "yes") {
+      toast.success('Booking Successfull!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+      // navigate("/");
+      setDateRange('');
+      setGuest('');
+      setRno('');
+      setRtype('');
+    }
+    // }
+    // catch {
+    //   toast.error('Something Went Wrong!', {
+    //     position: "top-center",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "dark",
+    //     transition: Slide,
+    //   });
+    //   console.log("error");
+    // }
+  };
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className='booking'>
         <div className='container'>
           <span className='scircle'></span>
@@ -26,10 +159,10 @@ function BookingPage() {
               <div className='col-md-12'>
                 <div className='row'>
                   <div className='col-md-6'>
-                    <input type='text' placeholder='Email' />
+                    <input type='text' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} readOnly />
                   </div>
                   <div className='col-md-6'>
-                    <input type='text' placeholder='Mobile No.' />
+                    <input type='text' placeholder='Mobile No.' value={mno} onChange={(e) => setMno(e.target.value)} />
                   </div>
                 </div>
               </div>
@@ -37,7 +170,6 @@ function BookingPage() {
                 <div className='row'>
                   <div className='col-md-6'>
                     <DatePicker
-                      // onChange={(date) => setDate(date)}
                       selectsRange={true}
                       startDate={startDate}
                       endDate={endDate}
@@ -53,40 +185,30 @@ function BookingPage() {
                       calendarClassName="datepic" />
                   </div>
                   <div className='col-md-6'>
-                    <input type='number' placeholder='No. of Guest' />
+                    <input type='number' placeholder='No. of Guest' value={guest} onChange={(e) => setGuest(e.target.value)} />
                   </div>
                 </div>
               </div>
               <div className='col-md-12'>
                 <div className='row'>
                   <div className='col-md-6'>
-                    <select>
+                    <select value={rType} onChange={(e) => setRtype(e.target.value)}>
                       <option value="" disabled selected>Room Type</option>
-                      <option>
-                        Deluxe Room
-                      </option>
-                      <option>
-                        Double Room
-                      </option>
-                      <option>
-                        Family Room
-                      </option>
-                      <option>
-                        Superior Room
-                      </option>
-                      <option>
-                        Junior Room
-                      </option>
+                      {roomData.map(option => (
+                        <option key={option.roomType} value={option.roomType}>
+                          {option.roomType} - (Rs.{option.price}/day) - (Capacity : {option.room_capacity} Person)
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div className='col-md-6'>
-                    <input type='number' placeholder='No. of Room' />
+                    <input type='number' placeholder='No. of Room' value={rno} onChange={(e) => setRno(e.target.value)} />
                   </div>
                 </div>
               </div>
               <div className='btn-outer'>
                 <div className='col-lg-4 col-md-12 col-sm-12 col-12'>
-                  <button className='book-btn'>
+                  <button className='book-btn' onClick={handleBooking}>
                     confirm booking
                   </button>
                 </div>

@@ -27,9 +27,8 @@ function Contact() {
             <div className="col-md-6 mb-60">
               <h3>The Cappa Luxury Hotel</h3>
               <p>
-                Hotel ut nisl quam nestibulum ac quam nec odio elementum sceisue the aucan ligula.
-                Orci varius natoque penatibus et magnis dis parturient monte nascete ridiculus mus nellentesque
-                habitant morbine.
+                Thank you for your interest in our resort. We're here to assist you with any questions or inquiries you may
+                have. Please feel free to reach out to us.
               </p>
               <div className="reservations mb-30">
                 <div className="icon">
@@ -78,13 +77,6 @@ function Contact() {
               <h3>Get in touch</h3>
               <form method="post" className="contact__form">
                 <div className="row">
-                  <div className="col-12">
-                    <div className="alert alert-success contact__msg">
-                      Your message was sent successfully.
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
                   <div className="col-md-6 form-group">
                     <input name="name" type="text" placeholder="Your Name *" required="" />
                   </div>
@@ -111,13 +103,13 @@ function Contact() {
               </form>
             </div>
           </div>
-            <div className="row">
-              <div className="col-md-12 map">
-                <iframe src="https://maps.google.com/maps?q=katargam&output=embed" width="100%" height="600"
-                  allowFullScreen="" loading="lazy" title='Map'>
-                </iframe>
-              </div>
+          <div className="row">
+            <div className="col-md-12 map">
+              <iframe src="https://maps.google.com/maps?q=katargam&output=embed" width="100%" height="600"
+                allowFullScreen="" loading="lazy" title='Map'>
+              </iframe>
             </div>
+          </div>
         </div>
       </section >
       <Footer />

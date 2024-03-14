@@ -6,7 +6,7 @@
 
 .header {
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 .header-wrapper label {
@@ -21,8 +21,7 @@
 }
 
 .header-title {
-    display: flex;
-    justify-content: center;
+    margin-top: 11px;
 }
 
 .header-title h4 {

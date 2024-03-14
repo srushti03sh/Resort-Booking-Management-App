@@ -50,18 +50,33 @@ function Navbar() {
             </Link>
           </div>
           <div>
-            <button className="navbar-toggler" type="button" onClick={handleShowNavbar}>
+            <button className="navbar-toggler navbar-toggler-css" type="button" onClick={handleShowNavbar}>
               <span className="navbar-toggler-icon">
                 <i><RiMenu4Fill /></i>
               </span>
             </button>
-            <Link to="/Login">
-              <button className="navbar-toggler " type="button">
+
+            {!loginData ? <Link to="/Login">
+              <button className="navbar-toggler navbar-toggler-css" type="button">
                 <span className="navbar-toggler-icon">
                   <i><AiOutlineLogin /></i>
                 </span>
               </button>
             </Link>
+              : <>
+                <Link to={loginData.roleLogin === "user" ? "/UserPanel/Dashboard" : "/AdminPanel/Dashboard"} className="navbar-toggler ">
+                  {loginData.genderLogin === "Male" &&
+                    <img src={Male} className='navbar-toggle-user' />
+                  }
+                  {loginData.genderLogin === "Female" &&
+                    <img src={Female} className='navbar-toggle-user' />
+                  }
+                  {loginData.genderLogin === "Other" &&
+                    <img src={Other} className='navbar-toggle-user' />
+                  }
+                </Link>
+              </>
+            }
           </div>
 
           <div className={`navbar-collapse collapse ${showNavbar ? 'show' : ''}`}>
@@ -130,7 +145,7 @@ function Navbar() {
             </Link>
               : <>
                 <Link to="/BookingPage">
-                  <button className='logbtn' >
+                  <button className='bookbtn' >
                     Book Now
                   </button>
                 </Link>
