@@ -49,6 +49,7 @@ function Bookings() {
                                 <th>Check-Out Date</th>
                                 <th>Room Type</th>
                                 <th>No. of Rooms</th>
+                                <th>No. of Guest</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -62,6 +63,7 @@ function Bookings() {
                                         <td>{data.checkOut}</td>
                                         <td>{data.roomType}</td>
                                         <td>{data.room_no}</td>
+                                        <td>{data.guest}</td>
                                         <td>{data.Status}</td>
                                     </tr>
                                 ))

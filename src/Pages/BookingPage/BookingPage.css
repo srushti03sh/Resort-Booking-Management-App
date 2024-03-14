@@ -94,6 +94,48 @@
     background: #222;
 }
 
+.modal-header,
+.modal-body {
+    background: #1b1b1b;
+    color: #fff;
+}
+
+.modal-header {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.modal-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    background-color: #1b1b1b;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.close-btn {
+    border-radius: 0;
+    width: 100px;
+    background: #aa8453;
+    border: none;
+    outline: none;
+    height: 35px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background: #aa8453;
+}
+
 @media screen and (max-width: 767px) {
     .booking {
         height: auto;

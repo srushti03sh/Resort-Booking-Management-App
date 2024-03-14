@@ -6,20 +6,23 @@ import "./BookingPage.css"
 import axios from 'axios';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function BookingPage() {
 
   const loginData = JSON.parse(localStorage.getItem("loginData"));
 
+  const [show, setShow] = useState(false);
   const [dateRange, setDateRange] = useState([,]);
   const [startDate, endDate] = dateRange;
-
   const [roomData, setRoomData] = useState([]);
   const [mno, setMno] = useState('');
   const [email, setEmail] = useState(loginData.email);
   const [guest, setGuest] = useState('');
   const [rno, setRno] = useState('');
   const [rType, setRtype] = useState('');
+  const [bookingData, setBookingData] = useState('');
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -47,20 +50,63 @@ function BookingPage() {
   const handleBooking = async (e) => {
     e.preventDefault();
 
-    // try {
-    const response = await axios.post("http://localhost/Resort-API/bookingForm.php", {
-      email: email,
-      mno: mno,
-      chkin: formatDate(startDate),
-      chkout: formatDate(endDate),
-      rType: rType,
-      rno: rno,
-      guest: guest
-    });
-    console.log(response);
-    // console.log(response.data.avlbl_msg[0]);
-    // const msg = response.data.avlbl_msg[0];
-    if (response.data.status === "no") {
+    try {
+      const response = await axios.post("http://localhost/Resort-API/bookingForm.php", {
+        email: email,
+        mno: mno,
+        chkin: formatDate(startDate),
+        chkout: formatDate(endDate),
+        rType: rType,
+        rno: rno,
+        guest: guest
+      });
+      // console.log(response);
+      setBookingData(response.data);
+      if (response.data.status === "no") {
+        toast.error('Something Went Wrong!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+        });
+      } else if (response.data.status === "More") {
+        toast.error('No capacity!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+        });
+      } else if (response.data.status === "avlbl_msg") {
+        setShow(true);
+      } else if (response.data.status === "yes") {
+        toast.success('Booking Successfull!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+        });
+        setDateRange('');
+        setGuest('');
+        setRno('');
+        setRtype('');
+      }
+    }
+    catch {
       toast.error('Something Went Wrong!', {
         position: "top-center",
         autoClose: 5000,
@@ -72,63 +118,8 @@ function BookingPage() {
         theme: "dark",
         transition: Slide,
       });
-    } else if (response.data.status === "More") {
-      toast.error('No capacity!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-      });
-    } else if (response.data.status === "avlbl_msg") {
-      toast.success("hngj", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-      });
-    } else if (response.data.status === "yes") {
-      toast.success('Booking Successfull!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Slide,
-      });
-      // navigate("/");
-      setDateRange('');
-      setGuest('');
-      setRno('');
-      setRtype('');
+      console.log("error");
     }
-    // }
-    // catch {
-    //   toast.error('Something Went Wrong!', {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "dark",
-    //     transition: Slide,
-    //   });
-    //   console.log("error");
-    // }
   };
   return (
     <>
@@ -217,6 +208,35 @@ function BookingPage() {
           </div>
         </div>
       </div >
+      {
+        bookingData.status === "avlbl_msg" && (
+          <>
+            <Modal show={show} onHide={() => setShow(false)}>
+              <Modal.Header>
+                <Modal.Title>Available Rooms</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {bookingData.avlbl_msg.map((data, index) => (
+                  <div key={index}>
+                    {Array.isArray(data) ? (
+                      data.map((line, idx) => (
+                        <div key={idx}>{line}</div>
+                      ))
+                    ) : (
+                      <div>{data}</div>
+                    )}
+                  </div>
+                ))}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button className='close-btn' onClick={() => setShow(false)}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
+        )
+      }
     </>
   )
 }

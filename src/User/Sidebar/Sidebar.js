@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
+import { FaList } from "react-icons/fa6";
 
 function Sidebar() {
 
@@ -49,6 +50,13 @@ function Sidebar() {
                 <span>Bookings</span>
               </Link>
               </li>
+              <li><Link to="/UserPanel/CurrentBookings">
+                <span>
+                  <FaList />
+                </span>
+                <span>Current Bookings</span>
+              </Link>
+              </li>
               <li><Link to="/UserPanel/FAQ">
                 <span>
                   <FaFileCircleQuestion />
@@ -58,7 +66,7 @@ function Sidebar() {
               </li>
               <li><Link to="/UserPanel/ContactUs">
                 <span>
-                <FaPhoneAlt />
+                  <FaPhoneAlt />
                 </span>
                 <span>Contact Us</span>
               </Link>

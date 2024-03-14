@@ -15,29 +15,33 @@ function Dashboard() {
       />
       <div className='dashboard-event-body'>
         <h4>Upcoming Events : </h4>
-        <Card style={{ width: '18rem' }}>
-          <img src={wt31} className='dashboard-event-img' />
-          <Card.Body>
-            <Card.Title>Event Name</Card.Title>
-            <Card.Text>
-              Status : <Badge bg="success">Pending</Badge>
-              <Link className='dashboard-event-btn' to="#">Details <FaArrowRight /></Link>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        <Link to="/UserPanel/CurrentBookings">
+          <Card style={{ width: '18rem' }}>
+            <img src={wt31} className='dashboard-event-img' />
+            <Card.Body>
+              <Card.Title>Event Name</Card.Title>
+              <Card.Text>
+                Status : <Badge bg="success">Pending</Badge>
+                <Link className='dashboard-event-btn' to="#">Details <FaArrowRight /></Link>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Link>
       </div>
       <div className='dashboard-booking-body'>
         <h4>Upcoming Resort Bookings : </h4>
-        <Card style={{ width: '18rem' }}>
-          <img src={wt31} className='dashboard-event-img' />
-          <Card.Body>
-            <Card.Title>Event Name</Card.Title>
-            <Card.Text>
-              Status : <Badge bg="success">Pending</Badge>
-              <Link className='dashboard-event-btn' to="#">Details <FaArrowRight /></Link>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        <Link to="/UserPanel/CurrentBookings">
+          <Card style={{ width: '18rem' }}>
+            <img src={wt31} className='dashboard-event-img' />
+            <Card.Body>
+              <Card.Title>Event Name</Card.Title>
+              <Card.Text>
+                Status : <Badge bg="success">Pending</Badge>
+                <Link className='dashboard-event-btn' to="#">Details <FaArrowRight /></Link>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Link>
       </div>
     </>
   )

@@ -7,6 +7,7 @@ import "./UserPanel.css"
 import EditProfile from '../EditProfile/EditProfile'
 import ContactUs from '../ContactUs/ContactUs'
 import FAQ from '../FAQ/FAQ'
+import CurrentBookings from '../CurrentBookings/CurrentBookings'
 
 function UserPanel() {
     return (
@@ -26,6 +27,7 @@ function UserPanel() {
                         <Route path="/EditProfile" element={<EditProfile />} />
                         <Route path="/ContactUs" element={<ContactUs />} />
                         <Route path="/FAQ" element={<FAQ />} />
+                        <Route path="/CurrentBookings" element={<CurrentBookings />} />
                     </Routes>
                 </div>
             </div>
