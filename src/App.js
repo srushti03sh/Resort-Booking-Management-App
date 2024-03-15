@@ -21,6 +21,8 @@ import CorporateMeetings from './Pages/Events/CorporateMeetings/CorporateMeeting
 import Restaurant from './Pages/Restaurant/Restaurant';
 import BookingPage from './Pages/BookingPage/BookingPage';
 import UserPanel from './User/UserPanel/UserPanel';
+import EventBookingPage from './Pages/EventBookingPage/EventBookingPage';
+import AdminPanel from './Admin/AdminPanel/AdminPanel';
 function App() {
 
   return (
@@ -48,7 +50,10 @@ function App() {
         <Route path="/CorporateMeetings" element={<CorporateMeetings />} />
         <Route path="/Restaurant" element={<Restaurant />} />
         <Route path="/BookingPage" element={<BookingPage />} />
+        <Route path="/EventBookingPage" element={<EventBookingPage />} />
         <Route path="/UserPanel/*" element={<UserPanel />} >
+        </Route>
+        <Route path="/AdminPanel/*" element={<AdminPanel />} >
         </Route>
       </Routes>
 

@@ -1,0 +1,172 @@
+.admin-dashboard {
+    margin-top: 42px;
+}
+
+.dashboard-card {
+    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px;
+    border: 1px solid #aa8453;
+    background: #1b1b1b;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.dashboard-card:hover {
+    cursor: pointer;
+    margin-top: -10px;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.dashboard-card i {
+    color: #aa8453;
+    display: flex;
+    background: #222;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-info h6 {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}
+
+.card-info {
+    margin-left: 15px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 25px;
+}
+
+.dashboard-cal,
+.avlbl-card-outer {
+    margin-top: 55px;
+}
+
+.react-calendar__tile {
+    padding: 20px !important;
+    color: #aaa !important;
+    font-size: 16px !important;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    border-bottom: 1px solid #aaa !important;
+}
+
+.react-calendar__navigation button {
+    color: #aaa !important;
+}
+
+.highlight {
+    background: #aa8453 !important;
+    color: #fff !important;
+}
+
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus,
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background: #aa8453 !important;
+    color: #fff !important;
+}
+
+.react-calendar__tile--now {
+    background: none !important;
+}
+
+.react-calendar {
+    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    background: #1b1b1b !important;
+    color: #fff !important;
+    color: #aaa !important;
+}
+
+.dashboard-cal-card {
+    width: 100%;
+}
+
+.dashboard-cal-card .card {
+    height: 383px !important;
+}
+
+.admin-report {
+    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px;
+    background: #1b1b1b;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+
+.apexcharts-gridline {
+    stroke: rgb(55, 61, 63) !important;
+}
+
+#SvgjsG1219 text,
+#SvgjsG1195 text,
+.apexcharts-legend-text {
+    fill: rgb(255, 255, 255) !important;
+    color: #fff !important;
+}
+
+.avlbl-card {
+    margin-top: 35px;
+}
+
+.avlbl-card {
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.avlbl-card-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.progress-bar {
+    background-color: #aa8453 !important;
+}
+
+.progress {
+    --bs-progress-border-radius: 100px !important;
+}
+
+.rev {
+    margin-top: 50px;
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.rev-data img {
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+}
+
+.rev-data {
+    display: flex;
+}
+
+.rev-name {
+    margin-top: 13px;
+    margin-left: 15px;
+}
+
+@media only screen and (max-width: 991px) {
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard-cal-card {
+        margin-top: 15px;
+    }
+}

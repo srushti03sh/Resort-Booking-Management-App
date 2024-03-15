@@ -44,6 +44,12 @@
     right: 25px;
 }
 
+.user-icon {
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+}
+
 @media only screen and (max-width: 500px) {
 
     .header,

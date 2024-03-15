@@ -5,7 +5,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import "./BookingPage.css"
 import axios from 'axios';
 import { Slide, ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -135,6 +135,7 @@ function BookingPage() {
         pauseOnHover
         theme="dark"
       />
+
       <div className='booking'>
         <div className='container'>
           <span className='scircle'></span>
@@ -142,7 +143,7 @@ function BookingPage() {
           <div className='booking-form col-md-10'>
             <div className='col-md-12 text-center form-head'>
               <div className='section-title'>
-                Book Now
+                Book Rooms
               </div>
               <div className='line'></div>
             </div>
@@ -197,12 +198,15 @@ function BookingPage() {
                   </div>
                 </div>
               </div>
-              <div className='btn-outer'>
+              <div className='btn-outer col-md-12'>
                 <div className='col-lg-4 col-md-12 col-sm-12 col-12'>
                   <button className='book-btn' onClick={handleBooking}>
                     confirm booking
                   </button>
                 </div>
+              </div>
+              <div className='events-link-outer'>
+                <Link className='events-link' to="/EventBookingPage">Want to manage any events?</Link>
               </div>
             </form>
           </div>

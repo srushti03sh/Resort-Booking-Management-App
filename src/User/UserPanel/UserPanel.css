@@ -29,7 +29,7 @@
 
 @media only screen and (max-width: 1224px) {
     #menu-toggle:checked~.sidebar {
-        left: 0;
+        left: 0 !important;
     }
 
     #menu-toggle:checked~.soverlay {

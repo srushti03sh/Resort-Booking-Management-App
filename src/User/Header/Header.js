@@ -27,9 +27,9 @@ function Header(props) {
                         <h6>{loginData.fnameLogin} {loginData.lnameLogin}</h6>
                     </div>
                     <div>
-                        {loginData.genderLogin === "Male" && <Link to="/UserPanel/EditProfile"><img src={Male} className='user' /></Link>}
-                        {loginData.genderLogin === "Female" && <Link to="/UserPanel/EditProfile"><img src={Female} className='user' /></Link>}
-                        {loginData.genderLogin === "Other" && <Link to="/UserPanel/EditProfile"> <img src={Other} className='user' /></Link>}
+                        {loginData.genderLogin === "Male" && <Link to="/UserPanel/EditProfile"><img src={Male} className='user-icon' /></Link>}
+                        {loginData.genderLogin === "Female" && <Link to="/UserPanel/EditProfile"><img src={Female} className='user-icon' /></Link>}
+                        {loginData.genderLogin === "Other" && <Link to="/UserPanel/EditProfile"> <img src={Other} className='user-icon' /></Link>}
                         <Link to="/UserPanel/EditProfile"><i><IoIosSettings /></i></Link>
                     </div>
                 </div>

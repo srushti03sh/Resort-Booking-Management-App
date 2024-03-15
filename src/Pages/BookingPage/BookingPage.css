@@ -136,6 +136,16 @@
     background: #aa8453;
 }
 
+.events-link {
+    color: #aa845a;
+}
+
+.events-link-outer {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
 @media screen and (max-width: 767px) {
     .booking {
         height: auto;

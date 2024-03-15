@@ -31,15 +31,12 @@ function Bookings() {
         fetchData();
     }, [loginData.id]);
 
-    // console.log(bookingData);
-
     return (
         <>
             <Header
                 header="Bookings"
             />
             <div className='booking-table'>
-
                 {bookingData?.length > 0 ?
                     (<Table striped bordered variant="dark" responsive>
                         <thead>
@@ -56,14 +53,13 @@ function Bookings() {
                         <tbody>
                             {
                                 bookingData?.map((data, index) => (
-                                    // console.log(data)
                                     <tr key={index}>
                                         <td>{data.booking_id}</td>
                                         <td>{data.checkIn}</td>
                                         <td>{data.checkOut}</td>
                                         <td>{data.roomType}</td>
                                         <td>{data.room_no}</td>
-                                        <td>{data.guest}</td>
+                                        <td>{data.guest_no}</td>
                                         <td>{data.Status}</td>
                                     </tr>
                                 ))
