@@ -2,7 +2,6 @@ import React from 'react'
 import "./Dashboard.css"
 import Card from 'react-bootstrap/Card';
 import Header from '../Header/Header'
-import wt31 from "../../Images/wt31.jpg"
 import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa6";
@@ -17,7 +16,6 @@ function Dashboard() {
         <h4>Upcoming Events : </h4>
         <Link to="/UserPanel/CurrentBookings">
           <Card style={{ width: '18rem' }}>
-            <img src={wt31} className='dashboard-event-img' />
             <Card.Body>
               <Card.Title>Event Name</Card.Title>
               <Card.Text>
@@ -32,7 +30,6 @@ function Dashboard() {
         <h4>Upcoming Resort Bookings : </h4>
         <Link to="/UserPanel/CurrentBookings">
           <Card style={{ width: '18rem' }}>
-            <img src={wt31} className='dashboard-event-img' />
             <Card.Body>
               <Card.Title>Event Name</Card.Title>
               <Card.Text>

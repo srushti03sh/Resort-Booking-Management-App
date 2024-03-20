@@ -82,7 +82,7 @@
     color: #aa8453 !important;
 }
 
-.navbar .navbar-nav .active {
+.navbar .navbar-nav .active .nav-link {
     color: #aa8453 !important;
 }
 
@@ -190,6 +190,10 @@
 .navbar-toggle-user {
     height: 40px;
     width: 40px;
+}
+
+.dropdown .active a {
+    color: #aa8453 !important;
 }
 
 @keyframes moveDown {

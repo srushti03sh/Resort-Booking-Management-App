@@ -4,81 +4,90 @@ import slogo from "../../Images/logo.png"
 import { MdDashboard } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
 
 function Sidebar() {
-
   const navigate = useNavigate();
+  const location = useLocation();
+
   const handleLogout = () => {
     localStorage.removeItem('loginData');
     navigate("/");
   }
 
+  // Function to determine if a given path should be considered active
+  const isActive = (path) => {
+    return location.pathname === path;
+  }
+
   return (
-    <>
-    
-      <div className="sidebar-container">
-        <div className="brand">
-          <Link to="/">
-            <img src={slogo} />
-          </Link>
-        </div>
-        <div className='sidebar-content'>
-          <div className="sidebar-menu">
-            <ul>
-              <li><Link to="/">
+    <div className="sidebar-container">
+      <div className="brand">
+        <Link to="/">
+          <img src={slogo} alt="logo" />
+        </Link>
+      </div>
+      <div className='sidebar-content'>
+        <div className="sidebar-menu">
+          <ul>
+            <li className={isActive("/") ? "active" : ""}>
+              <Link to="/">
                 <span>
                   <FaHome />
                 </span>
                 <span>Home</span>
               </Link>
-              </li>
-              <li><Link to="/UserPanel/Dashboard" className="active">
+            </li>
+            <li className={isActive("/UserPanel/Dashboard") ? "active" : ""}>
+              <Link to="/UserPanel/Dashboard">
                 <span>
                   <MdDashboard />
                 </span>
                 <span>Dashboard</span>
               </Link>
-              </li>
-              <li><Link to="/UserPanel/Bookings">
+            </li>
+            <li className={isActive("/UserPanel/Bookings") ? "active" : ""}>
+              <Link to="/UserPanel/Bookings">
                 <span>
                   <FaListCheck />
                 </span>
                 <span>Bookings</span>
               </Link>
-              </li>
-              <li><Link to="/UserPanel/CurrentBookings">
+            </li>
+            <li className={isActive("/UserPanel/CurrentBookings") ? "active" : ""}>
+              <Link to="/UserPanel/CurrentBookings">
                 <span>
                   <FaList />
                 </span>
                 <span>Current Bookings</span>
               </Link>
-              </li>
-              <li><Link to="/UserPanel/FAQ">
+            </li>
+            <li className={isActive("/UserPanel/FAQ") ? "active" : ""}>
+              <Link to="/UserPanel/FAQ">
                 <span>
                   <FaFileCircleQuestion />
                 </span>
                 <span>F.A.Q</span>
               </Link>
-              </li>
-              <li><Link to="/UserPanel/ContactUs">
+            </li>
+            <li className={isActive("/UserPanel/ContactUs") ? "active" : ""}>
+              <Link to="/UserPanel/ContactUs">
                 <span>
                   <FaPhoneAlt />
                 </span>
                 <span>Contact Us</span>
               </Link>
-              </li>
-            </ul>
-          </div>
-          <button className="btn-sidebar btn-block" onClick={handleLogout}>Logout</button>
+            </li>
+          </ul>
         </div>
+        <button className="btn-sidebar btn-block" onClick={handleLogout}>Logout</button>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
 export default Sidebar

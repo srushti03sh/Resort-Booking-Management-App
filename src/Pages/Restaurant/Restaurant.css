@@ -72,15 +72,7 @@
     display: none;
 }
 
-.restaurant-menu-content .cont {
-    display: none;
-}
-
-.restaurant-menu-content .cont.active {
-    display: block;
-}
-
-.restaurant-menu-content .cont h5 {
+.menu-info h5 {
     font-size: 20px;
     color: #aa8453;
     margin-bottom: 10px;
@@ -89,12 +81,33 @@
     line-height: 2em;
 }
 
-.restaurant-menu-content .cont h5 .price {
+.menu-info h5 .price {
     color: #adadad;
     float: right;
+    display: flex;
+    align-items: center;
 }
 
-.restaurant-menu-content .cont p {
+.menu-info p {
+    text-align: left;
     font-size: 15px;
     color: #adadad;
+}
+
+.nav-tabs {
+    margin-top: 35px;
+}
+
+.nav-tabs .nav-link.active {
+    border-color: #aa8453;
+    background-color: #aa8453;
+    color: #fff;
+}
+
+.nav-justified .nav-item .nav-link {
+    color: #fff;
+}
+
+.tab-content {
+    margin-top: 40px;
 }

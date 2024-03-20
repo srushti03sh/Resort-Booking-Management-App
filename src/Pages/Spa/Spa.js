@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoCheckmarkOutline } from "react-icons/io5";
-import spa from "../../Images/spa.jpg"
-import spa2 from "../../Images/spa2.jpg"
-import spa3 from "../../Images/spa3.jpg"
 import spa4 from "../../Images/spa4.jpg"
-import sc1 from "../../Images/sc1.jpg"
-import sc2 from "../../Images/sc2.jpg"
-import sc3 from "../../Images/sc3.jpg"
-import sc4 from "../../Images/sc4.jpg"
-import sc5 from "../../Images/sc5.jpg"
-import sc6 from "../../Images/sc6.jpg"
 import spic1 from "../../Images/spic1.jpg"
 import spic2 from "../../Images/spic2.jpg"
 import Navbar from '../../Components/Home/Navbar/Navbar'
 import Footer from '../../Components/Home/Footer/Footer'
+import { LiaRupeeSignSolid } from "react-icons/lia";
 import "./Spa.css"
+import { spaSlider } from '../../Data/Data';
+import { spaServiceSlider } from '../../Data/Data';
+import { spaPriceSlider } from '../../Data/Data';
 
 function Spa() {
 
@@ -85,7 +79,7 @@ function Spa() {
   };
 
   useEffect(() => {
-    counter(0, 100);
+    counter(0, 987);
   }, []);
 
   const [count1, setCount1] = useState(0);
@@ -99,7 +93,7 @@ function Spa() {
   };
 
   useEffect(() => {
-    counter1(0, 50);
+    counter1(0, 85);
   }, []);
 
 
@@ -109,66 +103,27 @@ function Spa() {
       <div className="video-fullscreen-wrap">
         <div className="video-fullscreen-video" >
           <OwlCarousel items={1} autoplay={true} loop={true} {...options} nav={true}>
-            <div data-overlay-dark="3">
-              <img src={spa} alt="" />
-              <div className="v-middle caption overlay">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-10 offset-md-1">
-                      <h4>
-                        Spa Center
-                      </h4>
-                      <h1>
-                        Revitalize, Rejuvenate, Relax
-                      </h1>
-                      <div className='butn-dark'>
-                        <Link to="#" ><span>Make Appointment</span></Link>
+            {
+              spaSlider.map((data, index) => (
+                <div data-overlay-dark="3">
+                  <img src={data.src} alt="" />
+                  <div className="v-middle caption overlay">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-10 offset-md-1">
+                          <h4>
+                            {data.subTitle}
+                          </h4>
+                          <h1>
+                            {data.title}
+                          </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div data-overlay-dark="3">
-              <div className="v-middle caption overlay">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-10 offset-md-1">
-                      <h4>
-                        Spa Center
-                      </h4>
-                      <h1>
-                        Revitalize, Rejuvenate, Relax
-                      </h1>
-                      <div className="butn-dark">
-                        <Link to="#"><span>Make Appointment</span></Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <img src={spa2} alt="" />
-            </div>
-            <div data-overlay-dark="3">
-              <div className="v-middle caption overlay">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-10 offset-md-1">
-                      <h4>
-                        Spa Center
-                      </h4>
-                      <h1>
-                        Revitalize, Rejuvenate, Relax
-                      </h1>
-                      <div className="butn-dark">
-                        <Link to="#"><span>Make Appointment</span></Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <img src={spa3} alt="" />
-            </div>
+              ))
+            }
           </OwlCarousel>
         </div>
       </div>
@@ -215,42 +170,16 @@ function Spa() {
           <div className='section-title'>Spa Service</div>
           <div className='col-md-12'>
             <OwlCarousel items={3} margin={30} loop={true} {...options1} autoplay={true} className='service-service'>
-              <div className="spas" data-overlay-dark="3">
-                <img src={sc1} />
-                <div className='spa-text'>
-                  <h4>Steam Bath</h4>
-                </div>
-              </div>
-              <div className="spas" data-overlay-dark="3">
-                <img src={sc2} />
-                <div className='spa-text'>
-                  <h4>Face Masking</h4>
-                </div>
-              </div>
-              <div className="spas" data-overlay-dark="3">
-                <img src={sc3} />
-                <div className='spa-text'>
-                  <h4>skin Care</h4>
-                </div>
-              </div>
-              <div className="spas" data-overlay-dark="3">
-                <img src={sc4} />
-                <div className='spa-text'>
-                  <h4>Body Massage</h4>
-                </div>
-              </div>
-              <div className="spas" data-overlay-dark="3">
-                <img src={sc5} />
-                <div className='spa-text'>
-                  <h4>Facial Therapy</h4>
-                </div>
-              </div>
-              <div className="spas" data-overlay-dark="3">
-                <img src={sc6} />
-                <div className='spa-text'>
-                  <h4>Cold Therapy</h4>
-                </div>
-              </div>
+              {
+                spaServiceSlider.map((data, index) => (
+                  <div className="spas" data-overlay-dark="3" key={index}>
+                    <img src={data.src} />
+                    <div className='spa-text'>
+                      <h4>{data.subTitle}</h4>
+                    </div>
+                  </div>
+                ))
+              }
             </OwlCarousel>
           </div>
         </div>
@@ -282,132 +211,42 @@ function Spa() {
             </figure>
             <div className="ohrs-text-2 col-md-8">
               <OwlCarousel items={2} margin={30} autoplay={true} loop={true} {...options2}>
-                <div className="ohrs-pricing-card">
-                  <div className="desc">
-                    <div className="amount">$50<span>/ month</span></div>
-                    <ul className="list-unstyled list">
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Full Body Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Deep Tissue Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Hot Stone Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Tissue Body Polish
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Foot & Nail Care
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="ohrs-pricing-card">
-                  <div className="desc">
-                    <div className="amount">$30<span>/ month</span></div>
-                    <ul className="list-unstyled list">
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Full Body Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Deep Tissue Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Hot Stone Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Tissue Body Polish
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Foot & Nail Care
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="ohrs-pricing-card">
-                  <div className="desc">
-                    <div className="amount">$30<span>/ month</span></div>
-                    <ul className="list-unstyled list">
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Full Body Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Deep Tissue Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Hot Stone Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Tissue Body Polish
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Foot & Nail Care
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="ohrs-pricing-card">
-                  <div className="desc">
-                    <div className="amount">$15<span>/ month</span></div>
-                    <ul className="list-unstyled list">
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Full Body Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Deep Tissue Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Hot Stone Massage
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Tissue Body Polish
-                      </li>
-                      <li>
-                        <i><IoCheckmarkOutline /></i>
-                        Foot & Nail Care
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                {
+                  spaPriceSlider.map((data, index) => (
+                    <div className="ohrs-pricing-card" key={index}>
+                      <div className="desc">
+                        <div className="amount"><LiaRupeeSignSolid />{data.price}<span>/ everytime</span></div>
+                        <ul className="list-unstyled list">
+                          <li>
+                            <i><IoCheckmarkOutline /></i>
+                            {data.i1}
+                          </li>
+                          <li>
+                            <i><IoCheckmarkOutline /></i>
+                            {data.i2}
+                          </li>
+                          <li>
+                            <i><IoCheckmarkOutline /></i>
+                            {data.i3}
+                          </li>
+                          <li>
+                            <i><IoCheckmarkOutline /></i>
+                            {data.i4}
+                          </li>
+                          <li>
+                            <i><IoCheckmarkOutline /></i>
+                            {data.i5}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  ))
+                }
               </OwlCarousel>
             </div>
           </div>
         </div>
       </div >
-      {/* <CommonServices
-                image5={sc1}
-                image6={sc2}
-                image7={sc3}
-                image8={sc4}
-                image9={sc5}
-                image10={sc6}
-                image11={spic1}
-                image12={spic2}
-                serviceName2="Discover Your Inner Serenity"
-                serviceName3="Embrace the Art of Wellness"
-                timeTitle="Find Peace in Paradise"
-            /> */}
       <Footer />
     </>
   )

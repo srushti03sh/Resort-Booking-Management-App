@@ -3,37 +3,7 @@ import "./FAQ.css"
 import { IoIosArrowDown } from "react-icons/io";
 import Navbar from '../../Components/Home/Navbar/Navbar'
 import Footer from '../../Components/Home/Footer/Footer'
-
-
-const faqs = [
-  {
-    id: 1,
-    header: "How can I confirm that you have received my reservation?",
-    text: `After completing your reservation, you should receive an immediate confirmation message on the booking platform. If you don't receive a confirmation, 
-    please reach out to our reservations team for assistance.`
-  },
-  {
-    id: 2,
-    header: "Up to what age are they considered children?",
-    text: `Children are considered to be between the ages of 0 and 12 years old.`
-  },
-  {
-    id: 3,
-    header: "Do you have any discount code?",
-    text: `Our resort occasionally offers promotional discount codes through various channels. Please check our website or contact our reservations team directly
-     to inquire about any available discount codes for your stay.`
-  },
-  {
-    id: 4,
-    header: "Can I cancel my reservation?",
-    text: `Yes, you can cancel your reservation. Please refer to the cancellation policy outlined in your booking confirmation for details on any applicable fees or deadlines.`
-  },
-  {
-    id: 5,
-    header: "Do you have resort with a spa?",
-    text: `Yes, we offer resort with spa facilities. You can explore our website or contact our reservations team for more information on resort with spa amenities.`
-  }
-]
+import { faqs } from '../../Data/Data';
 
 const AccordionItem = (props) => {
   const contentEl = useRef();

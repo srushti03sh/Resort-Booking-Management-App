@@ -1,12 +1,10 @@
 import React from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import quot from "../../../Images/quot.png"
-import test1 from "../../../Images/test1.jpg"
-import test2 from "../../../Images/test2.jpg"
-import test3 from "../../../Images/test3.jpg"
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import "./Testimonials.css"
+import { HomeTestimonials } from '../../../Data/Data';
 
 function Testimonial() {
 
@@ -37,86 +35,34 @@ function Testimonial() {
                   <div className="line"></div>
                 </div>
                 <OwlCarousel items={2} margin={30} autoplay={true} loop={true} {...options}>
-                  <div className="item">
-                    <span className="quote">
-                      <img src={quot} alt="" />
-                    </span>
-                    <p>
-                      From the moment we arrived at the hotel, we were greeted with warmth and professionalism. The staff went above and beyond
-                      to ensure that our stay was nothing short of exceptional. The room was immaculate, with stunning views and luxurious
-                      amenities that exceeded our expectations. The attention to detail in every aspect of our experience, from the personalized
-                      service to the exquisite dining options, was truly remarkable. We felt pampered and cared for throughout our stay,
-                      and we can't wait to return. Thank you to the entire team for making our getaway unforgettable.
-                    </p>
-                    <div className="info">
-                      <div className="author-img">
-                        <img src={test1} alt="" />
-                      </div>
-                      <div className="cont">
-                        <span>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
+                  {
+                    HomeTestimonials.map((data, index) => (
+                      <div className="item" key={index}>
+                        <span className="quote">
+                          <img src={quot} alt="" />
                         </span>
-                        <h6>Emily Brown</h6>
-                        <span>Guest review</span>
+                        <p>
+                          {data.des}
+                        </p>
+                        <div className="info">
+                          <div className="author-img">
+                            <img src={data.src} alt="" />
+                          </div>
+                          <div className="cont">
+                            <span>
+                              <i className="star-rating"></i>
+                              <i className="star-rating"></i>
+                              <i className="star-rating"></i>
+                              <i className="star-rating"></i>
+                              <i className="star-rating"></i>
+                            </span>
+                            <h6>{data.name}</h6>
+                            <span>Guest review</span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <span className="quote">
-                      <img src={quot} alt="" />
-                    </span>
-                    <p>
-                      Our stay at the hotel was fantastic! The room was stylish and comfortable, and the staff were incredibly friendly and
-                      accommodating. We enjoyed every moment of our time there and can't wait to come back!
-                    </p>
-                    <div className="info">
-                      <div className="author-img">
-                        <img src={test2} alt="" />
-                      </div>
-                      <div className="cont">
-                        <span>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                        </span>
-                        <h6>Nolan White</h6>
-                        <span>Guest review</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <span className="quote">
-                      <img src={quot} alt="" />
-                    </span>
-                    <p>
-                      Our experience at the hotel was phenomenal! The room was luxurious, the amenities were top-notch, and the staff were 
-                      incredibly attentive. From check-in to check-out, everything exceeded our expectations. We can't wait to return for 
-                      another unforgettable stay!
-                    </p>
-                    <div className="info">
-                      <div className="author-img">
-                        <img src={test3} alt="" />
-                      </div>
-                      <div className="cont">
-                        <span>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                          <i className="star-rating"></i>
-                        </span>
-                        <h6>Olivia martin</h6>
-                        <span>Guest review</span>
-                      </div>
-                    </div>
-                  </div>
-
+                    ))
+                  }
                 </OwlCarousel>
               </div>
             </div>

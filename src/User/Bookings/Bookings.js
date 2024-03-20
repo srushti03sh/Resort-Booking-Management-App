@@ -59,7 +59,7 @@ function Bookings() {
                                         <td>{data.checkOut}</td>
                                         <td>{data.roomType}</td>
                                         <td>{data.room_no}</td>
-                                        <td>{data.guest_no}</td>
+                                        <td>{data.guest}</td>
                                         <td>{data.Status}</td>
                                     </tr>
                                 ))

@@ -2,7 +2,7 @@ import Index from './Components/Home/Index';
 import PButton from './Components/Home/Progress Button/PButton';
 import RootLayout from './Components/Home/RootLayout';
 import Contact from './Pages/Contact/Contact'
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import JuniorSuite from './Pages/RoomDetails/JuniorSuite/JuniorSuite';
 import DeluxeRoom from './Pages/RoomDetails/DeluxeRoom/DeluxeRoom';
 import DoubleRoom from './Pages/RoomDetails/DoubleRoom/DoubleRoom';
@@ -23,7 +23,10 @@ import BookingPage from './Pages/BookingPage/BookingPage';
 import UserPanel from './User/UserPanel/UserPanel';
 import EventBookingPage from './Pages/EventBookingPage/EventBookingPage';
 import AdminPanel from './Admin/AdminPanel/AdminPanel';
+
 function App() {
+
+  const loginData = JSON.parse(localStorage.getItem("loginData"));
 
   return (
     <div>
@@ -51,10 +54,10 @@ function App() {
         <Route path="/Restaurant" element={<Restaurant />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/EventBookingPage" element={<EventBookingPage />} />
-        <Route path="/UserPanel/*" element={<UserPanel />} >
-        </Route>
-        <Route path="/AdminPanel/*" element={<AdminPanel />} >
-        </Route>
+
+        <Route path="/UserPanel/*" element={loginData ? <UserPanel /> : <Navigate to="/Login" />} />
+
+        <Route path="/AdminPanel/*" element={loginData ? <AdminPanel /> : <Navigate to="/Login" />} />
       </Routes>
 
     </div>
