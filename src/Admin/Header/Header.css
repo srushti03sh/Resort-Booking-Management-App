@@ -20,28 +20,10 @@
     cursor: pointer;
 }
 
-.header-title {
-    margin-top: 11px;
-}
-
-.header-title h4 {
-    color: #aa8453;
-    margin-bottom: 0;
-    text-transform: uppercase;
-}
-
 .pdata {
     display: flex;
     float: right;
     align-items: baseline;
-}
-
-.pdata i {
-    font-size: 20px;
-    color: #aaa;
-    position: absolute;
-    top: 45px;
-    right: 25px;
 }
 
 .user-icon {

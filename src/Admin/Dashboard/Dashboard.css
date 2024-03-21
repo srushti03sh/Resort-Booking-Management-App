@@ -1,12 +1,12 @@
 .admin-dashboard {
-    margin-top: 42px;
+    margin-top: 8%;
 }
 
 .dashboard-card {
     box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px;
     border: 1px solid #aa8453;
     background: #1b1b1b;
-    padding: 15px;
+    padding: 13px;
     border-radius: 5px;
     display: flex;
 }
@@ -34,11 +34,30 @@
     line-height: 1.5;
 }
 
+.dashboard-cal-card .card-title {
+    margin: 20px 0;
+    border-bottom: 1px dashed #fff;
+    padding-bottom: 10px;
+}
+
 .card-info {
     margin-left: 15px;
     font-weight: 600;
     color: #fff;
     font-size: 25px;
+}
+
+.up-events {
+    border-bottom: 1px dashed #fff;
+}
+
+.up-bookings {
+    margin: 20px 0;
+}
+
+.up-events h6,
+.up-bookings h6 {
+    padding-top: 10px;
 }
 
 .dashboard-cal,
@@ -63,6 +82,7 @@
 .highlight {
     background: #aa8453 !important;
     color: #fff !important;
+    border: 1px solid #fff !important;
 }
 
 
@@ -74,9 +94,9 @@
     color: #fff !important;
 }
 
-.react-calendar__tile--now {
+/* .react-calendar__tile--now {
     background: none !important;
-}
+} */
 
 .react-calendar {
     box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px !important;
@@ -87,12 +107,20 @@
     color: #aaa !important;
 }
 
+.msg-click {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #aa8453;
+}
+
 .dashboard-cal-card {
     width: 100%;
 }
 
 .dashboard-cal-card .card {
     height: 383px !important;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .admin-report {

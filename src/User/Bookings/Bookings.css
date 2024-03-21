@@ -1,5 +1,5 @@
-.booking-table {
-    margin-top: 42px;
+.user-panl {
+    margin-top: 8%;
 }
 
 .booking-table table tr td,
@@ -9,6 +9,12 @@
 
 .table-striped>tbody>tr:nth-of-type(odd)>* {
     --bs-table-bg-type: #1b1b1b;
+}
+
+td,th {
+    font-size: 15px;
+    width: auto;
+    white-space: nowrap;
 }
 
 .cnt-booking {
@@ -26,8 +32,8 @@
 }
 
 .cnt-book {
+    justify-content: end;
     display: flex;
-    float: right;
     margin-top: 50px;
 }
 

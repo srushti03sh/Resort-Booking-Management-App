@@ -72,7 +72,7 @@ function ContactUs() {
                     calendarClassName="datepic" />
                 </div>
                 <div className="row">
-                  <div className="col-md-12">
+                  <div className="col-md-12 room_select">
                     <select>
                       <option value="" disabled selected>Room Type</option>
                       <option>

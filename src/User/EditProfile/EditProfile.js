@@ -21,6 +21,7 @@ function EditProfile() {
   const [mno, setMno] = useState('');
   const [selectedState, setSelectedState] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const loginData = JSON.parse(localStorage.getItem("loginData"));
 
@@ -60,6 +61,13 @@ function EditProfile() {
   const handleUpdate = async (e) => {
     // e.preventDefault();
 
+    if (npassword !== cpassword) {
+      setPasswordError('Passwords do not match');
+      return;
+    } else {
+      setPasswordError('');
+      // Perform any further actions (e.g., submit the form)
+    }
     try {
       const response = await axios.post("http://localhost/Resort-API/manageProfile.php", {
         email: email,
@@ -126,9 +134,6 @@ function EditProfile() {
         draggable
         pauseOnHover
         theme="dark"
-      />
-      <Header
-        header="Manage profile"
       />
       <div className='edit-profile'>
         <div className='container'>
@@ -213,6 +218,7 @@ function EditProfile() {
                       </div>
                     </div>
                   </div>
+                  {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
                   <div className='edit-btn-div'>
                     <button className='edit-btn' onClick={handleUpdate}>
                       Update

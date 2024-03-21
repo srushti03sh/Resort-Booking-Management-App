@@ -33,10 +33,7 @@ function Bookings() {
 
     return (
         <>
-            <Header
-                header="Bookings"
-            />
-            <div className='booking-table'>
+            <div className='user-panl booking-table'>
                 {bookingData?.length > 0 ?
                     (<Table striped bordered variant="dark" responsive>
                         <thead>

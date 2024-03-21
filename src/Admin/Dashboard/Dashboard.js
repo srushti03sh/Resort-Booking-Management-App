@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Dashboard.css"
 import Header from '../Header/Header'
 import { GiGlassCelebration } from "react-icons/gi";
@@ -12,17 +12,66 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import ReactApexChart from 'react-apexcharts';
 import test1 from "../../Images/test1.jpg"
 import test2 from "../../Images/test2.jpg"
+import axios from 'axios';
+import moment from 'moment';
 
 function Dashboard() {
-  const [tgl, setTgl] = useState(new Date())
+
+  const [currentBookingData, setCurrentBookingData] = useState('');
+  const [currentEventData, setCurrentEventData] = useState('');
+  const [user, setUser] = useState('');
+  const [calEventData, setCalEventData] = useState([]);
+  const [reportData, setReportData] = useState([]);
+  const [bookingData, setBookingData] = useState([]);
+  const [calEventDetails, setCalEventDetails] = useState([]);
+  const [calBookingDetails, setCalBookingDetails] = useState([]);
+  const [usedRoom, setUsedRoom] = useState(0);
+  const [totRoom, setTotRoom] = useState(0);
+
+  const fetchData = async () => {
+    const response = await axios.post("http://localhost/Resort-API/adminDashboard.php", {});
+
+    const result = response.data.CurrentbookingData;
+
+    const result1 = response.data.CurrenteventData;
+    const result2 = response.data.user;
+    const result3 = response.data.avlRoom;
+    const result4 = response.data.totRoom;
+    const result5 = response.data.calEventData;
+    const result6 = response.data.bookingData;
+
+    setCurrentBookingData(result)
+    setCurrentEventData(result1)
+    setUser(result2)
+    setUsedRoom(result3)
+    setTotRoom(result4)
+    setCalEventData(result5)
+    setBookingData(result6)
+  }
+  const fetchReportData = async () => {
+    const response = await axios.post("http://localhost/Resort-API/reportAdmin.php", {});
+
+    const resultReport = response.data.reportData;
+    setReportData(resultReport)
+
+  }
+  useEffect(() => {
+    fetchData();
+    fetchReportData();
+  }, []);
+
+  const [tgl, setTgl] = useState('')
   const [series, setSeries] = useState([
     {
-      name: 'series1',
+      name: 'Total Booking',
       data: [31, 40, 28, 51, 42, 109, 100]
     },
     {
-      name: 'series2',
-      data: [11, 32, 45, 32, 34, 52, 41]
+      name: 'Cancel Bookings',
+      // data: [reportData.map((item, index) => (
+      //   item.reportData
+      // ))]
+      data: [20, 30, 80, 5, 25, 43]
     }
   ]);
 
@@ -41,14 +90,21 @@ function Dashboard() {
     xaxis: {
       type: 'datetime',
       categories: [
-        "2018-09-19T00:00:00.000Z",
-        "2018-09-19T01:30:00.000Z",
-        "2018-09-19T02:30:00.000Z",
-        "2018-09-19T03:30:00.000Z",
-        "2018-09-19T04:30:00.000Z",
-        "2018-09-19T05:30:00.000Z",
-        "2018-09-19T06:30:00.000Z"
+        "2024-01-01",
+        "2024-02-01",
+        "2024-03-01",
+        "2024-04-01",
+        "2024-05-01",
+        "2024-06-01"
       ]
+    }, yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: function (value) {
+          return value;
+        }
+      }
     },
     tooltip: {
       x: {
@@ -56,12 +112,38 @@ function Dashboard() {
       }
     }
   });
-  const events = ['27-03-2024'];
+  const events = [].concat(calEventData?.map(date => moment(date, 'YYYY-MM-DD').format('DD-MM-YYYY')),
+    bookingData?.map(date => moment(date, 'YYYY-MM-DD').format('DD-MM-YYYY'))
+  );
+
+  const useRoomNow = (usedRoom / totRoom) * 100;
+  const avlRoomNow = ((totRoom - usedRoom) / totRoom) * 100;
+
+  const handleCal = async (selectedDate) => {
+    setTgl(selectedDate);
+    const formattedDate = moment(selectedDate).format('YYYY-MM-DD');
+    try {
+      const response = await axios.post("http://localhost/Resort-API/adminDashboard1.php", {
+        date: formattedDate
+      });
+      const result7 = response?.data?.CurrentbookingData?.map(event => ({
+        ...event,
+        event_date: moment(event.event_date).format('DD-MM-YYYY')
+      }));
+
+      // const result8 = response.data.CurrentbookinggData;
+      const result8 = response?.data?.CurrentbookinggData?.map(booking => ({
+        ...booking,
+        checkIn: moment(booking.checkIn).format('DD-MM-YYYY')
+      }));
+      setCalEventDetails(result7);
+      setCalBookingDetails(result8);
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  };
   return (
     <>
-      <Header
-        header="Dashboard"
-      />
       <div className='admin-dashboard'>
         <div className="row">
           <div className="col-md-6 col-sm-12 col-lg-3">
@@ -70,8 +152,8 @@ function Dashboard() {
                 <i><GiGlassCelebration /></i>
               </div>
               <div className='card-info'>
-                <h6>Current Events</h6>
-                50
+                <h6>Upcoming Events</h6>
+                {currentEventData}
               </div>
             </div>
           </div>
@@ -81,8 +163,8 @@ function Dashboard() {
                 <i><BsListNested /></i>
               </div>
               <div className='card-info'>
-                <h6>Current Bookings</h6>
-                50
+                <h6>Upcoming Bookings</h6>
+                {currentBookingData}
               </div>
             </div>
           </div>
@@ -93,7 +175,7 @@ function Dashboard() {
               </div>
               <div className='card-info'>
                 <h6>Total Users</h6>
-                50
+                {user}
               </div>
             </div>
           </div>
@@ -114,7 +196,7 @@ function Dashboard() {
             <div className='col-md-7'>
               <div>
                 <Calendar
-                  onChange={setTgl}
+                  onChange={handleCal}
                   value={tgl}
                   tileClassName={({ date }) => {
                     let day = date.getDate()
@@ -137,10 +219,42 @@ function Dashboard() {
               <div className='dashboard-cal-card'>
                 <Card >
                   <Card.Body>
+                    <div className='msg-click'>click the date to show bookings and events</div>
                     <Card.Title>Upcoming Events & Bookings</Card.Title>
-                    <Card.Text>
-                      No Upcoming Events & Bookings
-                    </Card.Text>
+                    <div className='up-events'>
+                      {calEventDetails?.length > 0 ? (
+                        <>
+                          <div className='msg-click'>Events : </div>
+                          {calEventDetails?.map((data, index) => (
+                            <h6 key={index}>
+                              {data.event_name}
+                              <br />
+                              {data.event_date}
+                            </h6>
+                          ))}
+                        </>
+                      ) :
+                        <h6>No upcoming events</h6>
+                      }
+                    </div>
+
+                    <div className='up-bookings'>
+                      {calBookingDetails?.length > 0 ? (
+                        <>
+                          <div className='msg-click'>Bookings : </div>
+                          {calBookingDetails?.map((data, index) => (
+                            <h6 key={index}>
+                              {data.roomType}
+                              <br />
+                              {data.checkIn}
+                            </h6>
+                          ))}
+                        </>
+                      ) :
+                        <h6>No upcoming bookings</h6>
+                      }
+                    </div>
+
                   </Card.Body>
                 </Card>
               </div>
@@ -162,18 +276,18 @@ function Dashboard() {
                 <div className='avlbl-1'>
                   <div className='avlbl-card-text'>
                     <h6>Availabe Room Today</h6>
-                    <h4>50</h4>
+                    <h4>{(totRoom - usedRoom)}</h4>
                   </div>
-                  <ProgressBar now={60} />;
+                  <ProgressBar now={avlRoomNow} />;
                 </div>
               </div>
               <div className='avlbl-card'>
                 <div className='avlbl-1'>
                   <div className='avlbl-card-text'>
-                    <h6>Availabe Room Today</h6>
-                    <h4>50</h4>
+                    <h6>Used Room Today</h6>
+                    <h4>{usedRoom}</h4>
                   </div>
-                  <ProgressBar now={40} />;
+                  <ProgressBar now={useRoomNow} />;
                 </div>
               </div>
             </div>

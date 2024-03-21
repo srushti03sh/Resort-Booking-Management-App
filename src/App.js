@@ -54,7 +54,6 @@ function App() {
         <Route path="/Restaurant" element={<Restaurant />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/EventBookingPage" element={<EventBookingPage />} />
-
         <Route path="/UserPanel/*" element={loginData ? <UserPanel /> : <Navigate to="/Login" />} />
 
         <Route path="/AdminPanel/*" element={loginData ? <AdminPanel /> : <Navigate to="/Login" />} />

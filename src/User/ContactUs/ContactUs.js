@@ -9,9 +9,6 @@ import Header from '../Header/Header';
 function ContactUs() {
     return (
         <>
-            <Header
-                header="Contact Us"
-            />
             <section className="user-contact">
                 <div className="container">
                     <div className="row">

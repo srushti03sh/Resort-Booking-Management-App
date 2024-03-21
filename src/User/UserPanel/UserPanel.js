@@ -8,6 +8,7 @@ import EditProfile from '../EditProfile/EditProfile'
 import ContactUs from '../ContactUs/ContactUs'
 import FAQ from '../FAQ/FAQ'
 import CurrentBookings from '../CurrentBookings/CurrentBookings'
+import Header from '../Header/Header'
 
 function UserPanel() {
     return (
@@ -20,6 +21,7 @@ function UserPanel() {
                 <div className='sidebar'>
                     <Sidebar />
                 </div>
+                <Header />
                 <div className='main-content'>
                     <Routes>
                         <Route path="/Dashboard" element={<Dashboard />} />

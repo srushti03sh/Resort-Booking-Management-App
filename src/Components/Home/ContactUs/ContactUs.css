@@ -114,7 +114,7 @@ select:focus-visible {
     outline: none;
 }
 
-select {
+.room_select select {
     appearance: none;
 }
 

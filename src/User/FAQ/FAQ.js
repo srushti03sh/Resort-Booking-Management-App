@@ -76,9 +76,6 @@ function FAQ() {
 
     return (
         <>
-            <Header
-                header="F.A.Q."
-            />
             <section className="section-padding">
                 <div className="container">
                     <div className="row justify-content-center">

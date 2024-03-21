@@ -85,6 +85,7 @@
     font-family: 'Gilda Display', serif;
     font-weight: 400;
     margin-bottom: 0px;
+    letter-spacing: 2px;
 }
 
 .news .item:hover .con {

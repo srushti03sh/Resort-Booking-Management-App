@@ -30,6 +30,7 @@ function Login() {
   const [mobilen, setMobilen] = useState("");
   const [gender, setGender] = useState('');
   const navigate = useNavigate();
+  const [passwordError, setPasswordError] = useState('');
 
   const handleSignUpClick = () => {
     setIsSignUpMode(true);
@@ -59,7 +60,6 @@ function Login() {
         eid: email,
         pwd: password
       });
-
 
       const genderLogin = response.data.gender;
       const fnameLogin = response.data.fname;
@@ -108,6 +108,17 @@ function Login() {
 
     try {
       if (signup) {
+
+        e.preventDefault();
+
+        if (rpassword !== cpassword) {
+          setPasswordError('Passwords do not match');
+          return;
+        } else {
+          setPasswordError('');
+          // Perform any further actions (e.g., submit the form)
+        }
+
         const response = await axios.post("http://localhost/Resort-API/otp.php", {
           eid: remail
         });
@@ -309,7 +320,7 @@ function Login() {
                       <div className='col-md-6'>
                         <div className="input-field">
                           <i><FaLock /></i>
-                          <input type="text" placeholder="Confirm Password" value={cpassword} onChange={(e) => setCpassword(e.target.value)} />
+                          <input type="password" placeholder="Confirm Password" value={cpassword} onChange={(e) => setCpassword(e.target.value)} />
                         </div>
                       </div>
                     </div>
@@ -333,6 +344,7 @@ function Login() {
                       </div>
                     </div>
                   </div>
+                  {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
                 </div>
                 :
                 <OtpInput

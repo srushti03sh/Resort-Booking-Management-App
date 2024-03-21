@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import moment from 'moment';
-
+import Navbar from "../../Components/Home/Navbar/Navbar"
 function EventBookingPage() {
 
     const loginData = JSON.parse(localStorage.getItem("loginData"));
@@ -158,7 +158,7 @@ function EventBookingPage() {
                 pauseOnHover
                 theme="dark"
             />
-
+            <Navbar />
             <div className='booking'>
                 <div className='container'>
                     <span className='scircle'></span>

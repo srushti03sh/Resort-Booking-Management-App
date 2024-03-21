@@ -8,6 +8,7 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Navbar from '../../Components/Home/Navbar/Navbar';
 
 function BookingPage() {
 
@@ -135,7 +136,7 @@ function BookingPage() {
         pauseOnHover
         theme="dark"
       />
-
+      <Navbar />
       <div className='booking'>
         <div className='container'>
           <span className='scircle'></span>

@@ -1,0 +1,23 @@
+.Current-booking-body {
+    margin-top: 10%;
+}
+
+.Current-booking-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.selection select,
+.search select {
+    background: #1b1b1b;
+    color: #fff;
+    padding: 10px 20px;
+    border: transparent;
+    border-right: 16px solid transparent;
+}
+
+.selection div {
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Gilda Display', serif;
+}

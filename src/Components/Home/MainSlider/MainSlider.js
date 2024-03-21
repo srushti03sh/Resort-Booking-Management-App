@@ -9,7 +9,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { FaArrowDown } from "react-icons/fa6";
 import { FiPhoneCall } from "react-icons/fi";
 import WOW from "wowjs";
-import {Homeslider} from "../../../Data/Data"
+import { Homeslider } from "../../../Data/Data"
 
 const MainSlider = () => {
 

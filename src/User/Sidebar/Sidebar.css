@@ -60,14 +60,6 @@ body {
     overflow-y: auto;
 }
 
-.sidebar-container::-webkit-scrollbar {
-    width: 2px;
-}
-
-.sidebar-container::-webkit-scrollbar-thumb {
-    background-color: #aa8453;
-}
-
 .brand {
     padding-top: 1rem;
     display: flex;

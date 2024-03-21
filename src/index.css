@@ -12,3 +12,13 @@
   color: white;
   background: #aa8453;
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  background: #1b1b1b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aa8453;
+}

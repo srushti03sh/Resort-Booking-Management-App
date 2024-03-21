@@ -21,19 +21,6 @@ body {
     display: none;
 }
 
-/* helper */
-.text-danger {
-    color: red;
-}
-
-.text-success {
-    color: #2ec3a3;
-}
-
-.text-main {
-    color: var(--color-main);
-}
-
 .sidebar-content {
     height: 80vh;
     display: flex;
@@ -58,14 +45,6 @@ body {
     box-shadow: var(--shadow);
     padding: 1.2rem;
     overflow-y: auto;
-}
-
-.sidebar-container::-webkit-scrollbar {
-    width: 2px;
-}
-
-.sidebar-container::-webkit-scrollbar-thumb {
-    background-color: #aa8453;
 }
 
 .brand {

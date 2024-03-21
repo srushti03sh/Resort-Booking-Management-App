@@ -3,6 +3,10 @@ import "./AdminPanel.css"
 import Dashboard from '../Dashboard/Dashboard'
 import Sidebar from '../Sidebar/Sidebar'
 import { Route, Routes } from 'react-router-dom'
+import AllEvents from '../AllEvents/AllEvents'
+import AllBookings from '../AllBookings/AllBookings'
+import AllUsers from '../AllUsers/AllUsers'
+import Header from '../Header/Header'
 
 function AdminPanel() {
     return (
@@ -15,9 +19,13 @@ function AdminPanel() {
                 <div className='sidebar'>
                     <Sidebar />
                 </div>
+                <Header/>
                 <div className='main-content'>
                     <Routes>
                         <Route path="/Dashboard" element={<Dashboard />} />
+                        <Route path="/AllEvents" element={<AllEvents />} />
+                        <Route path="/AllBookings" element={<AllBookings />} />
+                        <Route path="/AllUsers" element={<AllUsers />} />
                     </Routes>
                 </div>
             </div>
