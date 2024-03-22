@@ -15,7 +15,7 @@ import test2 from "../../Images/test2.jpg"
 import axios from 'axios';
 import moment from 'moment';
 
-function Dashboard() {
+function Dashboard({ isChecked }) {
 
   const [currentBookingData, setCurrentBookingData] = useState('');
   const [currentEventData, setCurrentEventData] = useState('');
@@ -144,6 +144,10 @@ function Dashboard() {
   };
   return (
     <>
+      <Header
+        isChecked={isChecked}
+        header="Dashboard"
+      />
       <div className='admin-dashboard'>
         <div className="row">
           <div className="col-md-6 col-sm-12 col-lg-3">
@@ -195,6 +199,11 @@ function Dashboard() {
           <div className='row'>
             <div className='col-md-7'>
               <div>
+                <div className='cal-label'>
+                  <div className='label-cal'>
+                    <span></span><div>Bookings / Current Date</div>
+                  </div>
+                </div>
                 <Calendar
                   onChange={handleCal}
                   value={tgl}

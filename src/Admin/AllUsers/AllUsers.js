@@ -2,9 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header';
 import { Table } from 'react-bootstrap';
-import HeaderTitle from '../HeaderTitle/HeaderTitle';
 
-function AllUsers() {
+function AllUsers({ isChecked }) {
 
     const [allUsers, setAllUsers] = useState([]);
 
@@ -21,7 +20,8 @@ function AllUsers() {
 
     return (
         <>
-            <HeaderTitle
+            <Header
+                isChecked={isChecked}
                 header="Users"
             />
             <div className='Current-booking-body'>

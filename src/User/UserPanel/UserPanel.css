@@ -12,7 +12,7 @@
     background: #222;
     margin-left: 300px;
     width: calc(100vw - 300px);
-    padding: 20px 30px;
+    /* padding: 20px 30px; */
     transition: margin-left 300ms;
 }
 
@@ -27,6 +27,8 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+
+
 @media only screen and (max-width: 1224px) {
     #menu-toggle:checked~.sidebar {
         left: 0 !important;
@@ -37,7 +39,8 @@
         text-align: right;
     }
 
-    .main-content {
+    .main-content,
+    .header-wrapper {
         width: 100vw;
         margin-left: 0;
     }

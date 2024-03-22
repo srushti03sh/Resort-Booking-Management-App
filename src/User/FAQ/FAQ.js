@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import "./FAQ.css"
 import { IoIosArrowDown } from "react-icons/io";
-import Header from '../Header/Header';
+import Header from '../../Admin/Header/Header';
 
 
 const faqs = [
@@ -61,7 +61,7 @@ const AccordionItem = (props) => {
 }
 
 
-function FAQ() {
+function FAQ({ isChecked }) {
 
     const [active, setActive] = useState(null);
 
@@ -75,7 +75,10 @@ function FAQ() {
 
 
     return (
-        <>
+        <><Header
+            isChecked={isChecked}
+            header="F.A.Q."
+        />
             <section className="section-padding">
                 <div className="container">
                     <div className="row justify-content-center">

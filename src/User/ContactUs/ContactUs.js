@@ -4,18 +4,22 @@ import { IoMailOutline } from "react-icons/io5";
 import { SlLocationPin } from "react-icons/sl";
 import { Link } from 'react-router-dom';
 import "./ContactUs.css"
-import Header from '../Header/Header';
+import Header from '../../Admin/Header/Header';
 
-function ContactUs() {
+function ContactUs({ isChecked }) {
     return (
         <>
+            <Header
+                isChecked={isChecked}
+                header="Contact Us"
+            />
             <section className="user-contact">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 mb-60">
                             <h3>The Cappa Luxury Hotel</h3>
                             <p>
-                                Thank you for your interest in our resort. We're here to assist you with any questions or inquiries you may 
+                                Thank you for your interest in our resort. We're here to assist you with any questions or inquiries you may
                                 have. Please feel free to reach out to us.
                             </p>
                             <div className="user-reservations mb-30">

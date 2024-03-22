@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from '../Dashboard/Dashboard'
@@ -8,28 +8,34 @@ import EditProfile from '../EditProfile/EditProfile'
 import ContactUs from '../ContactUs/ContactUs'
 import FAQ from '../FAQ/FAQ'
 import CurrentBookings from '../CurrentBookings/CurrentBookings'
-import Header from '../Header/Header'
 
 function UserPanel() {
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    };
+
     return (
         <>
             <div>
-                <input type="checkbox" name="" id="menu-toggle" />
+                <input type="checkbox" name="" id="menu-toggle" checked={isChecked}
+                    onChange={handleCheckboxChange} />
                 <div className="soverlay">
                     <label htmlFor="menu-toggle"></label>
                 </div>
                 <div className='sidebar'>
                     <Sidebar />
                 </div>
-                <Header />
                 <div className='main-content'>
                     <Routes>
-                        <Route path="/Dashboard" element={<Dashboard />} />
-                        <Route path="/Bookings" element={<Bookings />} />
-                        <Route path="/EditProfile" element={<EditProfile />} />
-                        <Route path="/ContactUs" element={<ContactUs />} />
-                        <Route path="/FAQ" element={<FAQ />} />
-                        <Route path="/CurrentBookings" element={<CurrentBookings />} />
+                        <Route path="/Dashboard" element={<Dashboard isChecked={isChecked} />} />
+                        <Route path="/Bookings" element={<Bookings isChecked={isChecked} />} />
+                        <Route path="/EditProfile" element={<EditProfile isChecked={isChecked} />} />
+                        <Route path="/ContactUs" element={<ContactUs isChecked={isChecked} />} />
+                        <Route path="/FAQ" element={<FAQ isChecked={isChecked} />} />
+                        <Route path="/CurrentBookings" element={<CurrentBookings isChecked={isChecked} />} />
                     </Routes>
                 </div>
             </div>

@@ -1,11 +1,6 @@
-.header-wrapper {
-    display: flex;
-    padding-top: 0.5rem;
-    justify-content: space-between;
-}
-
 .header {
     display: flex;
+    margin-left: 20px;
     justify-content: center;
 }
 
@@ -16,11 +11,43 @@
     font-size: 30px;
 }
 
+.header-inner {
+    display: flex;
+    padding-top: 15px;
+    justify-content: space-between;
+}
+
+.sticky-header {
+    z-index: 20;
+    background: #1b1b1b !important;
+    position: fixed;
+    animation: moveDown 0.5s ease-in-out;
+}
+
+.half-width {
+    width: calc(100vw - 300px);
+}
+
+.width {
+    width: 100%;
+}
+
 .header-wrapper label span:hover {
     cursor: pointer;
 }
 
+.header-title {
+    margin-top: 11px;
+}
+
+.header-title h4 {
+    color: #aa8453;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
 .pdata {
+    margin-right: 15px;
     display: flex;
     float: right;
     align-items: baseline;
@@ -31,6 +58,8 @@
     width: 40px;
     margin-left: 20px;
 }
+
+
 
 @media only screen and (max-width: 500px) {
 

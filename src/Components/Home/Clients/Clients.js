@@ -32,7 +32,7 @@ function Clients() {
                     <OwlCarousel items={4} margin={30} autoplay={true} loop={true} {...options}>
                         {
                             HomeClients.map((data, index) => (
-                                <div>
+                                <div key={index}>
                                     <img src={data.src} alt="" />
                                 </div>
                             ))

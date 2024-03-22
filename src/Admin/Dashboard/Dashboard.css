@@ -1,5 +1,5 @@
 .admin-dashboard {
-    margin-top: 8%;
+    padding: 5% 30px 20px 30px;
 }
 
 .dashboard-card {
@@ -94,9 +94,10 @@
     color: #fff !important;
 }
 
-/* .react-calendar__tile--now {
-    background: none !important;
-} */
+.react-calendar__tile--now {
+    color: #fff !important;
+    background: #aa8453 !important;
+}
 
 .react-calendar {
     box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px !important;
@@ -104,7 +105,6 @@
     width: 100% !important;
     background: #1b1b1b !important;
     color: #fff !important;
-    color: #aaa !important;
 }
 
 .msg-click {
@@ -115,6 +115,7 @@
 
 .dashboard-cal-card {
     width: 100%;
+    margin-top: 44px;
 }
 
 .dashboard-cal-card .card {
@@ -185,6 +186,27 @@
 .rev-name {
     margin-top: 13px;
     margin-left: 15px;
+}
+
+.cal-label {
+    margin: 10px 0;
+    display: flex;
+    color: #fff;
+    font-size: 15px;
+}
+
+.label-cal {
+    display: flex;
+    align-items: center;
+}
+
+.label-cal span {
+    margin: 0 15px;
+    display: flex;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background: #aa8453;
 }
 
 @media only screen and (max-width: 991px) {

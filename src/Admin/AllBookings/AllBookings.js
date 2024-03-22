@@ -2,9 +2,9 @@ import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap';
-import HeaderTitle from '../HeaderTitle/HeaderTitle';
+import Header from '../Header/Header';
 
-function AllBookings() {
+function AllBookings({ isChecked }) {
 
     const [allBookingData, setAllBookingData] = useState([]);
     const [filter, setFilter] = useState('');
@@ -29,7 +29,8 @@ function AllBookings() {
 
     return (
         <>
-            <HeaderTitle
+            <Header
+                isChecked={isChecked}
                 header="Bookings"
             />
             <div className='Current-booking-body'>

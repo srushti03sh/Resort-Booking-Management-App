@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import "./Dashboard.css"
 import Card from 'react-bootstrap/Card';
-import Header from '../Header/Header'
 import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa6";
 import moment from 'moment';
 import axios from 'axios';
+import Header from '../../Admin/Header/Header';
 
-function Dashboard() {
+function Dashboard({ isChecked }) {
 
   const loginData = JSON.parse(localStorage.getItem("loginData"));
 
@@ -42,6 +42,7 @@ function Dashboard() {
   return (
     <>
       <Header
+        isChecked={isChecked}
         header="Dashboard"
       />
       <div className='dashboard-event-body'>

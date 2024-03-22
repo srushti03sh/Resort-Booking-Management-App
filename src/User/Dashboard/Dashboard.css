@@ -7,7 +7,7 @@
 
 .dashboard-event-body,
 .dashboard-booking-body {
-    margin-top: 10%;
+    padding: 5% 30px 20px 30px;
 }
 
 .dashboard-event-btn {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { Table } from 'react-bootstrap';
 import "./CurrentBookings.css"
+import Header from '../../Admin/Header/Header';
 
-function CurrentBookings() {
+function CurrentBookings({ isChecked }) {
 
   const loginData = JSON.parse(localStorage.getItem("loginData"));
 
@@ -62,6 +62,10 @@ function CurrentBookings() {
 
   return (
     <>
+      <Header
+        isChecked={isChecked}
+        header="Current Bookings"
+      />
       <div className='Current-booking-body'>
         <h4>Upcoming Event Bookings : </h4>
         <div className='booking-table'>

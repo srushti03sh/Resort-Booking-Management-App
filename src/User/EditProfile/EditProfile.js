@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Header from '../Header/Header'
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
@@ -9,8 +8,9 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import "./EditProfile.css"
 import axios from 'axios';
 import { Slide, ToastContainer, toast } from 'react-toastify';
+import Header from '../../Admin/Header/Header';
 
-function EditProfile() {
+function EditProfile({ isChecked }) {
 
   const [email, setEmail] = useState('');
   const [fname, setFname] = useState('');
@@ -134,6 +134,10 @@ function EditProfile() {
         draggable
         pauseOnHover
         theme="dark"
+      />
+      <Header
+        isChecked={isChecked}
+        header="Edit Profile"
       />
       <div className='edit-profile'>
         <div className='container'>

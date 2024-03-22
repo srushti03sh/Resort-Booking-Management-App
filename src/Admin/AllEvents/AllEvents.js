@@ -4,9 +4,8 @@ import { Table } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 import "./AllEvents.css"
-import HeaderTitle from '../HeaderTitle/HeaderTitle';
 
-function AllEvents() {
+function AllEvents({ isChecked }) {
 
   const [allEventData, setAllEventData] = useState([]);
   const [filter, setFilter] = useState('');
@@ -29,7 +28,8 @@ function AllEvents() {
 
   return (
     <>
-      <HeaderTitle
+      <Header
+        isChecked={isChecked}
         header="Events"
       />
       <div className='Current-booking-body'>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom'
 import "./Bookings.css"
 import axios from 'axios';
 import moment from 'moment';
+import Header from '../../Admin/Header/Header';
 
-function Bookings() {
+function Bookings({ isChecked }) {
 
     const loginData = JSON.parse(localStorage.getItem("loginData"));
 
@@ -33,6 +33,10 @@ function Bookings() {
 
     return (
         <>
+            <Header
+                isChecked={isChecked}
+                header="Bookings"
+            />
             <div className='user-panl booking-table'>
                 {bookingData?.length > 0 ?
                     (<Table striped bordered variant="dark" responsive>
