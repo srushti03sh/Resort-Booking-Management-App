@@ -35,7 +35,7 @@ function AllBookings({ isChecked }) {
             />
             <div className='Current-booking-body'>
                 <div className='Current-booking-top'>
-                    <div className='search'>
+                    {/* <div className='search'>
                         <select onChange={e => setSearch(e.target.value)} defaultValue={search}>
                             <option value="bid">Booking ID</option>
                             <option value="email">Email ID</option>
@@ -44,7 +44,7 @@ function AllBookings({ isChecked }) {
                             <option value="checkOut">CheckOut Date</option>
                             <option value="rtype">Room Type</option>
                         </select>
-                    </div>
+                    </div> */}
                     <div className='selection'>
                         <div>Filter : </div>
                         <select onChange={e => setFilter(e.target.value)} defaultValue={filter}>

@@ -21,3 +21,19 @@
     color: #fff;
     font-family: 'Gilda Display', serif;
 }
+
+.selection {
+    margin-bottom: 15px;
+}
+
+.select-input-search input {
+    background: #1b1b1b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+}
+
+.select-input-search .react-datepicker__input-container .react-datepicker__calendar-icon {
+    right: 10px;
+    top: 5px;
+}
