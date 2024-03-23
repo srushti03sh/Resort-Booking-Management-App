@@ -79,7 +79,7 @@ function FAQ({ isChecked }) {
             isChecked={isChecked}
             header="F.A.Q."
         />
-            <section className="section-padding">
+            <section className="faq-section">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-12 mt-2">

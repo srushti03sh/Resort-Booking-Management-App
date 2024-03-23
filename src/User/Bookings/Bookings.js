@@ -13,7 +13,7 @@ function Bookings({ isChecked }) {
     const [bookingData, setBookingData] = useState([]);
 
     const fetchData = async () => {
-        const response = await axios.post("http://localhost/Resort-API/showBooking.php", {
+        const response = await axios.post("http://localhost/Resort-API/User/showBooking.php", {
             id: loginData.id
         });
 
@@ -37,38 +37,40 @@ function Bookings({ isChecked }) {
                 isChecked={isChecked}
                 header="Bookings"
             />
-            <div className='user-panl booking-table'>
-                {bookingData?.length > 0 ?
-                    (<Table striped bordered variant="dark" responsive>
-                        <thead>
-                            <tr>
-                                <th>Booking ID</th>
-                                <th>Check-In Date</th>
-                                <th>Check-Out Date</th>
-                                <th>Room Type</th>
-                                <th>No. of Rooms</th>
-                                <th>No. of Guest</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                bookingData?.map((data, index) => (
-                                    <tr key={index}>
-                                        <td>{data.booking_id}</td>
-                                        <td>{data.checkIn}</td>
-                                        <td>{data.checkOut}</td>
-                                        <td>{data.roomType}</td>
-                                        <td>{data.room_no}</td>
-                                        <td>{data.guest}</td>
-                                        <td>{data.Status}</td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </Table>) :
-                    <h2>There's no such data to display!</h2>
-                }
+            <div className='user-panl'>
+                <div className='booking-table'>
+                    {bookingData?.length > 0 ?
+                        (<Table striped bordered variant="dark" responsive>
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Check-In Date</th>
+                                    <th>Check-Out Date</th>
+                                    <th>Room Type</th>
+                                    <th>No. of Rooms</th>
+                                    <th>No. of Guest</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    bookingData?.map((data, index) => (
+                                        <tr key={index}>
+                                            <td>{data.booking_id}</td>
+                                            <td>{data.checkIn}</td>
+                                            <td>{data.checkOut}</td>
+                                            <td>{data.roomType}</td>
+                                            <td>{data.room_no}</td>
+                                            <td>{data.guest}</td>
+                                            <td>{data.Status}</td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </Table>) :
+                        <div className='no-data'>There's no such data to display!</div>
+                    }
+                </div>
                 <div className='cnt-book'>
                     <Link to="/BookingPage">
                         <button className='cnt-booking'>
@@ -77,6 +79,7 @@ function Bookings({ isChecked }) {
                     </Link>
                 </div>
             </div>
+
         </>
     )
 }

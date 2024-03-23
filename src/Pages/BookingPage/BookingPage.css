@@ -52,7 +52,9 @@
 }
 
 .booking-form select {
-    color: #757575;
+    cursor: pointer;
+    border: transparent;
+    border-right: 16px solid transparent;
 }
 
 .form-head {
@@ -61,7 +63,6 @@
     align-items: center;
     margin-bottom: 25px;
 }
-
 .form-head .section-title {
     margin-bottom: 0;
 }

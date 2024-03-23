@@ -8,7 +8,7 @@
     display: inline-block;
     color: #aa8453;
     margin-right: 20px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .header-inner {
@@ -41,6 +41,7 @@
 }
 
 .header-title h4 {
+    font-size: 20px;
     color: #aa8453;
     margin-bottom: 0;
     text-transform: uppercase;

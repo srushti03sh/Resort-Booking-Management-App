@@ -1,5 +1,4 @@
 import React from 'react'
-import "./Sidebar.css"
 import slogo from "../../Images/logo.png"
 import { MdDashboard } from "react-icons/md";
 import { Link, useLocation } from 'react-router-dom'

@@ -3,11 +3,19 @@
     --bs-card-border-radius: 15px !important;
     background: #1b1b1b;
     color: #fff;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .dashboard-event-body,
 .dashboard-booking-body {
-    padding: 5% 30px 20px 30px;
+    padding: 4% 30px 5px 30px;
+}
+
+.dashboard-booking-body h4,
+.dashboard-event-body h4{
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 .dashboard-event-btn {

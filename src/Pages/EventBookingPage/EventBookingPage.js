@@ -20,7 +20,7 @@ function EventBookingPage() {
   const [themeData, setThemeData] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/showEventForm.php", {
+    const response = await axios.post("http://localhost/Resort-API/User/showEventForm.php", {
       id: loginData.id
     });
     // console.log(response);
@@ -40,7 +40,7 @@ function EventBookingPage() {
     try {
       const selectedEtype = e.target.value;
       console.log(selectedEtype);
-      const response = await axios.post("http://localhost/Resort-API/showTheme.php", {
+      const response = await axios.post("http://localhost/Resort-API/User/showTheme.php", {
         eType: selectedEtype,
       });
       console.log(response);
@@ -70,7 +70,7 @@ function EventBookingPage() {
     try {
       const selectedEtype = e.target.value;
       console.log(selectedEtype);
-      const response = await axios.post("http://localhost/Resort-API/eventForm.php", {
+      const response = await axios.post("http://localhost/Resort-API/User/eventForm.php", {
         email: email,
         mno: mno,
         event_date: moment(startDate).format('YYYY-MM-DD'),
@@ -205,6 +205,14 @@ function EventBookingPage() {
               <div className='col-md-12'>
                 <div className='row'>
                   <div className='col-md-6'>
+                    {/* <select value={rType} onChange={(e) => setRtype(e.target.value)}>
+                      <option value="" disabled selected>Room Type</option>
+                      {roomData.map(option => (
+                        <option key={option.roomType} value={option.roomType} className='option'>
+                          {option.roomType} - (Rs.{option.price}/day) - (Capacity : {option.room_capacity} Person)
+                        </option>
+                      ))}
+                    </select> */}
                     <select value={eType} onChange={handleEventChange}>
                       <option value="" disabled selected>Event Type</option>
                       {eventData.map(option => (
@@ -219,7 +227,7 @@ function EventBookingPage() {
                       <option value="" disabled selected>First choose Event Type</option>
                       {themeData.map(theme => (
                         <option key={theme.theme_name} value={theme.theme_name}>
-                          {theme.theme_name}
+                          {theme.theme_name} - ( Rs. {theme.theme_price} / day ) - ( Capacity : {theme.theme_capacity} Person )
                         </option>
                       ))}
                     </select>

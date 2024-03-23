@@ -5,16 +5,19 @@ import moment from 'moment';
 import { Table } from 'react-bootstrap';
 import "./CurrentBookings.css"
 import Header from '../../Admin/Header/Header';
+import { MdOutlineCancel } from "react-icons/md";
+import Modal from 'react-bootstrap/Modal';
 
 function CurrentBookings({ isChecked }) {
 
   const loginData = JSON.parse(localStorage.getItem("loginData"));
-
+  const [modalShow, setModalShow] = useState(false);
   const [currentBookingData, setCurrentBookingData] = useState([]);
   const [currentEventData, setCurrentEventData] = useState([]);
+  const [cnfClick, setCnfClick] = useState(false)
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/currentBooking.php", {
+    const response = await axios.post("http://localhost/Resort-API/User/currentBooking.php", {
       id: loginData.id
     });
 
@@ -36,36 +39,47 @@ function CurrentBookings({ isChecked }) {
     fetchData();
   }, [loginData.id]);
 
+const handlecnfClick=()=>{
+  
+}
 
-  const handleCancel = async (bookingId) => {
+  const handleEventCancel = async () => {
     // console.log("Booking ID:", bookingId);
-    try {
-      await axios.post("http://localhost/Resort-API/cancelBooking.php", {
-        booking_id: bookingId
-      });
-      fetchData();
-    } catch (error) {
-      console.error("Error cancelling booking:", error);
-    }
+    setModalShow(true)
+    // try {
+    //   await axios.post("http://localhost/Resort-API/User/cancelBooking.php", {
+    //     e_booking_id: bookingId
+    //   });
+    //   fetchData();
+    // } catch (error) {
+    //   console.error("Error cancelling booking:", error);
+    // }
   };
-  const handleEventCancel = async (bookingId) => {
-    console.log("Booking ID:", bookingId);
-    try {
-      await axios.post("http://localhost/Resort-API/cancelBooking.php", {
-        e_booking_id: bookingId
-      });
-      fetchData();
-    } catch (error) {
-      console.error("Error cancelling booking:", error);
-    }
-  };
-
   return (
     <>
       <Header
         isChecked={isChecked}
         header="Current Bookings"
       />
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={modalShow}
+      >
+        <Modal.Body>
+          <h4>Centered Modal</h4>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+            consectetur ac, vestibulum at eros.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <button onClick={() => handlecnfClick()}>No</button>
+          <button onClick={() => setModalShow()}>Yes</button>
+        </Modal.Footer>
+      </Modal>
       <div className='Current-booking-body'>
         <h4>Upcoming Event Bookings : </h4>
         <div className='booking-table'>
@@ -79,7 +93,7 @@ function CurrentBookings({ isChecked }) {
                   <th>Theme NAme</th>
                   <th>No. of Guest</th>
                   <th>Status</th>
-                  <th></th>
+                  <th>Cancel Booking</th>
                 </tr>
               </thead>
               <tbody>
@@ -92,17 +106,17 @@ function CurrentBookings({ isChecked }) {
                       <td>{data.theme_name}</td>
                       <td>{data.guest}</td>
                       <td>{data.Status}</td>
-                      <td>
-                        <button className='cnt-booking' onClick={() => handleEventCancel(data.e_booking_id)}>
-                          Cancel Booking
-                        </button>
+                      <td style={{ textAlign: "center" }}>
+                        <i onClick={() => handleEventCancel(data.e_booking_id)} className='cancel-bk'>
+                          <MdOutlineCancel />
+                        </i>
                       </td>
                     </tr>
                   ))
                 }
               </tbody>
             </Table>) :
-            <h2>There's no such data to display!</h2>
+            <div>There's no such data to display!</div>
           }
         </div>
         <h4>Upcoming Resort Bookings : </h4>
@@ -118,7 +132,7 @@ function CurrentBookings({ isChecked }) {
                   <th>No. of Rooms</th>
                   <th>No. of Guest</th>
                   <th>Status</th>
-                  <th></th>
+                  <th>Cancel Booking</th>
                 </tr>
               </thead>
               <tbody>
@@ -132,17 +146,17 @@ function CurrentBookings({ isChecked }) {
                       <td>{data.room_no}</td>
                       <td>{data.guest}</td>
                       <td>{data.Status}</td>
-                      <td>
-                        <button className='cnt-booking' onClick={() => handleCancel(data.booking_id)}>
-                          Cancel Booking
-                        </button>
+                      <td style={{ textAlign: "center" }}>
+                        <i onClick={() => handleEventCancel(data.e_booking_id)} className='cancel-bk'>
+                          <MdOutlineCancel />
+                        </i>
                       </td>
                     </tr>
                   ))
                 }
               </tbody>
             </Table>) :
-            <h2>There's no such data to display!</h2>
+            <div className='no-data'>There's no such data to display!</div>
           }
           <div className='cnt-book'>
             <Link to="/BookingPage">

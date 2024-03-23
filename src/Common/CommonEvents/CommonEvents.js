@@ -372,10 +372,16 @@ function CommonEvents(props) {
                       elegant tablescapes—preferably overlooking ornate and fragrant flower beds.
                     </p>
                     <br />
-                    <div className='section-subtitle'>
-                      Price:
+                    <div className='d-flex'>
+                      <div className='section-subtitle'>
+                        Price:
+                      </div>
+                      <div className="event-amount">
+                        <LiaRupeeSignSolid />
+                        {props.price2}
+                        <span> Onwards</span>
+                      </div>
                     </div>
-                    <div className="event-amount"><LiaRupeeSignSolid />{props.price1} <span> Onwards</span></div>
                   </div>
                 </div>
               </div>
@@ -400,10 +406,16 @@ function CommonEvents(props) {
                       and decorative pillows or hanging macramé decorations.
                     </p>
                     <br />
-                    <div className='section-subtitle'>
-                      Price:
+                    <div className='d-flex'>
+                      <div className='section-subtitle'>
+                        Price:
+                      </div>
+                      <div className="event-amount">
+                        <LiaRupeeSignSolid />
+                        {props.price2}
+                        <span> Onwards</span>
+                      </div>
                     </div>
-                    <div className="event-amount"><LiaRupeeSignSolid />{props.price2} <span> Onwards</span></div>
                   </div>
                 </div>
               </div>
@@ -460,10 +472,16 @@ function CommonEvents(props) {
                       nuptials are all about the friendly atmosphere and communal connection.
                     </p>
                     <br />
-                    <div className='section-subtitle'>
-                      Price:
+                    <div className='d-flex'>
+                      <div className='section-subtitle'>
+                        Price:
+                      </div>
+                      <div className="event-amount">
+                        <LiaRupeeSignSolid />
+                        {props.price2}
+                        <span> Onwards</span>
+                      </div>
                     </div>
-                    <div className="event-amount"><LiaRupeeSignSolid />{props.price3} <span> Onwards</span></div>
                   </div>
                 </div>
               </div>

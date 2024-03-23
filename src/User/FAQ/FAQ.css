@@ -8,6 +8,10 @@
     transition: 0.3s;
 }
 
+.faq-section {
+    padding: 5% 30px 20px 30px;
+}
+
 .user-rc-accordion-toggle.active .user-rc-accordion-icon {
     transform: rotate(180deg);
     color: #fff;
@@ -25,7 +29,7 @@
 
 .user-rc-accordion-title {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 17px;
     position: relative;
     margin-bottom: 0;
     color: white;

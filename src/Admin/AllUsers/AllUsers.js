@@ -8,7 +8,7 @@ function AllUsers({ isChecked }) {
     const [allUsers, setAllUsers] = useState([]);
 
     const fetchData = async () => {
-        const response = await axios.post("http://localhost/Resort-API/AdminUsers.php", {
+        const response = await axios.post("http://localhost/Resort-API/Admin/AdminUsers.php", {
         });
         const result = response.data.allUsers
         // console.log(response);
@@ -57,7 +57,7 @@ function AllUsers({ isChecked }) {
                                 }
                             </tbody>
                         </Table>) :
-                        <h2>There's no such data to display!</h2>
+                        <div className='no-data'>There's no such data to display!</div>
                     }
                 </div>
             </div>

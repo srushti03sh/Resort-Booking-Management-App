@@ -28,7 +28,7 @@ function EditProfile({ isChecked }) {
   const [profileData, setProfileData] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/showProfile.php", {
+    const response = await axios.post("http://localhost/Resort-API/Common/showProfile.php", {
       id: loginData.id
     });
     // console.log(response);
@@ -69,7 +69,7 @@ function EditProfile({ isChecked }) {
       // Perform any further actions (e.g., submit the form)
     }
     try {
-      const response = await axios.post("http://localhost/Resort-API/manageProfile.php", {
+      const response = await axios.post("http://localhost/Resort-API/Common/manageProfile.php", {
         email: email,
         fname: fname,
         lname: lname,

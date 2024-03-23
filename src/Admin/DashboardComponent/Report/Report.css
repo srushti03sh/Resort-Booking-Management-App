@@ -1,0 +1,41 @@
+.admin-report {
+    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px;
+    background: #1b1b1b;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+
+.apexcharts-gridline {
+    stroke: rgb(55, 61, 63) !important;
+}
+
+#SvgjsG1219 text,
+#SvgjsG1195 text,
+.apexcharts-legend-text {
+    fill: rgb(255, 255, 255) !important;
+    color: #fff !important;
+}
+
+.avlbl-card {
+    margin-top: 35px;
+}
+
+.avlbl-card {
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.avlbl-card-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.progress-bar {
+    background-color: #aa8453 !important;
+}
+
+.progress {
+    --bs-progress-border-radius: 100px !important;
+}

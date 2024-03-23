@@ -56,7 +56,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost/Resort-API/Login.php", {
+      const response = await axios.post("http://localhost/Resort-API/Common/Login.php", {
         eid: email,
         pwd: password
       });
@@ -119,7 +119,7 @@ function Login() {
           // Perform any further actions (e.g., submit the form)
         }
 
-        const response = await axios.post("http://localhost/Resort-API/otp.php", {
+        const response = await axios.post("http://localhost/Resort-API/Common/otp.php", {
           eid: remail
         });
 
@@ -170,7 +170,7 @@ function Login() {
         // Signup
         if (!signup) {
           if (otp == decryptOtp) {
-            const response = await axios.post("http://localhost/Resort-API/Registration.php", {
+            const response = await axios.post("http://localhost/Resort-API/Common/Registration.php", {
               eid: remail,
               pwd: rpassword,
               fname: firstn,

@@ -133,14 +133,16 @@ form.sign-in-form {
 
 select:focus>option:checked {
     background-color: #aa8453 !important;
+    color: black !important;
 }
 
-option:hover {
-    background: #aa8453 !important;
+select:focus>option:hover {
+    background-color: #aa8453 !important;
+    color: #fff !important;
 }
 
-option:first-child {
-    color: #fff;
+select:focus>option:first-child {
+    padding: 10px !important;
 }
 
 .input-field input::placeholder {

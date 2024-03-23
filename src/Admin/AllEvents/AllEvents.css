@@ -8,7 +8,9 @@
 }
 
 .selection select,
-.search select {
+.search select,
+.select-input-search select {
+    cursor: pointer;
     background: #1b1b1b;
     color: #fff;
     padding: 10px 20px;
@@ -16,7 +18,8 @@
     border-right: 16px solid transparent;
 }
 
-.selection div {
+.selection div,
+.search-group div {
     font-size: 15px;
     color: #fff;
     font-family: 'Gilda Display', serif;
@@ -36,4 +39,13 @@
 .select-input-search .react-datepicker__input-container .react-datepicker__calendar-icon {
     right: 10px;
     top: 5px;
+}
+
+.search-group {
+    font-family: 'Gilda Display', serif;
+    color: #fff;
+}
+
+.search {
+    margin-right: 20px;
 }

@@ -13,30 +13,60 @@ function AllEvents({ isChecked }) {
   const [allEventData, setAllEventData] = useState([]);
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('bid');
-  const [startDate, setStartDate] = useState(null);
+  const [searchDate, setSearchDate] = useState(null);
+  const [event, setEvent] = useState([]);
+  const [theme, setTheme] = useState([]);
   // console.log(search);
   const [searchData, setSearchData] = useState('');
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/AdminEvents.php", {
+    const response = await axios.post("http://localhost/Resort-API/Admin/AdminEvents.php", {
     });
 
     const result = response?.data?.allEvents?.map(booking => ({
       ...booking,
       event_date: moment(booking.event_date).format('DD-MM-YYYY'),// Convert checkIn date using Moment.js
     }));
-    // console.log(response);
     setAllEventData(result)
+  }
+
+  const fetchEventTheme = async () => {
+    const response = await axios.post("http://localhost/Resort-API/Admin/EventTheme.php", {
+    });
+    const events = response.data.event;
+    setEvent(events)
+    const themes = response.data.Theme;
+    setTheme(themes)
   }
 
   useEffect(() => {
     fetchData();
+    fetchEventTheme();
   }, []);
 
   useEffect(() => {
     setSearchData('');
+    setSearchDate(null);
   }, [search]);
 
-  // console.log(searchData);
+  const filteredData = allEventData?.length > 0
+    ? allEventData.filter(data =>
+      (filter === 'All' || data.Status.includes(filter)) &&
+      (search === 'bid'
+        ? data.e_booking_id.toString().includes(searchData)
+        : search === 'email'
+          ? data.email_id.toLowerCase().includes(searchData.toLowerCase())
+          : search === 'mno'
+            ? data.mno.includes(searchData)
+            : search === 'eDate'
+              ? (!searchDate || moment(data.event_date, 'DD-MM-YYYY').isSame(moment(searchDate), 'day'))
+              : search === 'eName'
+                ? data.event_name.toLowerCase().includes(searchData.toLowerCase())
+                : search === 'tName'
+                  ? data.theme_name.toLowerCase().includes(searchData.toLowerCase())
+                  : true
+      )
+    )
+    : [];
   return (
     <>
       <Header
@@ -45,34 +75,59 @@ function AllEvents({ isChecked }) {
       />
       <div className='Current-booking-body'>
         <div className='Current-booking-top'>
-          <div className='search'>
-            <select onChange={e => setSearch(e.target.value)} value={search}>
-              <option value="bid">Booking ID</option>
-              <option value="email">Email ID</option>
-              <option value="mno">Mobile Number</option>
-              <option value="eDate">Event Date</option>
-              <option value="eName">Event Name</option>
-              <option value="tName">Theme Name</option>
-            </select>
-          </div>
-          <div className='select-input-search'>
-            {
-              (search === 'bid') ? <input type="number" placeholder='Booking ID' value={searchData} onChange={(e) => setSearchData(e.target.value)} /> :
-                (search === 'email') ? <input type="email" placeholder='Email' value={searchData} onChange={(e) => setSearchData(e.target.value)} /> :
-                  (search === 'mno') ? <input type="text" placeholder='Mobile Number' value={searchData} onChange={(e) => setSearchData(e.target.value)} /> :
-                    (search === 'eDate') ?
-                      <DatePicker
-                        selected={searchData} onChange={(date) => setSearchData(date)}
-                        showIcon={true}
-                        toggleCalendarOnIconClick={true}
-                        icon={<FaRegCalendarAlt fill="#aa8453" fontSize="17px" />}
-                        placeholderText="Event Date"
-                        dateFormat="dd/MM/yyyy"
-                        // minDate={new Date()}
-                        calendarClassName="datepic" /> :
-                      (search === 'eName') ? <input type="text" placeholder='Event Name' value={searchData} onChange={(e) => setSearchData(e.target.value)} /> :
-                        (search === 'tName') ? <input type="text" placeholder='Theme Name' value={searchData} onChange={(e) => setSearchData(e.target.value)} /> : ''
-            }
+          <div className='search-group'>
+            <div>Search:</div>
+            <div className='d-flex'>
+              <div className='search'>
+                <select onChange={e => setSearch(e.target.value)} value={search} >
+                  <option value="bid">Booking ID</option>
+                  <option value="email">Email ID</option>
+                  <option value="mno">Mobile Number</option>
+                  <option value="eDate">Event Date</option>
+                  <option value="eName">Event Name</option>
+                  <option value="tName">Theme Name</option>
+                </select>
+              </div>
+              <div className='select-input-search'>
+                {
+                  (search === 'bid')
+                    ? <input type="number" placeholder='Booking ID' value={searchData} onChange={(e) => setSearchData(e.target.value)} />
+                    : (search === 'email')
+                      ? <input type="email" placeholder='Email' value={searchData} onChange={(e) => setSearchData(e.target.value)} />
+                      : (search === 'mno')
+                        ? <input type="text" placeholder='Mobile Number' value={searchData} onChange={(e) => setSearchData(e.target.value)} />
+                        : (search === 'eDate')
+                          ? <DatePicker
+                            selected={searchDate} onChange={(date) => setSearchDate(date)}
+                            showIcon={true}
+                            toggleCalendarOnIconClick={true}
+                            icon={<FaRegCalendarAlt fill="#aa8453" fontSize="17px" />}
+                            placeholderText="Event Date"
+                            dateFormat="dd/MM/yyyy"
+                            // minDate={new Date()}
+                            calendarClassName="datepic" />
+                          : (search === 'eName')
+                            ? <select value={searchData} onChange={(e) => setSearchData(e.target.value)}>
+                              <option value="" disabled selected>Select Event Name</option>
+                              {event.map((option, index) => (
+                                <option key={index} value={option.event_name}>
+                                  {option.event_name}
+                                </option>
+                              ))}
+                            </select>
+                            : (search === 'tName')
+                              ? <select value={searchData} onChange={(e) => setSearchData(e.target.value)}>
+                                <option value="" disabled selected>Select Theme Name</option>
+                                {theme.map((option, index) => (
+                                  <option key={index} value={option.theme_name}>
+                                    {option.theme_name}
+                                  </option>
+                                ))}
+                              </select>
+                              : ''
+                }
+              </div>
+            </div>
           </div>
           <div className='selection'>
             <div>Filter : </div>
@@ -86,8 +141,8 @@ function AllEvents({ isChecked }) {
           </div>
         </div>
         <div className='booking-table'>
-          {allEventData?.length > 0 ?
-            (<Table striped bordered variant="dark" responsive>
+          {filteredData.length > 0 ? (
+            <Table striped bordered variant="dark" responsive>
               <thead>
                 <tr>
                   <th>Booking ID</th>
@@ -101,53 +156,23 @@ function AllEvents({ isChecked }) {
                 </tr>
               </thead>
               <tbody>
-                {/* {
-                  allEventData?.filter((data) => {
-                    return filter === 'All' ? data : data.Status.includes(filter)
-                  }).map((data, index) => (
-                    <tr key={index}>
-                      <td>{data.e_booking_id}</td>
-                      <td>{data.email_id}</td>
-                      <td>{data.event_date}</td>
-                      <td>{data.event_name}</td>
-                      <td>{data.theme_name}</td>
-                      <td>{data.mno}</td>
-                      <td>{data.guest}</td>
-                      <td>{data.Status}</td>
-                    </tr>
-                  ))
-                } */}
-                {
-                  allEventData?.filter((data) => {
-                    return (
-                      (filter === 'All' || data.Status.includes(filter)) && // Filter by status
-                      (
-                        search === 'bid' ? data.e_booking_id.toString().includes(searchData) : // Filter by booking ID
-                          search === 'email' ? data.email_id.toLowerCase().includes(searchData.toLowerCase()) : // Filter by email
-                            search === 'mno' ? data.mno.includes(searchData) : // Filter by mobile number
-                              search === 'eDate' ? moment(data.event_date, 'DD-MM-YYYY').isSame(moment(searchData), 'day') : // Filter by event date
-                                search === 'eName' ? data.event_name.toLowerCase().includes(searchData.toLowerCase()) : // Filter by event name
-                                  search === 'tName' ? data.theme_name.toLowerCase().includes(searchData.toLowerCase()) : // Filter by theme name
-                                    true // Return true if search criteria doesn't match
-                      )
-                    );
-                  }).map((data, index) => (
-                    <tr key={index}>
-                      <td>{data.e_booking_id}</td>
-                      <td>{data.email_id}</td>
-                      <td>{data.event_date}</td>
-                      <td>{data.event_name}</td>
-                      <td>{data.theme_name}</td>
-                      <td>{data.mno}</td>
-                      <td>{data.guest}</td>
-                      <td>{data.Status}</td>
-                    </tr>
-                  ))
-                }
+                {filteredData.map((data, index) => (
+                  <tr key={index}>
+                    <td>{data.e_booking_id}</td>
+                    <td>{data.email_id}</td>
+                    <td>{data.event_date}</td>
+                    <td>{data.event_name}</td>
+                    <td>{data.theme_name}</td>
+                    <td>{data.mno}</td>
+                    <td>{data.guest}</td>
+                    <td>{data.Status}</td>
+                  </tr>
+                ))}
               </tbody>
-            </Table>) :
-            <h2>There's no such data to display!</h2>
-          }
+            </Table>
+          ) : (
+            <div className='no-data'>No data available to display!</div>
+          )}
         </div>
       </div >
     </>

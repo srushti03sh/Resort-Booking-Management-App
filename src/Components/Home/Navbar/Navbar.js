@@ -21,12 +21,6 @@ function Navbar() {
     return () => window.removeEventListener('scroll', stickNavbar);
   }, []);
 
-  useEffect(() => {
-    // Close dropdown menus when location changes
-    setShowDropdown(false);
-    setShowDropdown1(false);
-  }, [location]);
-
   const stickNavbar = () => {
     let windowHeight = window.scrollY;
     windowHeight > 150 ? setStickyClass('sticky-nav') : setStickyClass('');

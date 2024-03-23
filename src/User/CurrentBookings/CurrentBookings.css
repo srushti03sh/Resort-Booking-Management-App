@@ -1,3 +1,13 @@
-.Current-booking-body{
+.Current-booking-body {
     padding: 5% 30px 20px 30px;
+}
+
+.Current-booking-body h4 {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.cancel-bk {
+    font-size: 25px;
+    cursor: pointer;
 }

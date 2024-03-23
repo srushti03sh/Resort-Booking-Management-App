@@ -1,0 +1,115 @@
+.dashboard-cal-card .card-title {
+    margin: 20px 0;
+    border-bottom: 1px dashed #fff;
+    padding-bottom: 10px;
+}
+
+.up-events {
+    border-bottom: 1px dashed #fff;
+}
+
+.up-bookings {
+    margin: 20px 0;
+}
+
+.up-events h6,
+.up-bookings h6 {
+    padding-top: 10px;
+}
+
+.dashboard-cal,
+.avlbl-card-outer {
+    margin-top: 55px;
+}
+
+.react-calendar__tile {
+    padding: 20px !important;
+    color: #aaa !important;
+    font-size: 16px !important;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    border-bottom: 1px solid #aaa !important;
+}
+
+.react-calendar__navigation button {
+    color: #aaa !important;
+}
+
+.highlight {
+    background: #aa8453 !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+}
+
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus,
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background: #aa8453 !important;
+    color: #fff !important;
+}
+
+.react-calendar__tile--now {
+    color: #fff !important;
+    background: #aa8453 !important;
+}
+
+.react-calendar {
+    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    background: #1b1b1b !important;
+    color: #fff !important;
+}
+
+.msg-click {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #aa8453;
+}
+
+.dashboard-cal-card {
+    width: 100%;
+    margin-top: 44px;
+}
+
+.dashboard-cal-card .card {
+    height: 383px !important;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.cal-label {
+    margin: 10px 0;
+    display: flex;
+    color: #fff;
+    font-size: 15px;
+}
+
+.label-cal {
+    display: flex;
+    align-items: center;
+}
+
+.label-cal span {
+    margin: 0 15px;
+    display: flex;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background: #aa8453;
+}
+
+@media only screen and (max-width: 991px) {
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard-cal-card {
+        margin-top: 15px;
+    }
+}

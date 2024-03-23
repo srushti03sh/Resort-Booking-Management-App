@@ -24,13 +24,11 @@ function BookingPage() {
   const [rno, setRno] = useState('');
   const [rType, setRtype] = useState('');
   const [bookingData, setBookingData] = useState('');
-  const navigate = useNavigate();
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/showBookingForm.php", {
+    const response = await axios.post("http://localhost/Resort-API/User/showBookingForm.php", {
       id: loginData.id
     });
-    // console.log(response);
     const result = response.data.roomData;
     setRoomData(result)
     const lmno = response.data.mno;
@@ -45,14 +43,11 @@ function BookingPage() {
     return date ? date.toLocaleDateString('en-CA') : '';
   };
 
-  // console.log(formatDate(startDate));
-  // console.log(formatDate(endDate));
-
   const handleBooking = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost/Resort-API/bookingForm.php", {
+      const response = await axios.post("http://localhost/Resort-API/User/bookingForm.php", {
         email: email,
         mno: mno,
         chkin: formatDate(startDate),
@@ -61,7 +56,6 @@ function BookingPage() {
         rno: rno,
         guest: guest
       });
-      // console.log(response);
       setBookingData(response.data);
       if (response.data.status === "no") {
         toast.error('Something Went Wrong!', {
@@ -189,7 +183,7 @@ function BookingPage() {
                       <option value="" disabled selected>Room Type</option>
                       {roomData.map(option => (
                         <option key={option.roomType} value={option.roomType}>
-                          {option.roomType} - (Rs.{option.price}/day) - (Capacity : {option.room_capacity} Person)
+                          {option.roomType} - ( Rs. {option.price} / day ) - ( Capacity : {option.room_capacity} Person )
                         </option>
                       ))}
                     </select>
