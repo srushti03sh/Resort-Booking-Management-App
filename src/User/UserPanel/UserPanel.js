@@ -8,6 +8,7 @@ import EditProfile from '../EditProfile/EditProfile'
 import ContactUs from '../ContactUs/ContactUs'
 import FAQ from '../FAQ/FAQ'
 import CurrentBookings from '../CurrentBookings/CurrentBookings'
+import Events from '../Events/Events'
 
 function UserPanel() {
 
@@ -32,6 +33,7 @@ function UserPanel() {
                     <Routes>
                         <Route path="/Dashboard" element={<Dashboard isChecked={isChecked} />} />
                         <Route path="/Bookings" element={<Bookings isChecked={isChecked} />} />
+                        <Route path="/Events" element={<Events isChecked={isChecked} />} />
                         <Route path="/EditProfile" element={<EditProfile isChecked={isChecked} />} />
                         <Route path="/ContactUs" element={<ContactUs isChecked={isChecked} />} />
                         <Route path="/FAQ" element={<FAQ isChecked={isChecked} />} />

@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import AllEvents from '../AllEvents/AllEvents'
 import AllBookings from '../AllBookings/AllBookings'
 import AllUsers from '../AllUsers/AllUsers'
+import AllRooms from '../AllRooms/AllRooms'
 
 function AdminPanel() {
     const [isChecked, setIsChecked] = useState(false);
@@ -27,9 +28,10 @@ function AdminPanel() {
                 <div className='main-content'>
                     <Routes>
                         <Route path="/Dashboard" element={<Dashboard isChecked={isChecked} />} />
-                        <Route path="/AllEvents" element={<AllEvents isChecked={isChecked}/>} />
-                        <Route path="/AllBookings" element={<AllBookings isChecked={isChecked}/>} />
-                        <Route path="/AllUsers" element={<AllUsers isChecked={isChecked}/>} />
+                        <Route path="/AllEvents" element={<AllEvents isChecked={isChecked} />} />
+                        <Route path="/AllBookings" element={<AllBookings isChecked={isChecked} />} />
+                        <Route path="/AllUsers" element={<AllUsers isChecked={isChecked} />} />
+                        <Route path="/AllRooms" element={<AllRooms isChecked={isChecked} />} />
                     </Routes>
                 </div>
             </div>

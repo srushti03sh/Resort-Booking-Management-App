@@ -63,6 +63,7 @@
     align-items: center;
     margin-bottom: 25px;
 }
+
 .form-head .section-title {
     margin-bottom: 0;
 }
@@ -104,6 +105,7 @@
 .modal-header {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+    border-bottom: 2px solid #222 !important;
 }
 
 .modal-footer {
@@ -112,10 +114,11 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 20px;
+    padding: 10px 20px;
     background-color: #1b1b1b;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    border-top: 2px solid #222 !important;
 }
 
 .close-btn {
@@ -129,7 +132,7 @@
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 600;
-    margin: 10px 0;
+    margin: 10px 15px;
     cursor: pointer;
 }
 

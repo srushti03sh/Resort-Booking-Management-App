@@ -16,11 +16,8 @@ function Header({ isChecked, header }) {
     }, []);
 
     const stickHeader = () => {
-        // let windowHeight = window.scrollY;
-        // windowHeight > 100 ? setStickyClass('sticky-header') : setStickyClass('');
-        let scrollPosition = window.scrollY;
-        let scrollThreshold = 0; // Adjust this value as needed
-        scrollPosition > scrollThreshold ? setStickyClass('sticky-header') : setStickyClass('');
+        let windowHeight = window.scrollY;
+        windowHeight > 180 ? setStickyClass('sticky-header') : setStickyClass('');
     };
 
     return (

@@ -9,11 +9,11 @@
 
 .dashboard-event-body,
 .dashboard-booking-body {
-    padding: 4% 30px 5px 30px;
+    padding: 4% 30px 21px 30px;
 }
 
 .dashboard-booking-body h4,
-.dashboard-event-body h4{
+.dashboard-event-body h4 {
     font-size: 20px;
     text-transform: uppercase;
 }
@@ -27,11 +27,18 @@
     padding: 25px;
 }
 
-.dashboard-event-body .card-title {
+.dashboard-event-body .card-title,
+.dashboard-booking-body .card-title {
     margin-bottom: 15px;
+    font-size: 22px;
 }
 
 .dashboard-event-body h2,
 .dashboard-booking-body h2 {
     color: #aa8453;
+}
+
+.card-date {
+    font-size: 13px;
+    color: #fff;
 }

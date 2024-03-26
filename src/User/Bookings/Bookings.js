@@ -79,7 +79,6 @@ function Bookings({ isChecked }) {
                     </Link>
                 </div>
             </div>
-
         </>
     )
 }

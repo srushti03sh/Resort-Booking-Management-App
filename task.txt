@@ -1,3 +1,6 @@
 home page::
 Contact form--> On login Check(Room type & Events (API))
  oprn modal (Ok ==Book Now)(Cancel=Home page)
+
+ Form validation::
+ Login page , Sign Up Page , Add Room Form(Admin Side) , Both Booking Page

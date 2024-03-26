@@ -1,0 +1,50 @@
+.rooms-body {
+    padding: 5% 30px 20px 30px;
+}
+
+.room-description {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add-room {
+    color: #fff;
+    background: #aa8453;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.add-room i {
+    margin-right: 10px;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-form input,
+.add-form textarea {
+    background: #222;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.add-form-btn {
+    background: #aa8453;
+    color: #fff;
+    padding: 5px 15px;
+    border: none;
+    margin-right: 15px;
+    outline: none;
+}
+
+.ebg td {
+    --bs-table-bg-type:  rgba(170, 132, 83,0.1) !important;
+}

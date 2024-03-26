@@ -52,18 +52,6 @@ function ContactUs({ isChecked }) {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="user-reservations">
-                                <div className="icon">
-                                    <span className="flaticon-location-pin">
-                                        <SlLocationPin />
-                                    </span>
-                                </div>
-                                <div className="text">
-                                    <p>
-                                        Address
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                         <div className="col-md-5 mb-30">
                             <h3>Get in touch</h3>

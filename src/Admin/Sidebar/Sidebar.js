@@ -7,6 +7,7 @@ import { FaHome } from "react-icons/fa";
 import { GiGlassCelebration } from "react-icons/gi";
 import { FaListCheck } from "react-icons/fa6";
 import { HiUsers } from "react-icons/hi";
+import { IoBed } from "react-icons/io5";
 
 function Sidebar() {
   const location = useLocation();
@@ -70,6 +71,14 @@ function Sidebar() {
                     <HiUsers />
                   </span>
                   <span>Users</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/AllRooms") ? "active" : ""}>
+                <Link to="/AdminPanel/AllRooms">
+                  <span>
+                    <IoBed />
+                  </span>
+                  <span>Rooms</span>
                 </Link>
               </li>
             </ul>

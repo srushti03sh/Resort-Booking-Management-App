@@ -22,8 +22,7 @@ function Dashboard({ isChecked }) {
 
     const result = response?.data?.CurrentbookingData?.map(booking => ({
       ...booking,
-      checkIn: moment(booking.checkIn).format('DD-MM-YYYY'),
-      checkOut: moment(booking.checkOut).format('DD-MM-YYYY')
+      checkIn: moment(booking.checkIn).format('DD-MM-YYYY')
     }));
 
     const result1 = response?.data?.CurrenteventData?.map(event => ({
@@ -55,6 +54,7 @@ function Dashboard({ isChecked }) {
                   <Card style={{ width: '100%' }}>
                     <Card.Body>
                       <Card.Title>{data.event_name}</Card.Title>
+                      <div className='card-date'>Event Date : {data.event_date}</div>
                       <Card.Text>
                         Status: <Badge bg="success">Pending</Badge>
                         <Link className='dashboard-event-btn' to="/UserPanel/CurrentBookings">Details <FaArrowRight /></Link>
@@ -77,6 +77,7 @@ function Dashboard({ isChecked }) {
                   <Card style={{ width: '100%' }}>
                     <Card.Body>
                       <Card.Title>{data.roomType}</Card.Title>
+                      <div className='card-date'>Check-In Date : {data.checkIn}</div>
                       <Card.Text>
                         Status: <Badge bg="success">Pending</Badge>
                         <Link className='dashboard-event-btn' to="/UserPanel/CurrentBookings">Details <FaArrowRight /></Link>

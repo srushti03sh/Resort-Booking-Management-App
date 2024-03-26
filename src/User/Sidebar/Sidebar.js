@@ -19,7 +19,6 @@ function Sidebar() {
     navigate("/");
   }
 
-  // Function to determine if a given path should be considered active
   const isActive = (path) => {
     return location.pathname === path;
   }
@@ -58,12 +57,20 @@ function Sidebar() {
                 <span>Bookings</span>
               </Link>
             </li>
+            <li className={isActive("/UserPanel/Events") ? "active" : ""}>
+              <Link to="/UserPanel/Events">
+                <span>
+                  <FaListCheck />
+                </span>
+                <span>Events</span>
+              </Link>
+            </li>
             <li className={isActive("/UserPanel/CurrentBookings") ? "active" : ""}>
               <Link to="/UserPanel/CurrentBookings">
                 <span>
                   <FaList />
                 </span>
-                <span>Current Bookings</span>
+                <span>Upcoming Events / Bookings</span>
               </Link>
             </li>
             <li className={isActive("/UserPanel/FAQ") ? "active" : ""}>

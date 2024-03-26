@@ -210,7 +210,8 @@ function BookingPage() {
       {
         bookingData.status === "avlbl_msg" && (
           <>
-            <Modal show={show} onHide={() => setShow(false)}>
+            <Modal show={show} onHide={() => setShow(false)} size="md"
+              centered>
               <Modal.Header>
                 <Modal.Title>Available Rooms</Modal.Title>
               </Modal.Header>

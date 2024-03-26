@@ -16,8 +16,8 @@ function AllEvents({ isChecked }) {
   const [searchDate, setSearchDate] = useState(null);
   const [event, setEvent] = useState([]);
   const [theme, setTheme] = useState([]);
-  // console.log(search);
   const [searchData, setSearchData] = useState('');
+  
   const fetchData = async () => {
     const response = await axios.post("http://localhost/Resort-API/Admin/AdminEvents.php", {
     });
