@@ -8,6 +8,10 @@ import { GiGlassCelebration } from "react-icons/gi";
 import { FaListCheck } from "react-icons/fa6";
 import { HiUsers } from "react-icons/hi";
 import { IoBed } from "react-icons/io5";
+import { SiCodereview } from "react-icons/si";
+import { PiNewspaperClippingDuotone } from "react-icons/pi";
+import { SiAmazonsimpleemailservice } from "react-icons/si";
+import { MdDryCleaning } from "react-icons/md";
 
 function Sidebar() {
   const location = useLocation();
@@ -79,6 +83,38 @@ function Sidebar() {
                     <IoBed />
                   </span>
                   <span>Rooms</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/AllFacilities") ? "active" : ""}>
+                <Link to="/AdminPanel/AllFacilities">
+                  <span>
+                    <MdDryCleaning />
+                  </span>
+                  <span>Facilities</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/ExtraServices") ? "active" : ""}>
+                <Link to="/AdminPanel/ExtraServices">
+                  <span>
+                    <SiAmazonsimpleemailservice />
+                  </span>
+                  <span>Extra Services</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/Testimonial") ? "active" : ""}>
+                <Link to="/AdminPanel/Testimonial">
+                  <span>
+                    <SiCodereview />
+                  </span>
+                  <span>Testimonial</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/News") ? "active" : ""}>
+                <Link to="/AdminPanel/News">
+                  <span>
+                    <PiNewspaperClippingDuotone />
+                  </span>
+                  <span>News</span>
                 </Link>
               </li>
             </ul>

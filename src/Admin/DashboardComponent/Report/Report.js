@@ -11,7 +11,7 @@ function Report() {
   const [reportData, setReportData] = useState([]);
 
   const fetchReport = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/reportAdmin.php", {});
+    const response = await axios.post("http://localhost/Resort-API/Admin/Dashboard/reportAdmin.php", {});
 
     const usedR = response.data.usedRoom;
     const totR = response.data.totRoom;

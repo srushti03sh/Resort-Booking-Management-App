@@ -17,7 +17,7 @@ function AllBookings({ isChecked }) {
   const [rooms, setRooms] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/AdminBookings.php", {
+    const response = await axios.post("http://localhost/Resort-API/Admin/BookingPage/AdminBookings.php", {
     });
 
     const result = response?.data?.allBookings?.map(booking => ({
@@ -29,7 +29,7 @@ function AllBookings({ isChecked }) {
   }
 
   const fetchRoomType = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/roomTypeSearch.php", {
+    const response = await axios.post("http://localhost/Resort-API/Admin/BookingPage/roomTypeSearch.php", {
     });
     // console.log(response);
     const room = response.data.roomData;

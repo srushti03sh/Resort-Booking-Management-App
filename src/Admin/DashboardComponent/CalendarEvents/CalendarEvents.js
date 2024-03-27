@@ -14,7 +14,7 @@ function CalendarEvents() {
   const [calBookingDetails, setCalBookingDetails] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/CalendarEvents.php", {});
+    const response = await axios.post("http://localhost/Resort-API/Admin/Dashboard/CalendarEvents.php", {});
 
     const calEvent = response.data.calEventData;
     const booking = response.data.bookingData;
@@ -31,7 +31,7 @@ function CalendarEvents() {
     setTgl(selectedDate);
     const formattedDate = moment(selectedDate).format('YYYY-MM-DD');
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/CalendarEventsCard.php", {
+      const response = await axios.post("http://localhost/Resort-API/Admin/Dashboard/CalendarEventsCard.php", {
         date: formattedDate
       });
       const currentEvent = response?.data?.CurrentEventData?.map(event => ({

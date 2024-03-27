@@ -8,10 +8,9 @@ function AllUsers({ isChecked }) {
     const [allUsers, setAllUsers] = useState([]);
 
     const fetchData = async () => {
-        const response = await axios.post("http://localhost/Resort-API/Admin/AdminUsers.php", {
+        const response = await axios.post("http://localhost/Resort-API/Admin/UserPage/AdminUsers.php", {
         });
         const result = response.data.allUsers
-        // console.log(response);
         setAllUsers(result)
     }
     useEffect(() => {

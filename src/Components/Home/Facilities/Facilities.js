@@ -21,9 +21,9 @@ function Facilities() {
                         HomeFacilities.map((data, index) => (
                             <div className="col-md-4" key={index}>
                                 <div className="single-facility">
-                                    <span className="flaticon-world">
+                                    {/* <span className="flaticon-world">
                                         {data.icon}
-                                    </span>
+                                    </span> */}
                                     <h5>{data.title}</h5>
                                     <p>{data.des}</p>
                                 </div>

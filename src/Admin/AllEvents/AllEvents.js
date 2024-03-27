@@ -19,7 +19,7 @@ function AllEvents({ isChecked }) {
   const [searchData, setSearchData] = useState('');
   
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/AdminEvents.php", {
+    const response = await axios.post("http://localhost/Resort-API/Admin/EventsPage/AdminEvents.php", {
     });
 
     const result = response?.data?.allEvents?.map(booking => ({
@@ -30,7 +30,7 @@ function AllEvents({ isChecked }) {
   }
 
   const fetchEventTheme = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/EventTheme.php", {
+    const response = await axios.post("http://localhost/Resort-API/Admin/EventsPage/EventTheme.php", {
     });
     const events = response.data.event;
     setEvent(events)

@@ -46,5 +46,11 @@
 }
 
 .ebg td {
-    --bs-table-bg-type:  rgba(170, 132, 83,0.1) !important;
+    --bs-table-bg-type: rgba(170, 132, 83, 0.1) !important;
+}
+
+.rooms-top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }

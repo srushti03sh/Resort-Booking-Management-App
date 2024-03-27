@@ -52,7 +52,7 @@ function Pricing() {
             </div>
           </div>
           <div className='col-md-8'>
-            <OwlCarousel items={2} margin={30} autoplay={false} loop={true} {...options}>
+            <OwlCarousel items={2} margin={30} autoplay={true} loop={true} {...options}>
               {
                 ExtraServices.map((data, index) => (
                   <div className="pricing-card" key={index}>

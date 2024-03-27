@@ -13,7 +13,7 @@ function UpComingCards() {
   const [user, setUser] = useState('');
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/UpComingCards.php", {});
+    const response = await axios.post("http://localhost/Resort-API/Admin/Dashboard/UpComingCards.php", {});
 
     const cEvent = response.data.CurrentbookingData;
     const cBooking = response.data.CurrenteventData;
