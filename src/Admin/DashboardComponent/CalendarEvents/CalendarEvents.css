@@ -75,6 +75,11 @@
     margin-top: 44px;
 }
 
+.react-calendar__tile--active {
+    background: #aa8453 !important;
+    color: white;
+}
+
 .dashboard-cal-card .card {
     height: 383px !important;
     overflow: hidden;

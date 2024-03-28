@@ -9,6 +9,7 @@ import ContactUs from '../ContactUs/ContactUs'
 import FAQ from '../FAQ/FAQ'
 import CurrentBookings from '../CurrentBookings/CurrentBookings'
 import Events from '../Events/Events'
+import FeedbackPage from '../FeedbackPage/FeedbackPage'
 
 function UserPanel() {
 
@@ -37,6 +38,7 @@ function UserPanel() {
                         <Route path="/EditProfile" element={<EditProfile isChecked={isChecked} />} />
                         <Route path="/ContactUs" element={<ContactUs isChecked={isChecked} />} />
                         <Route path="/FAQ" element={<FAQ isChecked={isChecked} />} />
+                        <Route path="/FeedbackPage" element={<FeedbackPage isChecked={isChecked} />} />
                         <Route path="/CurrentBookings" element={<CurrentBookings isChecked={isChecked} />} />
                     </Routes>
                 </div>

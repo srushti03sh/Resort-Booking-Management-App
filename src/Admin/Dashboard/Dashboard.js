@@ -6,6 +6,7 @@ import UpComingCards from '../DashboardComponent/UpcomingCards/UpComingCards';
 import Testimonial from '../DashboardComponent/Testimonial/Testimonial';
 import CalendarEvents from '../DashboardComponent/CalendarEvents/CalendarEvents';
 import Report from '../DashboardComponent/Report/Report';
+import TestimonialReport from '../DashboardComponent/TestimonialReport/TestimonialReport';
 
 function Dashboard({ isChecked }) {
 
@@ -19,7 +20,12 @@ function Dashboard({ isChecked }) {
         <UpComingCards />
         <CalendarEvents />
         <Report />
-        <Testimonial />
+        <div className='col-md-12'>
+          <div className='row'>
+            <Testimonial />
+            <TestimonialReport />
+          </div>
+        </div>
       </div>
     </>
   )

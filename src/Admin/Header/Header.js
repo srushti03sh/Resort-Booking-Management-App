@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import "./Header.css"
 
 function Header({ isChecked, header }) {
-
+    // console.log(isChecked);
     const loginData = JSON.parse(localStorage.getItem("loginData"));
     const [stickyClass, setStickyClass] = useState('');
     useEffect(() => {
@@ -19,7 +19,6 @@ function Header({ isChecked, header }) {
         let windowHeight = window.scrollY;
         windowHeight > 180 ? setStickyClass('sticky-header') : setStickyClass('');
     };
-
     return (
         <>
             <div className={`${isChecked ? 'width' : 'half-width'} header-wrapper ${stickyClass}`}>

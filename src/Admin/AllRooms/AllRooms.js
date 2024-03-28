@@ -86,7 +86,7 @@ function AllRooms({ isChecked }) {
                         <CiEdit onClick={() => handleEdit(data.room_id)} />
                       </i>
                     </td>
-                    <td>
+                    <td style={{ textAlign: "center" }}>
                       {(data.Status === 'enable') ?
                         <i className='cancel-bk' onClick={() => handleEventCancel(data.room_id)}>
                           <FaRegEye />

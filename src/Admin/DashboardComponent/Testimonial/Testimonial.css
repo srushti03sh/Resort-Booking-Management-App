@@ -1,5 +1,5 @@
 .rev {
-    margin-top: 50px;
+    margin-top: 35px;
     background: #1b1b1b;
     padding: 20px;
     border-radius: 15px;
@@ -18,4 +18,12 @@
 .rev-name {
     margin-top: 13px;
     margin-left: 15px;
+}
+
+.rev-text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

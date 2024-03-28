@@ -11,6 +11,7 @@ function UpComingCards() {
   const [currentBookingData, setCurrentBookingData] = useState('');
   const [currentEventData, setCurrentEventData] = useState('');
   const [user, setUser] = useState('');
+  const [review, setReview] = useState('');
 
   const fetchData = async () => {
     const response = await axios.post("http://localhost/Resort-API/Admin/Dashboard/UpComingCards.php", {});
@@ -18,10 +19,12 @@ function UpComingCards() {
     const cEvent = response.data.CurrentbookingData;
     const cBooking = response.data.CurrenteventData;
     const tUser = response.data.user;
+    const reviews = response.data.review;
 
     setCurrentBookingData(cEvent)
     setCurrentEventData(cBooking)
     setUser(tUser)
+    setReview(reviews)
   }
 
   useEffect(() => {
@@ -71,8 +74,8 @@ function UpComingCards() {
                 <i><FaEye /></i>
               </div>
               <div className='card-info'>
-                <h6>Toatal Reviews</h6>
-                50
+                <h6>Total Reviews</h6>
+                {review}
               </div>
             </div>
           </div>

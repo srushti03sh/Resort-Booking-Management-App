@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Sidebar.css"
 import slogo from "../../Images/logo.png"
 import { MdDashboard } from "react-icons/md";
@@ -9,22 +9,43 @@ import { FaFileCircleQuestion } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaList } from "react-icons/fa6";
+import { VscFeedback } from "react-icons/vsc";
+import { Modal } from 'react-bootstrap';
+import FeedbackCard from '../FeedbackCard/FeedbackCard';
+import { GrClose } from "react-icons/gr";
+import CnfModal from '../../Common/Modal/Modal';
 
 function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [modalShow, setModalShow] = useState(false);
+  const [cnfModal, setCnfModal] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('loginData');
-    navigate("/");
+    setCnfModal(true)
+    setModalShow(false)
   }
 
   const isActive = (path) => {
     return location.pathname === path;
   }
 
+  const handleCancelConfirmation = (confirmed) => {
+    if (confirmed) {
+      localStorage.removeItem('loginData');
+      navigate("/");
+    } else {
+      setCnfModal(false)
+    }
+  }
+
   return (
     <div className="sidebar-container">
+      <CnfModal
+        onShow={cnfModal}
+        onConfirmation={handleCancelConfirmation}
+        title={"Are you sure you want to logout?"}
+      />
       <div className="brand">
         <Link to="/">
           <img src={slogo} alt="logo" />
@@ -81,6 +102,14 @@ function Sidebar() {
                 <span>F.A.Q</span>
               </Link>
             </li>
+            <li className={isActive("/UserPanel/FeedbackPage") ? "active" : ""}>
+              <Link to="/UserPanel/FeedbackPage">
+                <span>
+                  <VscFeedback />
+                </span>
+                <span>Feedback</span>
+              </Link>
+            </li>
             <li className={isActive("/UserPanel/ContactUs") ? "active" : ""}>
               <Link to="/UserPanel/ContactUs">
                 <span>
@@ -91,8 +120,27 @@ function Sidebar() {
             </li>
           </ul>
         </div>
-        <button className="btn-sidebar btn-block" onClick={handleLogout}>Logout</button>
+        <button className="btn-sidebar btn-block" onClick={() => setModalShow(true)}>Logout</button>
       </div>
+      <Modal
+        centered
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      >
+        <Modal.Header>
+          <Modal.Title>
+            Feedback
+          </Modal.Title>
+          <div>
+            <button onClick={handleLogout}><GrClose /></button>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <FeedbackCard
+            modalShow={modalShow}
+          />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

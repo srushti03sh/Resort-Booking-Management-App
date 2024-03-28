@@ -207,7 +207,6 @@ const AllRoomsLogic = () => {
       setModalShow(false);
       setEdate('');
     }
-
     setRoomIdToDelete(null);
   };
 

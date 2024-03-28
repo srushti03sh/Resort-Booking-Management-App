@@ -1,0 +1,36 @@
+.fTitle {
+    color: #fff;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+.style-module_starRatingWrap__q-lJC {
+    margin: 20px 0;
+}
+
+.feed-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.feed-form textarea {
+    background: #222;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+}
+
+.feed-card {
+    /* width: fit-content; */
+    padding: 25px;
+    background: #1b1b1b;
+}
+
+.feed-form button {
+    margin-top: 20px;
+    color: #fff;
+    background: #aa8453;
+    border: none;
+    padding: 10px 20px;
+}
