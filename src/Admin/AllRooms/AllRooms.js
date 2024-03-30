@@ -2,9 +2,9 @@ import React from 'react'
 import Header from '../Header/Header'
 import { Table } from 'react-bootstrap'
 import "./AllRooms.css"
-import { FaRegEyeSlash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { IoMdAdd } from "react-icons/io";
+import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import CnfModal from '../../Common/Modal/Modal';
 import AllRoomsLogic from '../../Hooks/AllRoomsLogic';
@@ -17,7 +17,6 @@ function AllRooms({ isChecked }) {
   return (
     <>
       <Toast />
-      <Header isChecked={isChecked} header="Rooms" />
       <CnfModal
         onShow={modalShow}
         onConfirmation={handleCancelConfirmation}
@@ -25,6 +24,7 @@ function AllRooms({ isChecked }) {
         equipped={edate}
         description={edate ? `You can't disbale room till ${edate}` : ''}
       />
+      <Header isChecked={isChecked} header="Rooms" />
       <RoomModal
         roomId={roomId}
         handleClose={handleClose}

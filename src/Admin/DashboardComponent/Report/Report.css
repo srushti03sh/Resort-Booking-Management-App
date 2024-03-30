@@ -37,5 +37,5 @@
 }
 
 .progress {
-    --bs-progress-border-radius: 100px !important;
+    --bs-progress-border-radius: 5px !important;
 }

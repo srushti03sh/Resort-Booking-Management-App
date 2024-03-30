@@ -5,6 +5,10 @@
     border-radius: 15px;
 }
 
+.rev:nth-child(2) {
+    margin-top: 20px;
+}
+
 .rev-data img {
     height: 45px;
     width: 45px;

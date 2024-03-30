@@ -242,7 +242,7 @@ const AllRoomsLogic = () => {
       }
       fetchData();
     } catch (error) {
-      console.error("Error disabling room:", error);
+      console.error("Error enabling room:", error);
     }
   };
 

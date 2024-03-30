@@ -1,0 +1,31 @@
+.pagination {
+    --bs-pagination-color: #aa8453;
+    --bs-pagination-bg: #1b1b1b;
+    --bs-pagination-border-color: #1b1b1b;
+    --bs-pagination-hover-color: #aa8453;
+    --bs-pagination-focus-color: #aa8453;
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: #aa8453;
+    --bs-pagination-active-border-color: #aa8453;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    justify-content: center
+}
+
+.page-link:hover {
+    color: #fff;
+    background-color: #aa8453;
+    border-color: #aa8453;
+}
+
+.page-link:focus {
+    color: #fff;
+    background-color: #aa8453;
+    outline: 0;
+    box-shadow: none;
+}
+
+.rating i {
+    color: #aa8453
+}

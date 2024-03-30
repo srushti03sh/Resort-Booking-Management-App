@@ -94,7 +94,7 @@ function FeedbackCard({ modalShow }) {
         <Rating
           initialValue={rating}
           onClick={handleRating}
-          allowFraction={true}
+          allowFraction={false}
           transition={true}
           showTooltip={true}
           fillColor="#aa8453"

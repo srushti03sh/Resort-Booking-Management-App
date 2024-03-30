@@ -58,7 +58,7 @@ function Sidebar() {
                   <span>
                     <GiGlassCelebration />
                   </span>
-                  <span>Events</span>
+                  <span>Booked Events</span>
                 </Link>
               </li>
               <li className={isActive("/AdminPanel/AllBookings") ? "active" : ""}>
@@ -66,7 +66,7 @@ function Sidebar() {
                   <span>
                     <FaListCheck />
                   </span>
-                  <span>Bookings</span>
+                  <span>Booked Room</span>
                 </Link>
               </li>
               <li className={isActive("/AdminPanel/AllUsers") ? "active" : ""}>
@@ -107,14 +107,6 @@ function Sidebar() {
                     <SiCodereview />
                   </span>
                   <span>Testimonial</span>
-                </Link>
-              </li>
-              <li className={isActive("/AdminPanel/News") ? "active" : ""}>
-                <Link to="/AdminPanel/News">
-                  <span>
-                    <PiNewspaperClippingDuotone />
-                  </span>
-                  <span>News</span>
                 </Link>
               </li>
             </ul>

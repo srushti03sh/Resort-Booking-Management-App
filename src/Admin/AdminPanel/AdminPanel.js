@@ -9,7 +9,6 @@ import AllUsers from '../AllUsers/AllUsers'
 import AllRooms from '../AllRooms/AllRooms'
 import AllFacilities from '../AllFacilities/AllFacilities'
 import ExtraServices from '../ExtraServices/ExtraServices'
-import News from '../News/News'
 import Testimonial from '../Testimonial/Testimonial'
 
 function AdminPanel() {
@@ -38,7 +37,6 @@ function AdminPanel() {
                         <Route path="/AllRooms" element={<AllRooms isChecked={isChecked} />} />
                         <Route path="/AllFacilities" element={<AllFacilities isChecked={isChecked} />} />
                         <Route path="/ExtraServices" element={<ExtraServices isChecked={isChecked} />} />
-                        <Route path="/News" element={<News isChecked={isChecked} />} />
                         <Route path="/Testimonial" element={<Testimonial isChecked={isChecked} />} />
                     </Routes>
                 </div>

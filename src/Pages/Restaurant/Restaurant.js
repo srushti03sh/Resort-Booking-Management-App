@@ -13,7 +13,7 @@ import { resMenu } from '../../Data/Data';
 import { resSlider } from '../../Data/Data';
 
 function Restaurant() {
-
+  window.scrollTo(0, 0)
   const options = {
     responsiveClass: true,
     smartSpeed: 400,
