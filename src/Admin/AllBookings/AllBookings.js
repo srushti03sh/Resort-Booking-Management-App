@@ -1,40 +1,37 @@
 import axios from 'axios';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Table, Pagination } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Header from '../Header/Header';
 
 function AllBookings({ isChecked }) {
-
   const [allBookingData, setAllBookingData] = useState([]);
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('bid');
   const [searchDate, setSearchDate] = useState(null);
   const [searchData, setSearchData] = useState('');
   const [rooms, setRooms] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [bookingsPerPage] = useState(10);
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/BookingPage/AdminBookings.php", {
-    });
-
+    const response = await axios.post("http://localhost/Resort-API/Admin/BookingPage/AdminBookings.php", {});
     const result = response?.data?.allBookings?.map(booking => ({
       ...booking,
-      checkIn: moment(booking.checkIn).format('DD-MM-YYYY'),// Convert checkIn date using Moment.js
-      checkOut: moment(booking.checkOut).format('DD-MM-YYYY'),// Convert checkIn date using Moment.js
+      checkIn: moment(booking.checkIn).format('DD-MM-YYYY'),
+      checkOut: moment(booking.checkOut).format('DD-MM-YYYY'),
     }));
-    setAllBookingData(result)
-  }
+    setAllBookingData(result);
+  };
 
   const fetchRoomType = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/BookingPage/roomTypeSearch.php", {
-    });
-    // console.log(response);
+    const response = await axios.post("http://localhost/Resort-API/Admin/BookingPage/roomTypeSearch.php", {});
     const room = response.data.roomData;
-    setRooms(room)
-  }
+    setRooms(room);
+  };
 
   useEffect(() => {
     fetchData();
@@ -69,13 +66,17 @@ function AllBookings({ isChecked }) {
       )
     )
     : [];
-  // console.log(rooms);
+
+  const indexOfLastBooking = currentPage * bookingsPerPage;
+  const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
+  const currentBookings = filteredData.slice(indexOfFirstBooking, indexOfLastBooking);
+  const totalPages = Math.ceil(filteredData.length / bookingsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
-      <Header
-        isChecked={isChecked}
-        header="Bookings"
-      />
+      <Header isChecked={isChecked} header="Bookings" />
       <div className='Current-booking-body'>
         <div className='Current-booking-top'>
           <div className='search-group'>
@@ -149,9 +150,9 @@ function AllBookings({ isChecked }) {
           </div>
         </div>
         <div className='booking-table'>
-          {filteredData.length > 0 ? (
+          {currentBookings.length > 0 ? (
             <Table striped bordered variant="dark" responsive>
-              <thead >
+              <thead>
                 <tr>
                   <th>Booking ID</th>
                   <th>Email ID</th>
@@ -165,7 +166,7 @@ function AllBookings({ isChecked }) {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((data, index) => (
+                {currentBookings.map((data, index) => (
                   <tr key={index}>
                     <td>{data.booking_id}</td>
                     <td>{data.email_id}</td>
@@ -183,11 +184,25 @@ function AllBookings({ isChecked }) {
           ) : (
             <div className='no-data'>No data available to display!</div>
           )}
+          {totalPages > 1 && (
+            <Pagination>
+              {currentPage !== 1 && (
+                <Pagination.Prev onClick={() => paginate(currentPage - 1)} />
+              )}
+              {Array.from({ length: totalPages }, (_, index) => (
+                <Pagination.Item key={index + 1} onClick={() => paginate(index + 1)} active={index + 1 === currentPage}>
+                  {index + 1}
+                </Pagination.Item>
+              ))}
+              {currentPage !== totalPages && (
+                <Pagination.Next onClick={() => paginate(currentPage + 1)} />
+              )}
+            </Pagination>
+          )}
         </div>
       </div>
-
     </>
-  )
+  );
 }
 
-export default AllBookings
+export default AllBookings;

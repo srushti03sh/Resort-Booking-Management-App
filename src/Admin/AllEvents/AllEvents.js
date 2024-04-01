@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
+import React, { useEffect, useState } from 'react';
+import Header from '../Header/Header';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { Table } from 'react-bootstrap';
+import { Table, Pagination } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
-import "./AllEvents.css"
+import "./AllEvents.css";
 
 function AllEvents({ isChecked }) {
-
   const [allEventData, setAllEventData] = useState([]);
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('bid');
@@ -17,26 +16,25 @@ function AllEvents({ isChecked }) {
   const [event, setEvent] = useState([]);
   const [theme, setTheme] = useState([]);
   const [searchData, setSearchData] = useState('');
-  
-  const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/EventsPage/AdminEvents.php", {
-    });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [eventsPerPage] = useState(10);
 
+  const fetchData = async () => {
+    const response = await axios.post("http://localhost/Resort-API/Admin/EventsPage/AdminEvents.php", {});
     const result = response?.data?.allEvents?.map(booking => ({
       ...booking,
-      event_date: moment(booking.event_date).format('DD-MM-YYYY'),// Convert checkIn date using Moment.js
+      event_date: moment(booking.event_date).format('DD-MM-YYYY'),
     }));
-    setAllEventData(result)
-  }
+    setAllEventData(result);
+  };
 
   const fetchEventTheme = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/EventsPage/EventTheme.php", {
-    });
+    const response = await axios.post("http://localhost/Resort-API/Admin/EventsPage/EventTheme.php", {});
     const events = response.data.event;
-    setEvent(events)
+    setEvent(events);
     const themes = response.data.Theme;
-    setTheme(themes)
-  }
+    setTheme(themes);
+  };
 
   useEffect(() => {
     fetchData();
@@ -67,12 +65,17 @@ function AllEvents({ isChecked }) {
       )
     )
     : [];
+
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = filteredData.slice(indexOfFirstEvent, indexOfLastEvent);
+  const totalPages = Math.ceil(filteredData.length / eventsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
-      <Header
-        isChecked={isChecked}
-        header="Events"
-      />
+      <Header isChecked={isChecked} header="Events" />
       <div className='Current-booking-body'>
         <div className='Current-booking-top'>
           <div className='search-group'>
@@ -104,7 +107,6 @@ function AllEvents({ isChecked }) {
                             icon={<FaRegCalendarAlt fill="#aa8453" fontSize="17px" />}
                             placeholderText="Event Date"
                             dateFormat="dd/MM/yyyy"
-                            // minDate={new Date()}
                             calendarClassName="datepic" />
                           : (search === 'eName')
                             ? <select value={searchData} onChange={(e) => setSearchData(e.target.value)}>
@@ -141,7 +143,7 @@ function AllEvents({ isChecked }) {
           </div>
         </div>
         <div className='booking-table'>
-          {filteredData.length > 0 ? (
+          {currentEvents.length > 0 ? (
             <Table striped bordered variant="dark" responsive>
               <thead>
                 <tr>
@@ -156,7 +158,7 @@ function AllEvents({ isChecked }) {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((data, index) => (
+                {currentEvents.map((data, index) => (
                   <tr key={index}>
                     <td>{data.e_booking_id}</td>
                     <td>{data.email_id}</td>
@@ -173,10 +175,25 @@ function AllEvents({ isChecked }) {
           ) : (
             <div className='no-data'>No data available to display!</div>
           )}
+          {totalPages > 1 && (
+            <Pagination>
+              {currentPage !== 1 && (
+                <Pagination.Prev onClick={() => paginate(currentPage - 1)} />
+              )}
+              {Array.from({ length: totalPages }, (_, index) => (
+                <Pagination.Item key={index + 1} onClick={() => paginate(index + 1)} active={index + 1 === currentPage}>
+                  {index + 1}
+                </Pagination.Item>
+              ))}
+              {currentPage !== totalPages && (
+                <Pagination.Next onClick={() => paginate(currentPage + 1)} />
+              )}
+            </Pagination>
+          )}
         </div>
-      </div >
+      </div>
     </>
-  )
+  );
 }
 
-export default AllEvents
+export default AllEvents;

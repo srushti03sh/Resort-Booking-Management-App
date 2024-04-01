@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import "./AllFacilities.css"
-import Header from '../Header/Header'
-import { Table } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import "./AllFacilities.css";
+import Header from '../Header/Header';
+import { Table, Pagination } from 'react-bootstrap';
 import axios from 'axios';
 import { FaRegEyeSlash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
@@ -13,7 +13,6 @@ import Toast from '../../Common/Toast/Toast';
 import CnfModal from '../../Common/Modal/Modal';
 
 function AllFacilities({ isChecked }) {
-
   const [facilityData, setFacilityData] = useState([]);
   const [filter, setFilter] = useState('All');
   const [fname, setFname] = useState('');
@@ -22,30 +21,31 @@ function AllFacilities({ isChecked }) {
   const [facilityId, setFacilityId] = useState('');
   const [show, setShow] = useState(false);
   const [facilityIdToDisable, setFacilityIdToDisable] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const handleClose = () => {
-    setShow(false)
-    setFacilityId(null)
+    setShow(false);
+    setFacilityId(null);
   };
 
   const handleShow = () => setShow(true);
 
   const handleEdit = async (facilityId) => {
     handleShow();
-    setFacilityId(facilityId)
+    setFacilityId(facilityId);
   };
 
   const handleEventCancel = async (facilityId) => {
     setModalShow(true);
-    setFacilityIdToDisable(facilityId)
+    setFacilityIdToDisable(facilityId);
   };
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/FacilityPage/showFacility.php", {
-    });
+    const response = await axios.post("http://localhost/Resort-API/Admin/FacilityPage/showFacility.php", {});
     const facilityDatas = response.data.facilityData;
-    setFacilityData(facilityDatas)
-  }
+    setFacilityData(facilityDatas);
+  };
 
   useEffect(() => {
     fetchData();
@@ -110,7 +110,7 @@ function AllFacilities({ isChecked }) {
         fid: facilityId
       });
       if (response.data.status === 'yes') {
-        toast.success('Room edited Successfully!', {
+        toast.success('Facility edited Successfully!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -188,7 +188,7 @@ function AllFacilities({ isChecked }) {
         }
         fetchData();
       } catch (error) {
-        console.error("Error disabling room:", error);
+        console.error("Error disabling Facility:", error);
       }
     } else {
       setModalShow(false);
@@ -201,7 +201,7 @@ function AllFacilities({ isChecked }) {
         fid: facilityId
       });
       if (response.data.status === 'yes') {
-        toast.success('Room enable Successfully!', {
+        toast.success('Facility enable Successfully!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -227,15 +227,9 @@ function AllFacilities({ isChecked }) {
       }
       fetchData();
     } catch (error) {
-      console.error("Error disabling room:", error);
+      console.error("Error disabling Facility:", error);
     }
   };
-
-  const filterFacility = facilityData?.length > 0 ? (
-    filter === 'All' ?
-      facilityData
-      : facilityData.filter(data => data.Status.toLowerCase() === filter.toLowerCase())
-  ) : [];
 
   const handleSubmit = () => {
     if (facilityId) {
@@ -244,6 +238,14 @@ function AllFacilities({ isChecked }) {
       addFaciltity()
     }
   }
+
+  const filteredFacility = facilityData?.filter(data => filter === 'All' || data.Status.toLowerCase() === filter.toLowerCase());
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentFacility = filteredFacility.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const selectedFacilityId = facilityData.find((room) => room.facility_id === facilityId)
@@ -257,9 +259,7 @@ function AllFacilities({ isChecked }) {
 
   return (
     <>
-      <Header
-        isChecked={isChecked} header="Facilities"
-      />
+      <Header isChecked={isChecked} header="Facilities" />
       <Toast />
       <CnfModal
         onShow={modalShow}
@@ -279,11 +279,11 @@ function AllFacilities({ isChecked }) {
       <div className='rooms-body'>
         <div className='rooms-top'>
           <button className='add-room' onClick={handleShow}>
-            <i ><IoMdAdd /></i>
+            <i><IoMdAdd /></i>
             Add Facility
           </button>
           <div className='selection'>
-            <div> Filter : </div>
+            <div>Filter:</div>
             <div>
               <select value={filter} onChange={(e) => setFilter(e.target.value)}>
                 <option value="All">All</option>
@@ -294,48 +294,59 @@ function AllFacilities({ isChecked }) {
           </div>
         </div>
         <div className='booking-table'>
-          {filterFacility.length > 0 ? (
-            <Table striped bordered variant="dark" responsive>
-              <thead>
-                <tr>
-                  <th>Facility ID</th>
-                  <th>Facility Name</th>
-                  <th>Facility Description</th>
-                  <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filterFacility.map((data, index) => (
-                  <tr key={index} className={data.Status === 'disable' ? "ebg" : ""}>
-                    <td>{data.facility_id}</td>
-                    <td>{data.facility_name}</td>
-                    <td className="room-description">{data.facility_des}</td>
-                    <td style={{ textAlign: "center" }}>
-                      <i className='cancel-bk'>
-                        <CiEdit onClick={() => handleEdit(data.facility_id)} />
-                      </i>
-                    </td>
-                    <td style={{ textAlign: "center" }}>
-                      {(data.Status === 'enable') ?
-                        <i className='cancel-bk' onClick={() => handleEventCancel(data.facility_id)}>
-                          <FaRegEye />
-                        </i> :
-                        <i className='cancel-bk' >
-                          <FaRegEyeSlash onClick={() => enableRoom(data.facility_id)} />
-                        </i>
-                      }
-                    </td>
+          {currentFacility.length > 0 ? (
+            <>
+              <Table striped bordered variant="dark" responsive>
+                <thead>
+                  <tr>
+                    <th>Facility ID</th>
+                    <th>Facility Name</th>
+                    <th>Facility Description</th>
+                    <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {currentFacility.map((data, index) => (
+                    <tr key={index} className={data.Status === 'disable' ? "ebg" : ""}>
+                      <td>{data.facility_id}</td>
+                      <td>{data.facility_name}</td>
+                      <td className="room-description">{data.facility_des}</td>
+                      <td style={{ textAlign: "center" }}>
+                        <i className='cancel-bk'>
+                          <CiEdit onClick={() => handleEdit(data.facility_id)} />
+                        </i>
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {(data.Status === 'enable') ?
+                          <i className='cancel-bk' onClick={() => handleEventCancel(data.facility_id)}>
+                            <FaRegEye />
+                          </i> :
+                          <i className='cancel-bk' >
+                            <FaRegEyeSlash onClick={() => enableRoom(data.facility_id)} />
+                          </i>
+                        }
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+              {filteredFacility.length > itemsPerPage && ( // Render pagination only if there are more items than the page limit
+                <Pagination>
+                  {Array.from({ length: Math.ceil(filteredFacility.length / itemsPerPage) }, (_, index) => (
+                    <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+                      {index + 1}
+                    </Pagination.Item>
+                  ))}
+                </Pagination>
+              )}
+            </>
           ) : (
             <div className='no-data'>No data available to display!</div>
           )}
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default AllFacilities
+export default AllFacilities;

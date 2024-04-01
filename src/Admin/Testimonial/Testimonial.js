@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import axios from 'axios';
-import { Table, Pagination } from 'react-bootstrap';
+import { Table, Pagination, Modal } from 'react-bootstrap';
 import { FaStar, FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import "./Testimonial.css"
 import CnfModal from '../../Common/Modal/Modal';
@@ -15,6 +15,8 @@ function Testimonial({ isChecked }) {
   const [modalShow, setModalShow] = useState(false);
   const [filter, setFilter] = useState('All');
   const [feedbackId, setFeedbackId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedMsg, setSelectedMsg] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -150,6 +152,17 @@ function Testimonial({ isChecked }) {
         onConfirmation={handleCancelConfirmation}
         title={"Are you sure you want to disable this feedback message?"}
       />
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Full Feedback Message</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{selectedMsg}</Modal.Body>
+        <Modal.Footer>
+          <button className='add-form-btn' onClick={() => setShowModal(false)}>
+            Close
+          </button>
+        </Modal.Footer>
+      </Modal>
       <div className='Current-booking-body'>
         <div className='booking-table'>
           <div className='selection'>
@@ -179,7 +192,15 @@ function Testimonial({ isChecked }) {
                     <tr key={index} className={data.Status === 'disable' ? "ebg" : ""}>
                       <td>{data.feedback_id}</td>
                       <td>{data.email_id}</td>
-                      <td className="room-description">{data.msg}</td>
+                      <td
+                        className="room-description"
+                        onDoubleClick={() => {
+                          setSelectedMsg(data.msg);
+                          setShowModal(true);
+                        }}
+                      >
+                        {data.msg}
+                      </td>
                       <td className="rating">{renderRatingStars(data.rating)}</td>
                       <td style={{ textAlign: "center" }}>
                         {(data.Status === 'enable') ?

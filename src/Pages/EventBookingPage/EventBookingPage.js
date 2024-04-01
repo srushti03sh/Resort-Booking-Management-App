@@ -91,6 +91,10 @@ function EventBookingPage() {
           theme: "dark",
           transition: Slide,
         });
+        setStartDate(null);
+        setGuest('');
+        setEtype('');
+        setTtype('');
       } else if (response.data.status === "Not_avlbl") {
         toast.error('Not available!', {
           position: "top-center",

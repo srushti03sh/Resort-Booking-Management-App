@@ -30,7 +30,12 @@ function Login() {
   const [mobilen, setMobilen] = useState("");
   const [gender, setGender] = useState('');
   const navigate = useNavigate();
+  const [rpasswordError, setRpasswordError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [genderError, setGenderError] = useState('');
 
   const handleSignUpClick = () => {
     setIsSignUpMode(true);
@@ -108,63 +113,88 @@ function Login() {
 
     try {
       if (signup) {
-
-        e.preventDefault();
-
-        if (rpassword !== cpassword) {
-          setPasswordError('Passwords do not match');
-          return;
+        if (!strongPasswordRegex.test(rpassword)) {
+          setPasswordError('Password must contain at least 8 characters including uppercase, lowercase, numbers, and special characters.');
         } else {
           setPasswordError('');
+        }
+        if (rpassword !== cpassword) {
+          setRpasswordError('Passwords do not match');
+        } else {
+          setRpasswordError('');
           // Perform any further actions (e.g., submit the form)
         }
+        if (!nameRegex.test(firstn)) {
+          setFirstNameError('First name must contain only letters.');
+        } else {
+          setFirstNameError('');
+        }
 
-        const response = await axios.post("http://localhost/Resort-API/Common/otp.php", {
-          eid: remail
-        });
+        if (!nameRegex.test(lastn)) {
+          setLastNameError('Last name must contain only letters.');
+        } else {
+          setLastNameError('');
+        }
+        if (!phoneRegex.test(mobilen)) {
+          setPhoneNumberError('Enter valid 10 digit mobile number');
+        } else {
+          setPhoneNumberError('');
+        }
+        if (!gender) {
+          setGenderError('Please select a gender.');
+        } else {
+          setGenderError('');
+        }
+        if (!passwordError !== '' || rpasswordError !== '' || firstNameError !== '' || lastNameError !== '' || phoneNumberError !== '' || genderError !== '') {
+          return;
+        } else {
+          const response = await axios.post("http://localhost/Resort-API/Common/otp.php", {
+            eid: remail
+          });
 
-        if (response.data.status === "exist") {
-          toast.error('Email Address Already Exists!', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Slide,
-          });
-        } else if (response.data.status === "otp") {
-          const encodedString = response.data.otp;
-          const decodedString = atob(encodedString);
-          const decryptedData = JSON.parse(decodedString);
-          setDecryptOtp(decryptedData.otp);
-          toast.success('OTP sent successfully on your Email', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Slide,
-          });
-          setSignup(false); // Change signup mode to false to indicate OTP is generated
-          setShow(false);
-        } else if (response.data.status === "nomail") {
-          toast.error('Something Went Wrong!', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Slide,
-          });
+          if (response.data.status === "exist") {
+            toast.error('Email Address Already Exists!', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Slide,
+            });
+          } else if (response.data.status === "otp") {
+            const encodedString = response.data.otp;
+            const decodedString = atob(encodedString);
+            const decryptedData = JSON.parse(decodedString);
+            setDecryptOtp(decryptedData.otp);
+            toast.success('OTP sent successfully on your Email', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Slide,
+            });
+            setSignup(false); // Change signup mode to false to indicate OTP is generated
+            setShow(false);
+          } else if (response.data.status === "nomail") {
+            toast.error('Something Went Wrong!', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Slide,
+            });
+          }
         }
       } else {
         // Signup
@@ -216,6 +246,10 @@ function Login() {
     }
   };
 
+  const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+  const nameRegex = /^[A-Za-z]+$/;
+  const phoneRegex = /^[6-9]\d{9}$/;
+
   return (
     <>
       <ToastContainer
@@ -237,11 +271,11 @@ function Login() {
               <h2 className="title">Sign in</h2>
               <div className="input-field">
                 <i><FaUser /></i>
-                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               <div className="input-field">
                 <i><FaLock /></i>
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
               </div>
               <input type="submit" value="Login" className="btn solid" onClick={handleLogin} />
             </form>
@@ -255,13 +289,13 @@ function Login() {
                       <div className='col-md-6'>
                         <div className="input-field">
                           <i><FaUser /></i>
-                          <input type="text" placeholder="First Name" value={firstn} onChange={(e) => setFirstn(e.target.value)} />
+                          <input type="text" placeholder="First Name" value={firstn} onChange={(e) => setFirstn(e.target.value)} required />
                         </div>
                       </div>
                       <div className='col-md-6'>
                         <div className="input-field">
                           <i><FaUser /></i>
-                          <input type="text" placeholder="Last Name" value={lastn} onChange={(e) => setLastn(e.target.value)} />
+                          <input type="text" placeholder="Last Name" value={lastn} onChange={(e) => setLastn(e.target.value)} required />
                         </div>
                       </div>
                     </div>
@@ -270,13 +304,13 @@ function Login() {
                         <div className='col-md-6'>
                           <div className="input-field">
                             <i><MdMail /></i>
-                            <input type="email" placeholder="Email" value={remail} onChange={(e) => setRemail(e.target.value)} />
+                            <input type="email" placeholder="Email" value={remail} onChange={(e) => setRemail(e.target.value)} required />
                           </div>
                         </div>
                         <div className='col-md-6'>
                           <div className="input-field">
                             <i><BiSolidPhoneCall /></i>
-                            <input type="text" placeholder="Mobile Number" value={mobilen} onChange={(e) => setMobilen(e.target.value)} />
+                            <input type="text" placeholder="Mobile Number" value={mobilen} onChange={(e) => setMobilen(e.target.value)} required />
                           </div>
                         </div>
                       </div>
@@ -287,7 +321,7 @@ function Login() {
                       <div className='col-md-6'>
                         <div className="input-select">
                           <i><HiMiniMapPin /></i>
-                          <select value={selectedState} onChange={handleStateChange}>
+                          <select value={selectedState} onChange={handleStateChange} required>
                             <option value="" disabled>Select State</option>
                             {states.map((state, index) => (
                               <option key={index} value={state.name}>{state.name}</option>
@@ -298,7 +332,7 @@ function Login() {
                       <div className='col-md-6'>
                         <div className="input-select">
                           <i><HiMiniMapPin /></i>
-                          <select value={selectedCity} onChange={handleCityChange}>
+                          <select value={selectedCity} onChange={handleCityChange} required>
                             <option value="" disabled>Select a state first</option>
                             {selectedState &&
                               states.find(state => state.name === selectedState).cities.map((city, index) => (
@@ -314,13 +348,13 @@ function Login() {
                       <div className='col-md-6'>
                         <div className="input-field">
                           <i><FaLock /></i>
-                          <input type="password" placeholder="Password" value={rpassword} onChange={(e) => setRpassword(e.target.value)} />
+                          <input type="password" placeholder="Password" value={rpassword} onChange={(e) => setRpassword(e.target.value)} required />
                         </div>
                       </div>
                       <div className='col-md-6'>
                         <div className="input-field">
                           <i><FaLock /></i>
-                          <input type="password" placeholder="Confirm Password" value={cpassword} onChange={(e) => setCpassword(e.target.value)} />
+                          <input type="password" placeholder="Confirm Password" value={cpassword} onChange={(e) => setCpassword(e.target.value)} required />
                         </div>
                       </div>
                     </div>
@@ -344,7 +378,12 @@ function Login() {
                       </div>
                     </div>
                   </div>
-                  {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+                  {firstNameError && <p style={{ color: 'red', margin: "0" }}>{firstNameError}</p>}
+                  {lastNameError && <p style={{ color: 'red', margin: "0" }}>{lastNameError}</p>}
+                  {genderError && <p style={{ color: 'red', margin: "0" }}>{genderError}</p>}
+                  {phoneNumberError && <p style={{ color: 'red', margin: "0" }}>{phoneNumberError}</p>}
+                  {rpasswordError && <p style={{ color: 'red', margin: "0" }}>{rpasswordError}</p>}
+                  {passwordError && <p style={{ color: 'red', margin: "0" }}>{passwordError}</p>}
                 </div>
                 :
                 <OtpInput

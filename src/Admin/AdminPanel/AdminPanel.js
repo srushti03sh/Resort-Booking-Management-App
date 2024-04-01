@@ -10,6 +10,7 @@ import AllRooms from '../AllRooms/AllRooms'
 import AllFacilities from '../AllFacilities/AllFacilities'
 import ExtraServices from '../ExtraServices/ExtraServices'
 import Testimonial from '../Testimonial/Testimonial'
+import SusUsers from '../SusUsers/SusUsers'
 
 function AdminPanel() {
     const [isChecked, setIsChecked] = useState(false);
@@ -34,6 +35,7 @@ function AdminPanel() {
                         <Route path="/AllEvents" element={<AllEvents isChecked={isChecked} />} />
                         <Route path="/AllBookings" element={<AllBookings isChecked={isChecked} />} />
                         <Route path="/AllUsers" element={<AllUsers isChecked={isChecked} />} />
+                        <Route path="/SusUsers" element={<SusUsers isChecked={isChecked} />} />
                         <Route path="/AllRooms" element={<AllRooms isChecked={isChecked} />} />
                         <Route path="/AllFacilities" element={<AllFacilities isChecked={isChecked} />} />
                         <Route path="/ExtraServices" element={<ExtraServices isChecked={isChecked} />} />

@@ -9,7 +9,7 @@ import { FaListCheck } from "react-icons/fa6";
 import { HiUsers } from "react-icons/hi";
 import { IoBed } from "react-icons/io5";
 import { SiCodereview } from "react-icons/si";
-import { PiNewspaperClippingDuotone } from "react-icons/pi";
+import { RiUserSearchFill } from "react-icons/ri";
 import { SiAmazonsimpleemailservice } from "react-icons/si";
 import { MdDryCleaning } from "react-icons/md";
 
@@ -74,7 +74,15 @@ function Sidebar() {
                   <span>
                     <HiUsers />
                   </span>
-                  <span>Users</span>
+                  <span>All Users</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/SusUsers") ? "active" : ""}>
+                <Link to="/AdminPanel/SusUsers">
+                  <span>
+                  <RiUserSearchFill />
+                  </span>
+                  <span>Suspicious Users</span>
                 </Link>
               </li>
               <li className={isActive("/AdminPanel/AllRooms") ? "active" : ""}>
