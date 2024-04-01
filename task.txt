@@ -7,5 +7,5 @@ Contact form--> On login Check(Room type & Events (API))
 
  Admin Panel:
  CRUD Events + Themes + Extra services
- Pagination in all table pages (Admin & User)
+ Pagination in extra services , events ,themes,sususers pages 
  fake data in bookings table & user table

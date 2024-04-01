@@ -59,6 +59,7 @@ function SusUsers({ isChecked }) {
                   <th>State</th>
                   <th>Mobile No.</th>
                   <th>Gender</th>
+                  <th>Booking Source</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +73,7 @@ function SusUsers({ isChecked }) {
                     <td>{data.state}</td>
                     <td>{data.mno}</td>
                     <td>{data.gender}</td>
+                    <td>{data.source_table}</td>
                   </tr>
                 ))}
               </tbody>

@@ -1,36 +1,41 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
+import { Table } from 'react-bootstrap';
+import { Slide, toast } from 'react-toastify';
+import Header from '../Header/Header';
 import { CiEdit } from "react-icons/ci";
 import { IoMdAdd } from "react-icons/io";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
-import { Table } from 'react-bootstrap';
-import axios from 'axios';
-import { Slide, toast } from 'react-toastify';
-import ExtraServicesModal from '../../Common/AddEditModal/ExtraServicesModal';
 import CnfModal from '../../Common/Modal/Modal';
+import EventsModal from '../../Common/AddEditModal/EventsModal';
+import moment from 'moment';
 import Toast from '../../Common/Toast/Toast';
+import ThemeModal from '../../Common/AddEditModal/ThemeModal';
 
-function ExtraServices({ isChecked }) {
+function Events({ isChecked }) {
 
   const [filter, setFilter] = useState('All');
-  const [allServices, setAllServices] = useState([]);
+  const [allEvents, setAllEvents] = useState([]);
   const [ename, setEname] = useState('');
   const [modalShow, setModalShow] = useState(false);
-  const [eprice, setEprice] = useState('');
-  const [edos, setEdos] = useState('');
-  const [edonts, setEdonts] = useState('');
-  const [show, setShow] = useState(false);
   const [eId, setEId] = useState('');
+  const [show, setShow] = useState(false);
   const [eIdToDelete, seteIdToDelete] = useState('')
+  const [edate, setEdate] = useState('');
+  const [showThemeModal, setShowThemeModal] = useState(false)
+  const [saveStatus, setSaveStatus] = useState(null);
+  const [tcap, setTcap] = useState('');
+  const [tdes, setTdes] = useState('');
+  const [tprice, setTprice] = useState('');
+  const [tname, setTname] = useState('');
+  const [tid, setTid] = useState('');
 
   const handleClose = () => {
     setShow(false)
     setEId(null)
-    setEname('');
-    setEprice('');
-    setEdos('');
-    setEdonts('');
+    setShowThemeModal(false)
+    // setEname('');
   };
 
   const handleShow = () => setShow(true);
@@ -46,11 +51,11 @@ function ExtraServices({ isChecked }) {
   };
 
   const fetchData = async () => {
-    const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/showExtraServices.php", {
+    const response = await axios.post("http://localhost/Resort-API/Admin/ManageEvents/showEvents.php", {
     });
 
-    const servicesDatas = response.data.servicesData;
-    setAllServices(servicesDatas)
+    const eventData = response.data.eventData;
+    setAllEvents(eventData)
     // console.log(response);
   }
 
@@ -58,16 +63,21 @@ function ExtraServices({ isChecked }) {
     fetchData();
   }, []);
 
-  const addExtraServices = async () => {
+  const addExtraServices = () => {
+    setShowThemeModal(true);
+  };
+
+  const handleSaveStatus = (status) => {
+    setSaveStatus(status);
+  };
+  const addEvent = async () => {
+    // console.log(saveStatus);
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/addExtraServices.php", {
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageEvents/addEvents.php", {
         ename: ename,
-        eprice: eprice,
-        edos: edos,
-        edonts: edonts
       });
       if (response.data.status === 'yes') {
-        toast.success('Extra Service Added Successfully!', {
+        toast.success('Event Added Successfully!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -80,6 +90,7 @@ function ExtraServices({ isChecked }) {
         });
         fetchData();
         handleClose();
+        addTheme();
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -107,19 +118,79 @@ function ExtraServices({ isChecked }) {
       });
       console.log("error");
     }
-  };
+  }
+
+  const addTheme = async () => {
+    try {
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/addThemes.php", {
+        tname: tname,
+        tprice: tprice,
+        tdes: tdes,
+        tcap: tcap,
+        ename: ename
+      });
+      if (response.data.status === 'yes') {
+        toast.success('Theme Added Successfully!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+        });
+        fetchData();
+        handleClose();
+        setTname('')
+        setTdes('')
+        setTcap('')
+        setTprice('')
+      } else if (response.data.status === 'no') {
+        toast.error('Something Went Wrong!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Slide,
+        });
+      }
+    } catch {
+      toast.error('Something Went Wrong!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+      });
+      console.log("error");
+    }
+  }
+  useEffect(() => {
+    if (saveStatus === 'success') {
+      addEvent();
+    }
+  }, [saveStatus]);
+
+
 
   const editExtraServices = async () => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/editExtraServices.php", {
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageEvents/editEvents.php", {
         ename: ename,
-        eprice: eprice,
-        edos: edos,
-        edonts: edonts,
         eid: eId
       });
       if (response.data.status === 'yes') {
-        toast.success('Room edited Successfully!', {
+        toast.success('Event edited Successfully!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -133,9 +204,6 @@ function ExtraServices({ isChecked }) {
         handleClose();
         fetchData();
         setEname('');
-        setEprice('');
-        setEdos('');
-        setEdonts('');
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -168,11 +236,11 @@ function ExtraServices({ isChecked }) {
   const handleCancelConfirmation = async (confirmed) => {
     if (confirmed) {
       try {
-        const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/disableExtraServices.php", {
+        const response = await axios.post("http://localhost/Resort-API/Admin/ManageEvents/disableEvents.php", {
           eid: eIdToDelete
         });
         if (response.data.status === 'yes') {
-          toast.success('Extra service disable Successfully!', {
+          toast.success('Event disable Successfully!', {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -184,6 +252,7 @@ function ExtraServices({ isChecked }) {
             transition: Slide,
           });
           setModalShow(false);
+          setEdate('');
         } else if (response.data.status === 'no') {
           toast.error('Something Went Wrong!', {
             position: "top-center",
@@ -197,23 +266,28 @@ function ExtraServices({ isChecked }) {
             transition: Slide,
           });
         }
+        else if (response.data.status === 'equipped') {
+          setModalShow(true);
+          setEdate(moment(response.data.edate).format('DD-MM-YYYY'));
+        }
         fetchData();
       } catch (error) {
-        console.error("Error disabling extra service:", error);
+        console.error("Error disabling room:", error);
       }
     } else {
       setModalShow(false);
+      setEdate('');
     }
     seteIdToDelete(null);
   };
 
   const enableService = async (eid) => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/enableExtraServices.php", {
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageEvents/enableEvents.php", {
         eid: eid
       });
       if (response.data.status === 'yes') {
-        toast.success('Extra service enable Successfully!', {
+        toast.success('Event enable Successfully!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -239,14 +313,14 @@ function ExtraServices({ isChecked }) {
       }
       fetchData();
     } catch (error) {
-      console.error("Error enabling Extra service:", error);
+      console.error("Error enabling Event:", error);
     }
   };
 
-  const filterServices = allServices?.length > 0 ? (
+  const filterServices = allEvents?.length > 0 ? (
     filter === 'All' ?
-      allServices
-      : allServices.filter(data => data.Status.toLowerCase() === filter.toLowerCase())
+      allEvents
+      : allEvents.filter(data => data.Status.toLowerCase() === filter.toLowerCase())
   ) : [];
 
   const handleSubmit = () => {
@@ -258,17 +332,13 @@ function ExtraServices({ isChecked }) {
   }
 
   useEffect(() => {
-    const selectedeId = allServices.find((extra) => extra.extraServices_id === eId)
+    const selectedeId = allEvents.find((extra) => extra.event_id === eId)
     if (selectedeId) {
-      setEname(selectedeId.extraServices_name)
-      setEprice(selectedeId.extraServices_price)
-      setEdos(selectedeId.extraServices_dos)
-      setEdonts(selectedeId.extraServices_donts)
+      setEname(selectedeId.event_name)
     } else {
       console.log("error");
     }
-  }, [eId, allServices])
-
+  }, [eId, allEvents])
   return (
     <>
       <Toast />
@@ -278,26 +348,38 @@ function ExtraServices({ isChecked }) {
       <CnfModal
         onShow={modalShow}
         onConfirmation={handleCancelConfirmation}
-        title={"Are you sure you want to disable this extra services?"}
+        title={!edate ? "Are you sure you want to disable this event?" : ''}
+        equipped={edate}
+        description={edate ? `You can't disbale event till ${edate}` : ''}
       />
-      <ExtraServicesModal
+      <EventsModal
         handleSubmit={handleSubmit}
         handleClose={handleClose}
         show={show}
         ename={ename}
-        eprice={eprice}
-        edos={edos}
-        edonts={edonts}
         setEname={setEname}
-        setEprice={setEprice}
-        setEdos={setEdos}
-        setEdonts={setEdonts}
+      />
+      <ThemeModal
+        themeShow={showThemeModal}
+        handleClose={() => setShowThemeModal(false)}
+        nename={ename}
+        onSaveStatus={handleSaveStatus}
+        setTcap={setTcap}
+        setTname={setTname}
+        setTprice={setTprice}
+        setTdes={setTdes}
+        tcap={tcap}
+        tid={tid}
+        tname={tname}
+        tdes={tdes}
+        tprice={tprice}
+        addEvent={addEvent}
       />
       <div className='rooms-body'>
         <div className='rooms-top'>
           <button className='add-room' onClick={handleShow}>
             <i ><IoMdAdd /></i>
-            Add Extra Services
+            Add Event
           </button>
           <div className='selection'>
             <div> Filter : </div>
@@ -315,33 +397,27 @@ function ExtraServices({ isChecked }) {
             <Table striped bordered variant="dark" responsive>
               <thead>
                 <tr>
-                  <th>Extra Services ID</th>
-                  <th>Extra Services Name</th>
-                  <th>Extra Services Price </th>
-                  <th>Extra Services Do's</th>
-                  <th>Extra Services Don'ts</th>
+                  <th>Event ID</th>
+                  <th>Event Name</th>
                   <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {filterServices.map((data, index) => (
                   <tr key={index} className={data.Status === 'disable' ? "ebg" : ""}>
-                    <td>{data.extraServices_id}</td>
-                    <td>{data.extraServices_name}</td>
-                    <td>{data.extraServices_price} / day</td>
-                    <td className="room-description">{data.extraServices_dos}</td>
-                    <td className="room-description">{data.extraServices_donts}</td>
+                    <td>{data.event_id}</td>
+                    <td>{data.event_name}</td>
                     <td style={{ textAlign: "center" }}>
-                      <i className='cancel-bk' onClick={() => handleEdit(data.extraServices_id)}>
+                      <i className='cancel-bk' onClick={() => handleEdit(data.event_id)}>
                         <CiEdit />
                       </i>
                     </td>
                     <td style={{ textAlign: "center" }}>
                       {(data.Status === 'enable') ?
-                        <i className='cancel-bk' onClick={() => handleEventCancel(data.extraServices_id)} >
+                        <i className='cancel-bk' onClick={() => handleEventCancel(data.event_id)} >
                           <FaRegEye />
                         </i> :
-                        <i className='cancel-bk' onClick={() => enableService(data.extraServices_id)}>
+                        <i className='cancel-bk' onClick={() => enableService(data.event_id)}>
                           <FaRegEyeSlash />
                         </i>
                       }
@@ -359,4 +435,4 @@ function ExtraServices({ isChecked }) {
   )
 }
 
-export default ExtraServices
+export default Events

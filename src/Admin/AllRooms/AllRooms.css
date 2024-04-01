@@ -1,5 +1,5 @@
 .rooms-body {
-    padding: 5% 30px 20px 30px;
+    padding: 20px 30px;
 }
 
 .room-description {
@@ -28,12 +28,17 @@
 }
 
 .add-form input,
-.add-form textarea {
+.add-form textarea,
+.add-form select {
     background: #222;
     color: #fff;
     padding: 10px 20px;
     border: none;
     margin-bottom: 10px;
+}
+
+.add-form select {
+    border-right: 20px solid transparent;
 }
 
 .add-form-btn {

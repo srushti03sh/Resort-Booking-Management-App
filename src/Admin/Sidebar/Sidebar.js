@@ -80,7 +80,7 @@ function Sidebar() {
               <li className={isActive("/AdminPanel/SusUsers") ? "active" : ""}>
                 <Link to="/AdminPanel/SusUsers">
                   <span>
-                  <RiUserSearchFill />
+                    <RiUserSearchFill />
                   </span>
                   <span>Suspicious Users</span>
                 </Link>
@@ -91,6 +91,22 @@ function Sidebar() {
                     <IoBed />
                   </span>
                   <span>Rooms</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/Events") ? "active" : ""}>
+                <Link to="/AdminPanel/Events">
+                  <span>
+                    <GiGlassCelebration />
+                  </span>
+                  <span>Events</span>
+                </Link>
+              </li>
+              <li className={isActive("/AdminPanel/Themes") ? "active" : ""}>
+                <Link to="/AdminPanel/Themes">
+                  <span>
+                    <GiGlassCelebration />
+                  </span>
+                  <span>Themes</span>
                 </Link>
               </li>
               <li className={isActive("/AdminPanel/AllFacilities") ? "active" : ""}>

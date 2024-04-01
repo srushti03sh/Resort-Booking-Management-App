@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import "./AllFacilities.css";
 import Header from '../Header/Header';
 import { Table, Pagination } from 'react-bootstrap';
 import axios from 'axios';
@@ -27,6 +26,8 @@ function AllFacilities({ isChecked }) {
   const handleClose = () => {
     setShow(false);
     setFacilityId(null);
+    setFname('');
+    setFdes('');
   };
 
   const handleShow = () => setShow(true);
@@ -272,8 +273,8 @@ function AllFacilities({ isChecked }) {
         setFname={setFname}
         setFdes={setFdes}
         handleClose={handleClose}
-        handleSubmit={handleSubmit}
         show={show}
+        handleSubmit={handleSubmit}
         facilityId={facilityId}
       />
       <div className='rooms-body'>

@@ -21,6 +21,11 @@ const AllRoomsLogic = () => {
   const handleClose = () => {
     setShow(false)
     setRoomId(null)
+    setRtype('');
+    setRdes('');
+    setRcap('');
+    setRno('');
+    setRprice('');
   };
 
   const handleShow = () => setShow(true);

@@ -192,7 +192,7 @@ function Testimonial({ isChecked }) {
                     <tr key={index} className={data.Status === 'disable' ? "ebg" : ""}>
                       <td>{data.feedback_id}</td>
                       <td>{data.email_id}</td>
-                      <td
+                      <td style={{ cursor: "pointer" }}
                         className="room-description"
                         onDoubleClick={() => {
                           setSelectedMsg(data.msg);
