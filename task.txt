@@ -6,6 +6,5 @@ Contact form--> On login Check(Room type & Events (API))
  Login page , Sign Up Page , Add Room Form(Admin Side) , Both Booking Page 
 
  Admin Panel:
- CRUD Events + Themes + Extra services
- Pagination in extra services , events ,themes,sususers pages 
+ Pagination in extra services , events ,themes pages 
  fake data in bookings table & user table

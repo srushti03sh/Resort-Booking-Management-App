@@ -26,6 +26,8 @@ function Themes({ isChecked }) {
   const [tid, setTid] = useState('');
   const [ename, setEname] = useState('');
   const [TidToDelete, setTidToDelete] = useState('')
+  const [itemsPerPage] = useState(10); // Adjust items per page as needed
+  const [totalItems, setTotalItems] = useState(0);
 
   const handleClose = () => {
     setShow(false)

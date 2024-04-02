@@ -69,6 +69,7 @@ function AllRooms({ isChecked }) {
                   <th>Room Capacity</th>
                   <th>Total Room</th>
                   <th>Price</th>
+                  <th>Images</th>
                   <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                 </tr>
               </thead>
@@ -81,6 +82,15 @@ function AllRooms({ isChecked }) {
                     <td>{data.room_capacity}</td>
                     <td>{data.total_room}</td>
                     <td>{data.price}</td>
+                    <td>
+                      {data.images.split(',')[0] && (
+                        <img
+                          src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                          alt={`Image`}
+                          style={{ maxWidth: '100px', border: "2px solid #aa8453" }}
+                        />
+                      )}
+                    </td>
                     <td style={{ textAlign: "center" }}>
                       <i className='cancel-bk'>
                         <CiEdit onClick={() => handleEdit(data.room_id)} />

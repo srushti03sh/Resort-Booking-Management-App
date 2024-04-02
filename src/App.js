@@ -23,6 +23,7 @@ import BookingPage from './Pages/BookingPage/BookingPage';
 import UserPanel from './User/UserPanel/UserPanel';
 import EventBookingPage from './Pages/EventBookingPage/EventBookingPage';
 import AdminPanel from './Admin/AdminPanel/AdminPanel';
+import InputImage from './Admin/InputImage';
 
 function App() {
 
@@ -55,8 +56,9 @@ function App() {
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/EventBookingPage" element={<EventBookingPage />} />
         <Route path="/UserPanel/*" element={loginData ? <UserPanel /> : <Navigate to="/Login" />} />
-
         <Route path="/AdminPanel/*" element={loginData ? <AdminPanel /> : <Navigate to="/Login" />} />
+
+        <Route path='/Admin' element={<InputImage />} />
       </Routes>
 
     </div>

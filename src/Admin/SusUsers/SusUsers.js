@@ -7,12 +7,12 @@ function SusUsers({ isChecked }) {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
+  const [filter, setFilter] = useState('All');
 
   const fetchData = async () => {
     const response = await axios.post("http://localhost/Resort-API/Admin/SusUsers/SusUsers.php", {});
     const allUsers = response.data.susUsers || []; // Ensure allUsers is an array
     setUsers(allUsers);
-    // console.log(response);
   };
 
   useEffect(() => {
@@ -26,19 +26,26 @@ function SusUsers({ isChecked }) {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Slice the users based on pagination if users is an array and has length
-  const currentUsers = Array.isArray(users) && users.length > 0
-    ? users.slice(indexOfFirstUser, indexOfLastUser)
-    : [];
+  // Filtered users based on selected filter option
+  const filteredUsers = users.filter(user => {
+    if (filter === 'All') {
+      return true;
+    } else {
+      return user.Status === filter.toLowerCase();
+    }
+  });
+
+  // Slice the users based on pagination
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   // Calculate total pages based on filtered users
-  const totalPages = Math.ceil(Array.isArray(users) ? users.length / usersPerPage : 0);
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
 
   // Calculate page numbers to display in pagination
   const startPage = Math.max(1, currentPage - 1);
   const endPage = Math.min(startPage + 2, totalPages);
   const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-  // console.log(users);
+
   return (
     <>
       <Header
@@ -46,6 +53,14 @@ function SusUsers({ isChecked }) {
         header="Suspicious Users"
       />
       <div className='Current-booking-body'>
+        <div className='selection'>
+          <div>Filter : </div>
+          <select onChange={e => setFilter(e.target.value)} value={filter}>
+            <option value="All">All</option>
+            <option value="blocked">Blocked</option>
+            <option value="unblocked">Unblocked</option>
+          </select>
+        </div>
         <div className='booking-table'>
           {currentUsers.length > 0 ? (
             <Table striped bordered variant="dark" responsive>

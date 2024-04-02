@@ -139,6 +139,7 @@ function AllEvents({ isChecked }) {
               <option value="Pending">Pending</option>
               <option value="Current">Current</option>
               <option value="Completed">Completed</option>
+              <option value="blocked">Blocked</option>
             </select>
           </div>
         </div>

@@ -7,6 +7,7 @@ import Testimonial from './Testimonials/Testimonial'
 import Facilities from './Facilities/Facilities'
 import PVideo from './Promotional Video/PVideo'
 import Pricing from './Pricing Section/Pricing'
+import InputImage from '../../Admin/InputImage'
 
 const Index = () => {
     window.scrollTo(0, 0)
@@ -20,6 +21,7 @@ const Index = () => {
             <Attraction />
             <ContactUs />
             <Clients />
+            <InputImage />
         </>
     )
 }
