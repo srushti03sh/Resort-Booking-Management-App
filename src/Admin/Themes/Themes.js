@@ -28,6 +28,8 @@ function Themes({ isChecked }) {
   const [TidToDelete, setTidToDelete] = useState('')
   const [itemsPerPage] = useState(10); // Adjust items per page as needed
   const [totalItems, setTotalItems] = useState(0);
+  const [images, setImages] = useState("");
+  const maxImageCount = 3; // Set your desired maximum image count here
 
   const handleClose = () => {
     setShow(false)
@@ -37,6 +39,18 @@ function Themes({ isChecked }) {
     setTcap('')
     setTprice('')
     setEname('')
+  };
+
+  const imagesArray = typeof images === 'string' ? images.split(',') : images;
+
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files;
+    if (selectedFiles.length > maxImageCount) {
+      alert(`Please select no more than ${maxImageCount} images.`);
+      e.target.value = null; // Clear the file input
+      return;
+    }
+    setImages(selectedFiles);
   };
 
   const handleShow = () => setShow(true);
@@ -65,14 +79,25 @@ function Themes({ isChecked }) {
   }, []);
 
   const addExtraServices = async () => {
+
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/addThemes.php", {
-        tname: tname,
-        tprice: tprice,
-        tdes: tdes,
-        tcap: tcap,
-        ename: ename
+      const formData = new FormData();
+      formData.append('tname', tname);
+      formData.append('tprice', tprice);
+      formData.append('tdes', tdes);
+      formData.append('tcap', tcap);
+      formData.append('ename', ename);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/addThemes.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
+
       if (response.data.status === 'yes') {
         toast.success('Theme Added Successfully!', {
           position: "top-center",
@@ -85,8 +110,15 @@ function Themes({ isChecked }) {
           theme: "dark",
           transition: Slide,
         });
-        fetchData();
+        // Reset form fields and image state after successful upload
         handleClose();
+        fetchData();
+        setTname('');
+        setTprice('');
+        setTdes('');
+        setTcap('');
+        setEname('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -100,7 +132,7 @@ function Themes({ isChecked }) {
           transition: Slide,
         });
       }
-    } catch {
+    } catch (error) {
       toast.error('Something Went Wrong!', {
         position: "top-center",
         autoClose: 5000,
@@ -112,18 +144,27 @@ function Themes({ isChecked }) {
         theme: "dark",
         transition: Slide,
       });
-      console.log("error");
+      console.log("error", error);
     }
   };
 
   const editExtraServices = async () => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/editThemes.php", {
-        tid: tid, tname: tname,
-        tprice: tprice,
-        tdes: tdes,
-        tcap: tcap,
-        ename: ename
+      const formData = new FormData();
+      formData.append('tname', tname);
+      formData.append('tprice', tprice);
+      formData.append('tdes', tdes);
+      formData.append('tcap', tcap);
+      formData.append('ename', ename);
+      formData.append('tid', tid);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/editThemes.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       if (response.data.status === 'yes') {
         toast.success('Theme edited Successfully!', {
@@ -139,11 +180,12 @@ function Themes({ isChecked }) {
         });
         handleClose();
         fetchData();
-        setTname('')
-        setTdes('')
-        setTcap('')
-        setTprice('')
-        setEname('')
+        setTname('');
+        setTprice('');
+        setTdes('');
+        setTcap('');
+        setEname('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -280,6 +322,8 @@ function Themes({ isChecked }) {
       setTcap(selectedeId.theme_capacity)
       setTprice(selectedeId.theme_price)
       setEname(selectedeId.event_name)
+      const themeImages = selectedeId.images
+      setImages(themeImages);
     } else {
       console.log("error");
     }
@@ -289,7 +333,7 @@ function Themes({ isChecked }) {
     <>
       <Toast />
       <Header
-        isChecked={isChecked} header="Extra Services"
+        isChecked={isChecked} header="themes"
       />
       <CnfModal
         onShow={modalShow}
@@ -313,6 +357,8 @@ function Themes({ isChecked }) {
         tname={tname}
         tdes={tdes}
         tprice={tprice}
+        handleImageChange={handleImageChange}
+        images={imagesArray}
       />
       <div className='rooms-body'>
         <div className='rooms-top'>
@@ -342,6 +388,7 @@ function Themes({ isChecked }) {
                   <th>Theme Description</th>
                   <th>Event Name</th>
                   <th>Theme Capacity</th>
+                  <th style={{ textAlign: "center" }}>Images</th>
                   <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                 </tr>
               </thead>
@@ -354,6 +401,15 @@ function Themes({ isChecked }) {
                     <td className="room-description">{data.theme_des}</td>
                     <td>{data.event_name}</td>
                     <td>{data.theme_capacity}</td>
+                    <td style={{ textAlign: "center" }}>
+                      {data.images.split(',')[0] && (
+                        <img
+                          src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                          alt={`Image`}
+                          style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px" }}
+                        />
+                      )}
+                    </td>
                     <td style={{ textAlign: "center" }}>
                       <i className='cancel-bk' onClick={() => handleEdit(data.theme_id)}>
                         <CiEdit />

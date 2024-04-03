@@ -45,6 +45,11 @@ function Dashboard({ isChecked }) {
         header="Dashboard"
       />
       <div className='dashboard-event-body'>
+        {loginData.userStatus === 'blocked' ? <div className='block-warn'>
+          You can not do any bookings !
+        </div>
+          : ""}
+
         <h4>Upcoming Events:</h4>
         <div className='row'>
           {currentEventData?.length > 0 ? (

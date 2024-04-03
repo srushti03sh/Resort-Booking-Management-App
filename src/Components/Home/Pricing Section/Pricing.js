@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import { Link } from 'react-router-dom'
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -8,9 +8,13 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import "./Pricing.css"
-import { ExtraServices } from '../../../Data/Data';
+import axios from 'axios';
 
 function Pricing() {
+
+  const [service, setService] = useState([])
+  const [loading, setLoading] = useState(true);
+
   const options = {
     responsiveClass: true,
     smartSpeed: 1000,
@@ -30,6 +34,23 @@ function Pricing() {
       }
     },
   };
+  const fetchData = async () => {
+    const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/showExtraServices.php", {
+    });
+
+    const servicesDatas = response.data.servicesData;
+    const enabledServices = servicesDatas.filter(service => service.Status === 'enable');
+    setService(enabledServices);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
+  if (loading) {
+    return <div>Loading testimonials...</div>;
+  }
 
   return (
     <div className='pricing section-padding'>
@@ -54,24 +75,29 @@ function Pricing() {
           <div className='col-md-8'>
             <OwlCarousel items={2} margin={30} autoplay={true} loop={true} {...options}>
               {
-                ExtraServices.map((data, index) => (
+                service.map((data, index) => (
                   <div className="pricing-card" key={index}>
-                    <img src={data.src} alt="" />
+                    {data.images.split(',')[0] && (
+                      <img
+                        src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                        alt={`Image`}
+                      />
+                    )}
                     <div className="desc">
-                      <div className="name">{data.title}</div>
-                      <div className="amount"><LiaRupeeSignSolid />{data.price}<span>/ day</span></div>
+                      <div className="name">{data.extraServices_name}</div>
+                      <div className="amount"><LiaRupeeSignSolid />{data.extraServices_price}<span>/ day</span></div>
                       <ul className="list-unstyled list">
                         <li>
                           <i className="ti-check"><IoCheckmarkOutline /></i>
-                          {data.subTitle1}
+                          {data.extraServices_dos.split(',')[0]}
                         </li>
                         <li>
                           <i className="ti-check"><IoCheckmarkOutline /></i>
-                          {data.subTitle2}
+                          {data.extraServices_dos.split(',')[1]}
                         </li>
                         <li>
-                          <i className="ti-close unavailable"><RxCross1 /></i>
-                          {data.subTitle3}
+                          <i className={data.extraServices_donts ? 'ti-close unavailable' : ''}><RxCross1 /></i>
+                          {data.extraServices_donts ? data.extraServices_donts.split(',')[0] : ''}
                         </li>
                       </ul>
                     </div>

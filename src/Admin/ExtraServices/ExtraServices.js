@@ -23,6 +23,8 @@ function ExtraServices({ isChecked }) {
   const [show, setShow] = useState(false);
   const [eId, setEId] = useState('');
   const [eIdToDelete, seteIdToDelete] = useState('')
+  const [images, setImages] = useState("");
+  const maxImageCount = 3;
 
   const handleClose = () => {
     setShow(false)
@@ -32,6 +34,8 @@ function ExtraServices({ isChecked }) {
     setEdos('');
     setEdonts('');
   };
+
+  const imagesArray = typeof images === 'string' ? images.split(',') : images;
 
   const handleShow = () => setShow(true);
 
@@ -58,14 +62,35 @@ function ExtraServices({ isChecked }) {
     fetchData();
   }, []);
 
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files;
+    if (selectedFiles.length > maxImageCount) {
+      alert(`Please select no more than ${maxImageCount} images.`);
+      e.target.value = null; // Clear the file input
+      return;
+    }
+    setImages(selectedFiles);
+  };
+
   const addExtraServices = async () => {
+
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/addExtraServices.php", {
-        ename: ename,
-        eprice: eprice,
-        edos: edos,
-        edonts: edonts
+      const formData = new FormData();
+      formData.append('ename', ename);
+      formData.append('eprice', eprice);
+      formData.append('edos', edos);
+      formData.append('edonts', edonts);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+
+      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/addExtraServices.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
+
       if (response.data.status === 'yes') {
         toast.success('Extra Service Added Successfully!', {
           position: "top-center",
@@ -78,8 +103,13 @@ function ExtraServices({ isChecked }) {
           theme: "dark",
           transition: Slide,
         });
-        fetchData();
         handleClose();
+        fetchData();
+        setEdonts('');
+        setEdos('');
+        setEname('');
+        setEprice('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -93,7 +123,7 @@ function ExtraServices({ isChecked }) {
           transition: Slide,
         });
       }
-    } catch {
+    } catch (error) {
       toast.error('Something Went Wrong!', {
         position: "top-center",
         autoClose: 5000,
@@ -105,21 +135,29 @@ function ExtraServices({ isChecked }) {
         theme: "dark",
         transition: Slide,
       });
-      console.log("error");
+      console.log("error", error);
     }
   };
 
   const editExtraServices = async () => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/editExtraServices.php", {
-        ename: ename,
-        eprice: eprice,
-        edos: edos,
-        edonts: edonts,
-        eid: eId
+      const formData = new FormData();
+      formData.append('ename', ename);
+      formData.append('eprice', eprice);
+      formData.append('edos', edos);
+      formData.append('edonts', edonts);
+      formData.append('eid', eId);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+      const response = await axios.post("http://localhost/Resort-API/Admin/ExtraServices/editExtraServices.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       if (response.data.status === 'yes') {
-        toast.success('Room edited Successfully!', {
+        toast.success('Extra Service edited Successfully!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -132,10 +170,11 @@ function ExtraServices({ isChecked }) {
         });
         handleClose();
         fetchData();
+        setEdonts('');
+        setEdos('');
         setEname('');
         setEprice('');
-        setEdos('');
-        setEdonts('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -264,6 +303,8 @@ function ExtraServices({ isChecked }) {
       setEprice(selectedeId.extraServices_price)
       setEdos(selectedeId.extraServices_dos)
       setEdonts(selectedeId.extraServices_donts)
+      const eImages = selectedeId.images
+      setImages(eImages);
     } else {
       console.log("error");
     }
@@ -292,6 +333,9 @@ function ExtraServices({ isChecked }) {
         setEprice={setEprice}
         setEdos={setEdos}
         setEdonts={setEdonts}
+        eId={eId}
+        handleImageChange={handleImageChange}
+        images={imagesArray}
       />
       <div className='rooms-body'>
         <div className='rooms-top'>
@@ -320,6 +364,7 @@ function ExtraServices({ isChecked }) {
                   <th>Extra Services Price </th>
                   <th>Extra Services Do's</th>
                   <th>Extra Services Don'ts</th>
+                  <th style={{ textAlign: "center" }}>Images</th>
                   <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                 </tr>
               </thead>
@@ -331,6 +376,15 @@ function ExtraServices({ isChecked }) {
                     <td>{data.extraServices_price} / day</td>
                     <td className="room-description">{data.extraServices_dos}</td>
                     <td className="room-description">{data.extraServices_donts}</td>
+                    <td style={{ textAlign: "center" }}>
+                      {data.images.split(',')[0] && (
+                        <img
+                          src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                          alt={`Image`}
+                          style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px" }}
+                        />
+                      )}
+                    </td>
                     <td style={{ textAlign: "center" }}>
                       <i className='cancel-bk' onClick={() => handleEdit(data.extraServices_id)}>
                         <CiEdit />

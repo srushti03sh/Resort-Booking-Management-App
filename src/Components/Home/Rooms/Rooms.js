@@ -1,14 +1,26 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MdOutlineBed } from "react-icons/md";
 import { PiBathtub } from "react-icons/pi";
 import { MdOutlineFreeBreakfast } from "react-icons/md";
 import { GiTowel } from "react-icons/gi";
 import { FaArrowRight } from "react-icons/fa6";
-import "./Rooms.css"
-import { HomeRooms } from '../../../Data/Data';
+import "./Rooms.css";
+import axios from 'axios';
 
 function Rooms({ RoomRef }) {
+  const [allRoomData, setAllRoomData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await axios.post("http://localhost/Resort-API/Admin/RoomPage/showRooms.php", {});
+    const roomData = response.data.roomData;
+    setAllRoomData(roomData);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className='rooms1 section-padding' ref={RoomRef}>
       <div className='container'>
@@ -19,62 +31,96 @@ function Rooms({ RoomRef }) {
           </div>
         </div>
         <div className="row">
-          {
-            HomeRooms.map((data, index) => (
-              <div className={data.size} key={index}>
-                <Link to="/JuniorSuite">
-                  <div className="item">
-                    <div className="position-re o-hidden">
-                      <img src={data.src} alt="" />
-                    </div>
-                    <span className="category">
-                      <Link to={data.path}>Book</Link>
-                    </span>
-                    <div className="con">
-                      <h6>
-                        <Link to={data.path}>{data.price}</Link>
-                      </h6>
-                      <h5>
-                        <Link to={data.path}>{data.title}</Link>
-                      </h5>
-                      <div className="line">
+          {allRoomData.slice(0, 3).map((data, index) => (
+            <div className="col-md-4" key={index}>
+              <Link to={`/CommonRoomDetails/${data.room_id}`}>
+                <div className="item">
+                  <div className="position-re o-hidden">
+                    {data.images.split(',')[0] && (
+                      <img
+                        src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                        alt={`Image`}
+                      />
+                    )}
+                  </div>
+                  <span className="category">
+                    <Link to={data.room_id}>Book</Link>
+                  </span>
+                  <div className="con">
+                    <h6>
+                      <Link to={data.room_id}>{data.price} / Night</Link>
+                    </h6>
+                    <h5>
+                      <Link to={data.room_id}>{data.roomType}</Link>
+                    </h5>
+                    <div className="line"></div>
+                    <div className="row facilities">
+                      <div className="col col-md-7 flex item-center">
+                        <ul>
+                          <li><i><MdOutlineBed /></i></li>
+                          <li><i><PiBathtub /></i></li>
+                          <li><i><MdOutlineFreeBreakfast /></i></li>
+                          <li><i><GiTowel /></i></li>
+                        </ul>
                       </div>
-                      <div className="row facilities">
-                        <div className="col col-md-7 flex item-center">
-                          <ul>
-                            <li>
-                              <i><MdOutlineBed /></i>
-                            </li>
-                            <li>
-                              <i><PiBathtub /></i>
-                            </li>
-                            <li>
-                              <i><MdOutlineFreeBreakfast /></i>
-                            </li>
-                            <li>
-                              <i><GiTowel /></i>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col col-md-5 text-end flex item-center">
-                          <div className="permalink">
-                            <Link to={data.path}>
-                              Details
-                              <i><FaArrowRight /></i>
-                            </Link>
-                          </div>
+                      <div className="col col-md-5 text-end flex item-center">
+                        <div className="permalink">
+                          <Link to={data.room_id}>Details <i><FaArrowRight /></i></Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                </Link>
-              </div>
-            ))
-          }
+                </div>
+              </Link>
+            </div>
+          ))}
+          {allRoomData.slice(3, 5).map((data, index) => (
+            <div className="col-md-6" key={index}>
+              <Link to={data.room_id}>
+                <div className="item">
+                  <div className="position-re o-hidden">
+                    {data.images.split(',')[0] && (
+                      <img
+                        src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                        alt={`Image`}
+                      />
+                    )}
+                  </div>
+                  <span className="category">
+                    <Link to={data.room_id}>Book</Link>
+                  </span>
+                  <div className="con">
+                    <h6>
+                      <Link to={data.room_id}>{data.price} / Night</Link>
+                    </h6>
+                    <h5>
+                      <Link to={data.room_id}>{data.roomType}</Link>
+                    </h5>
+                    <div className="line"></div>
+                    <div className="row facilities">
+                      <div className="col col-md-7 flex item-center">
+                        <ul>
+                          <li><i><MdOutlineBed /></i></li>
+                          <li><i><PiBathtub /></i></li>
+                          <li><i><MdOutlineFreeBreakfast /></i></li>
+                          <li><i><GiTowel /></i></li>
+                        </ul>
+                      </div>
+                      <div className="col col-md-5 text-end flex item-center">
+                        <div className="permalink">
+                          <Link to={data.room_id}>Details <i><FaArrowRight /></i></Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Rooms
+export default Rooms;

@@ -22,6 +22,8 @@ function AllFacilities({ isChecked }) {
   const [facilityIdToDisable, setFacilityIdToDisable] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const [images, setImages] = useState("");
+  const maxImageCount = 3; // Set your desired maximum image count here
 
   const handleClose = () => {
     setShow(false);
@@ -29,6 +31,8 @@ function AllFacilities({ isChecked }) {
     setFname('');
     setFdes('');
   };
+
+  const imagesArray = typeof images === 'string' ? images.split(',') : images;
 
   const handleShow = () => setShow(true);
 
@@ -52,12 +56,33 @@ function AllFacilities({ isChecked }) {
     fetchData();
   }, []);
 
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files;
+    if (selectedFiles.length > maxImageCount) {
+      alert(`Please select no more than ${maxImageCount} images.`);
+      e.target.value = null; // Clear the file input
+      return;
+    }
+    setImages(selectedFiles);
+  };
+
   const addFaciltity = async () => {
+
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/FacilityPage/addFacility.php", {
-        fname: fname,
-        fDes: fdes
+      const formData = new FormData();
+      formData.append('fdes', fdes);
+      formData.append('fname', fname);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+
+      const response = await axios.post("http://localhost/Resort-API/Admin/FacilityPage/addFacility.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
+
       if (response.data.status === 'yes') {
         toast.success('Facility Added Successfully!', {
           position: "top-center",
@@ -70,10 +95,11 @@ function AllFacilities({ isChecked }) {
           theme: "dark",
           transition: Slide,
         });
-        fetchData();
         handleClose();
+        fetchData();
         setFname('');
         setFdes('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -87,7 +113,7 @@ function AllFacilities({ isChecked }) {
           transition: Slide,
         });
       }
-    } catch {
+    } catch (error) {
       toast.error('Something Went Wrong!', {
         position: "top-center",
         autoClose: 5000,
@@ -99,16 +125,24 @@ function AllFacilities({ isChecked }) {
         theme: "dark",
         transition: Slide,
       });
-      console.log("error");
+      console.log("error", error);
     }
   };
 
   const editRoom = async () => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/FacilityPage/editFacility.php", {
-        fname: fname,
-        fDes: fdes,
-        fid: facilityId
+      const formData = new FormData();
+      formData.append('fdes', fdes);
+      formData.append('fname', fname);
+      formData.append('fid', facilityId);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+      const response = await axios.post("http://localhost/Resort-API/Admin/FacilityPage/editFacility.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       if (response.data.status === 'yes') {
         toast.success('Facility edited Successfully!', {
@@ -126,6 +160,7 @@ function AllFacilities({ isChecked }) {
         fetchData();
         setFname('');
         setFdes('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -253,6 +288,8 @@ function AllFacilities({ isChecked }) {
     if (selectedFacilityId) {
       setFname(selectedFacilityId.facility_name)
       setFdes(selectedFacilityId.facility_des)
+      const facilityImages = selectedFacilityId.images
+      setImages(facilityImages);
     } else {
       console.log("error");
     }
@@ -276,6 +313,8 @@ function AllFacilities({ isChecked }) {
         show={show}
         handleSubmit={handleSubmit}
         facilityId={facilityId}
+        handleImageChange={handleImageChange}
+        images={imagesArray}
       />
       <div className='rooms-body'>
         <div className='rooms-top'>
@@ -303,6 +342,7 @@ function AllFacilities({ isChecked }) {
                     <th>Facility ID</th>
                     <th>Facility Name</th>
                     <th>Facility Description</th>
+                    <th style={{ textAlign: "center" }}>Images</th>
                     <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                   </tr>
                 </thead>
@@ -312,6 +352,15 @@ function AllFacilities({ isChecked }) {
                       <td>{data.facility_id}</td>
                       <td>{data.facility_name}</td>
                       <td className="room-description">{data.facility_des}</td>
+                      <td style={{ textAlign: "center" }}>
+                        {data.images.split(',')[0] && (
+                          <img
+                            src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
+                            alt={`Image`}
+                            style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px" }}
+                          />
+                        )}
+                      </td>
                       <td style={{ textAlign: "center" }}>
                         <i className='cancel-bk'>
                           <CiEdit onClick={() => handleEdit(data.facility_id)} />

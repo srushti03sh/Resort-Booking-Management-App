@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
-import quot from "../../../Images/quot.png"
+import quot from "../../../Images/quot.png";
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import "./Testimonials.css"
-import { HomeTestimonials } from '../../../Data/Data';
+import "./Testimonials.css";
+import axios from 'axios';
 
 function Testimonial() {
+  const [allTestimonials, setAllTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const options = {
     responsiveClass: true,
@@ -17,10 +19,27 @@ function Testimonial() {
       },
       1000: {
         items: 1,
-
       }
     },
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post("http://localhost/Resort-API/Admin/TestimonialsPage/TestimonialsPage.php", {});
+        setAllTestimonials(response.data.allTestimonials.slice(0, 10));
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading testimonials...</div>;
+  }
 
   return (
     <div className='testimonials' data-overlay-dark="3">
@@ -36,18 +55,15 @@ function Testimonial() {
                 </div>
                 <OwlCarousel items={2} margin={30} autoplay={true} loop={true} {...options}>
                   {
-                    HomeTestimonials.map((data, index) => (
+                    allTestimonials.map((data, index) => (
                       <div className="item" key={index}>
                         <span className="quote">
                           <img src={quot} alt="" />
                         </span>
                         <p>
-                          {data.des}
+                          {data.msg}
                         </p>
                         <div className="info">
-                          <div className="author-img">
-                            <img src={data.src} alt="" />
-                          </div>
                           <div className="cont">
                             <span>
                               <i className="star-rating"></i>
@@ -56,7 +72,7 @@ function Testimonial() {
                               <i className="star-rating"></i>
                               <i className="star-rating"></i>
                             </span>
-                            <h6>{data.name}</h6>
+                            <h6>{data.fname} {data.lname}</h6>
                             <span>Guest review</span>
                           </div>
                         </div>
@@ -70,7 +86,7 @@ function Testimonial() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Testimonial
+export default Testimonial;

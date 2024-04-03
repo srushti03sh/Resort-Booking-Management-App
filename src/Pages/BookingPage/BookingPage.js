@@ -195,9 +195,15 @@ function BookingPage() {
               </div>
               <div className='btn-outer col-md-12'>
                 <div className='col-lg-4 col-md-12 col-sm-12 col-12'>
-                  <button className='book-btn' onClick={handleBooking}>
-                    confirm booking
-                  </button>
+                  {loginData.userStatus === 'blocked' ?
+                    <button className='book-btn' disabled style={{ cursor: "not-allowed" }}>
+                      confirm booking
+                    </button>
+                    :
+                    <button className='book-btn' onClick={handleBooking}>
+                      confirm booking
+                    </button>
+                  }
                 </div>
               </div>
               <div className='events-link-outer'>

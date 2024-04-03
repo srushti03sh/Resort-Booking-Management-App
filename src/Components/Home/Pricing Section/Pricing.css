@@ -85,7 +85,21 @@
     border: solid 1px #aa8453;
 }
 
-.owl-dots {
+.pricing .owl-dots {
+    display: none;
+}
+
+.list-unstyled {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.list-unstyled li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 1 50%;
+    /* Display two items per line */
+    margin-right: 10px;
+    /* Adjust margin as needed */
 }

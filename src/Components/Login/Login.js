@@ -71,6 +71,7 @@ function Login() {
       const lnameLogin = response.data.lname;
       const roleLogin = response.data.role;
       const id = response.data.id;
+      const userStatus = response.data.userStatus
 
       if (response.data.status === "no") {
         navigate("/Login");
@@ -87,7 +88,7 @@ function Login() {
         });
       } else if (response.data.status === "yes") {
         localStorage.setItem('loginData', JSON.stringify({
-          email, genderLogin, fnameLogin, lnameLogin, roleLogin, id
+          email, genderLogin, fnameLogin, lnameLogin, roleLogin, id, userStatus
         }));
         navigate("/");
       }

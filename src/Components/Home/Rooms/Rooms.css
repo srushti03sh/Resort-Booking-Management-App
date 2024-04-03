@@ -31,6 +31,7 @@ h6 {
 
 .rooms1 .item img {
     transition: all .5s;
+    height: 300px;
 }
 
 .rooms1 .item .category {
@@ -46,8 +47,8 @@ h6 {
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 3px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: #aa8453;
+    border: 1px solid #fff;
     font-family: 'Barlow Condensed', sans-serif;
     padding: 10px 3px;
     line-height: 1.5em;

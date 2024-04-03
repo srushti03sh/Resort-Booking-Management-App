@@ -10,21 +10,9 @@ import Price1 from "../Images/price1.jpg"
 import Price2 from "../Images/price2.jpg"
 import Price3 from "../Images/price3.jpg"
 import Price4 from "../Images/price4.jpg"
-import { IoFitnessOutline } from "react-icons/io5";
-import { IoCarSportOutline } from "react-icons/io5";
-import { IoBedOutline } from "react-icons/io5";
-import { LiaSwimmingPoolSolid } from "react-icons/lia";
-import { IoWifiSharp } from "react-icons/io5";
-import { MdFastfood } from "react-icons/md";
 import test1 from "../Images/test1.jpg"
 import test2 from "../Images/test2.jpg"
 import test3 from "../Images/test3.jpg"
-import n4 from "../Images/n4.jpg"
-import n5 from "../Images/n5.jpg"
-import n6 from "../Images/n6.jpg"
-import n1 from "../Images/n1.jpg"
-import n2 from "../Images/n2.jpg"
-import n3 from "../Images/n3.jpg"
 import c1 from "../Images/c1.png"
 import c2 from "../Images/c2.png"
 import c3 from "../Images/c3.png"
@@ -77,33 +65,6 @@ export const ExtraServices = [
     },
 ];
 
-export const HomeFacilities = [
-    {
-        id: 1, icon: <IoFitnessOutline />, title: "Fitness Center",
-        des: "Fully equipped fitness facilities with exercise machines, free weights, or yoga sessions."
-    },
-    {
-        id: 2, icon: <IoCarSportOutline />, title: "Parking Space",
-        des: "On-site parking options, with secure and convenient access for guests with vehicles."
-    },
-    {
-        id: 3, icon: <IoBedOutline />, title: "Room Service",
-        des: "Our dedicated team is at your service to fulfill your culinary desires."
-    },
-    {
-        id: 4, icon: <LiaSwimmingPoolSolid />, title: "Swimming Pool",
-        des: "Swimming pools, including children's pools, for relaxation and recreation."
-    },
-    {
-        id: 5, icon: <IoWifiSharp />, title: "Fibre Internet",
-        des: "Complimentary Wi-Fi access available throughout the premises."
-    },
-    {
-        id: 6, icon: <MdFastfood />, title: "Restaurant",
-        des: "Offering a variety of options, including breakfast, lunch, dinner, snacks, and beverages."
-    }
-];
-
 export const HomeTestimonials = [
     {
         id: 1, des: "From the moment we arrived at the hotel, we were greeted with warmth and professionalism. The staff went above and beyond to ensure that our stay was nothing short of exceptional.The room was immaculate, with stunning views and luxurious amenities that exceeded our expectations.The attention to detail in every aspect of our experience, from the personalized service to the exquisite dining options, was truly remarkable.We felt pampered and cared for throughout our stay,and we can't wait to return. Thank you to the entire team for making our getaway unforgettable.", name: "Emily Brown", src: test1
@@ -114,15 +75,6 @@ export const HomeTestimonials = [
     {
         id: 3, des: "Our experience at the hotel was phenomenal! The room was luxurious, the amenities were top-notch, and the staff were encredibly attentive.From check-in to check - out, everything exceeded our expectations.We can't wait to return for another unforgettable stay!", name: "Olivia martin", src: test3
     },
-];
-
-export const HomeNews = [
-    { id: 1, src: n1, month: "Dec", date: "08", title: "Restaurant", des: "Historic restaurant renovated in resort" },
-    { id: 2, src: n2, month: "Feb", date: "25", title: "Spa", des: "Benefits of Spa Treatment for Health" },
-    { id: 3, src: n3, month: "Jan", date: "05", title: "Bathrooms", des: "Hotel Bathrooms Collection" },
-    { id: 4, src: n4, month: "Sep", date: "19", title: "Health", des: "Weight Loss with Fitness Health Club" },
-    { id: 5, src: n5, month: "Aug", date: "26", title: "Design", des: "Retro Lighting Design in the Hotels" },
-    { id: 6, src: n6, month: "Jul", date: "27", title: "Health", des: "Benefits of Swimming for Health" },
 ];
 
 export const HomeClients = [

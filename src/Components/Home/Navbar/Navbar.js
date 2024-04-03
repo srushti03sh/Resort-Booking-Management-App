@@ -84,24 +84,8 @@ function Navbar() {
               <li className={`nav-item ${location.pathname === "/" ? 'active' : ''}`}>
                 <Link className='nav-link' to="/">Home</Link>
               </li>
-              <li className={`nav-item ${location.pathname.includes("/FitnessCenter") || location.pathname.includes("/HealthClub") || location.pathname.includes("/Games") ? 'active' : ''}`} onClick={handleShowDropdown}>
-                <Link className='nav-link'>
-                  amenities
-                  <i>
-                    <IoIosArrowDown />
-                  </i>
-                </Link>
-                <ul className={`dropdown ${showDropdown ? 'show' : ''}`}>
-                  <li className={`dropdown-link ${location.pathname === "/FitnessCenter" ? 'active' : ''}`}>
-                    <Link to="/FitnessCenter">Fitness center</Link>
-                  </li>
-                  <li className={`dropdown-link ${location.pathname === "/HealthClub" ? 'active' : ''}`}>
-                    <Link to="/HealthClub">Health club & Pool</Link>
-                  </li>
-                  <li className={`dropdown-link ${location.pathname === "/Games" ? 'active' : ''}`}>
-                    <Link to="/Games">Game Zone</Link>
-                  </li>
-                </ul>
+              <li className={`nav-item ${location.pathname === "/Facilities" ? 'active' : ''}`}>
+                <Link className='nav-link' to="/Facilities">Facilities</Link>
               </li>
               <li className={`nav-item ${location.pathname === "/Restaurant" ? 'active' : ''}`}>
                 <Link className='nav-link' to="/Restaurant">Restaurant</Link>

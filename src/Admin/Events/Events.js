@@ -30,6 +30,8 @@ function Events({ isChecked }) {
   const [tprice, setTprice] = useState('');
   const [tname, setTname] = useState('');
   const [tid, setTid] = useState('');
+  const [images, setImages] = useState("");
+  const maxImageCount = 3; // Set your desired maximum image count here
 
   const handleClose = () => {
     setShow(false)
@@ -43,6 +45,18 @@ function Events({ isChecked }) {
   const handleEdit = async (eid) => {
     handleShow();
     setEId(eid)
+  };
+
+  const imagesArray = typeof images === 'string' ? images.split(',') : images;
+
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files;
+    if (selectedFiles.length > maxImageCount) {
+      alert(`Please select no more than ${maxImageCount} images.`);
+      e.target.value = null; // Clear the file input
+      return;
+    }
+    setImages(selectedFiles);
   };
 
   const handleEventCancel = async (eid) => {
@@ -122,13 +136,23 @@ function Events({ isChecked }) {
 
   const addTheme = async () => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/addThemes.php", {
-        tname: tname,
-        tprice: tprice,
-        tdes: tdes,
-        tcap: tcap,
-        ename: ename
+      const formData = new FormData();
+      formData.append('tname', tname);
+      formData.append('tprice', tprice);
+      formData.append('tdes', tdes);
+      formData.append('tcap', tcap);
+      formData.append('ename', ename);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+
+      const response = await axios.post("http://localhost/Resort-API/Admin/ManageThemes/addThemes.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
+
       if (response.data.status === 'yes') {
         toast.success('Theme Added Successfully!', {
           position: "top-center",
@@ -141,12 +165,15 @@ function Events({ isChecked }) {
           theme: "dark",
           transition: Slide,
         });
-        fetchData();
+        // Reset form fields and image state after successful upload
         handleClose();
-        setTname('')
-        setTdes('')
-        setTcap('')
-        setTprice('')
+        fetchData();
+        setTname('');
+        setTprice('');
+        setTdes('');
+        setTcap('');
+        setEname('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -160,7 +187,7 @@ function Events({ isChecked }) {
           transition: Slide,
         });
       }
-    } catch {
+    } catch (error) {
       toast.error('Something Went Wrong!', {
         position: "top-center",
         autoClose: 5000,
@@ -172,7 +199,7 @@ function Events({ isChecked }) {
         theme: "dark",
         transition: Slide,
       });
-      console.log("error");
+      console.log("error", error);
     }
   }
   useEffect(() => {
@@ -343,7 +370,7 @@ function Events({ isChecked }) {
     <>
       <Toast />
       <Header
-        isChecked={isChecked} header="Extra Services"
+        isChecked={isChecked} header="Events"
       />
       <CnfModal
         onShow={modalShow}
@@ -374,6 +401,8 @@ function Events({ isChecked }) {
         tdes={tdes}
         tprice={tprice}
         addEvent={addEvent}
+        handleImageChange={handleImageChange}
+        images={imagesArray}
       />
       <div className='rooms-body'>
         <div className='rooms-top'>

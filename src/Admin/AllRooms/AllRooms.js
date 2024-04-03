@@ -12,8 +12,9 @@ import Toast from '../../Common/Toast/Toast';
 import RoomModal from '../../Common/AddEditModal/RoomModal';
 
 function AllRooms({ isChecked }) {
-  const { setRno, rNo, setRcap, rCap, setRdes, rDes, setRtype, rType, roomId, show, edate, modalShow, handleCancelConfirmation, handleClose, setRprice, rPrice, handleSubmit, handleShow, filter, setFilter, filterRooms, handleEdit, handleEventCancel, enableRoom } = AllRoomsLogic();
-
+  const { setRno, rNo, setRcap, rCap, setRdes, rDes, setRtype, rType, roomId, show, edate, modalShow, handleCancelConfirmation, handleClose, setRprice, rPrice, handleSubmit, handleShow, filter, images, setFilter, filterRooms, handleEdit, handleEventCancel, enableRoom, handleImageChange } = AllRoomsLogic();
+  
+  const imagesArray = typeof images === 'string' ? images.split(',') : images;
   return (
     <>
       <Toast />
@@ -40,6 +41,8 @@ function AllRooms({ isChecked }) {
         rType={rType}
         setRprice={setRprice}
         rPrice={rPrice}
+        handleImageChange={handleImageChange}
+        images={imagesArray}
       />
       <div className='rooms-body'>
         <div className='rooms-top'>
@@ -69,7 +72,7 @@ function AllRooms({ isChecked }) {
                   <th>Room Capacity</th>
                   <th>Total Room</th>
                   <th>Price</th>
-                  <th>Images</th>
+                  <th style={{ textAlign: "center" }}>Images</th>
                   <th style={{ textAlign: "center" }} colSpan={2}>Action</th>
                 </tr>
               </thead>
@@ -82,12 +85,12 @@ function AllRooms({ isChecked }) {
                     <td>{data.room_capacity}</td>
                     <td>{data.total_room}</td>
                     <td>{data.price}</td>
-                    <td>
+                    <td style={{ textAlign: "center" }}>
                       {data.images.split(',')[0] && (
                         <img
                           src={`http://localhost/Resort-API/uploads/${data.images.split(',')[0]}`}
                           alt={`Image`}
-                          style={{ maxWidth: '100px', border: "2px solid #aa8453" }}
+                          style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px" }}
                         />
                       )}
                     </td>

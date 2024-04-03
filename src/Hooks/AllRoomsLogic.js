@@ -17,6 +17,18 @@ const AllRoomsLogic = () => {
   const [edate, setEdate] = useState('');
   const [filter, setFilter] = useState('All');
   const [roomId, setRoomId] = useState(null);
+  const [images, setImages] = useState("");
+  const maxImageCount = 3; // Set your desired maximum image count here
+
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files;
+    if (selectedFiles.length > maxImageCount) {
+      alert(`Please select no more than ${maxImageCount} images.`);
+      e.target.value = null; // Clear the file input
+      return;
+    }
+    setImages(selectedFiles);
+  };
 
   const handleClose = () => {
     setShow(false)
@@ -53,14 +65,25 @@ const AllRoomsLogic = () => {
   }, []);
 
   const addRooms = async () => {
+
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/RoomPage/addRoom.php", {
-        rType: rType,
-        rDes: rDes,
-        rCap: rCap,
-        tRoom: rNo,
-        rPrice: rPrice
+      const formData = new FormData();
+      formData.append('rType', rType);
+      formData.append('rDes', rDes);
+      formData.append('rCap', rCap);
+      formData.append('tRoom', rNo);
+      formData.append('rPrice', rPrice);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+
+      const response = await axios.post("http://localhost/Resort-API/Admin/RoomPage/addRoom.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
+
       if (response.data.status === 'yes') {
         toast.success('Room Added Successfully!', {
           position: "top-center",
@@ -73,13 +96,15 @@ const AllRoomsLogic = () => {
           theme: "dark",
           transition: Slide,
         });
-        fetchData();
+        // Reset form fields and image state after successful upload
         handleClose();
+        fetchData();
         setRtype('');
         setRdes('');
         setRcap('');
         setRno('');
         setRprice('');
+        setImages([]);
       } else if (response.data.status === 'no') {
         toast.error('Something Went Wrong!', {
           position: "top-center",
@@ -93,7 +118,7 @@ const AllRoomsLogic = () => {
           transition: Slide,
         });
       }
-    } catch {
+    } catch (error) {
       toast.error('Something Went Wrong!', {
         position: "top-center",
         autoClose: 5000,
@@ -105,19 +130,27 @@ const AllRoomsLogic = () => {
         theme: "dark",
         transition: Slide,
       });
-      console.log("error");
+      console.log("error", error);
     }
   };
 
   const editRoom = async () => {
     try {
-      const response = await axios.post("http://localhost/Resort-API/Admin/RoomPage/EditRoom.php", {
-        rType: rType,
-        rDes: rDes,
-        rCap: rCap,
-        tRoom: rNo,
-        rPrice: rPrice,
-        rid: roomId
+      const formData = new FormData();
+      formData.append('rType', rType);
+      formData.append('rDes', rDes);
+      formData.append('rCap', rCap);
+      formData.append('tRoom', rNo);
+      formData.append('rPrice', rPrice);
+      formData.append('rid', roomId);
+
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images[]', images[i]);
+      }
+      const response = await axios.post("http://localhost/Resort-API/Admin/RoomPage/EditRoom.php", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       if (response.data.status === 'yes') {
         toast.success('Room edited Successfully!', {
@@ -273,12 +306,14 @@ const AllRoomsLogic = () => {
       setRcap(selectedRoomId.room_capacity)
       setRno(selectedRoomId.total_room)
       setRprice(selectedRoomId.price)
+      const roomImages = selectedRoomId.images
+      setImages(roomImages);
     } else {
-      console.log("error");
+      console.error("Selected room not found.");
     }
   }, [roomId, allRoomData])
 
-  return { setRno, rNo, setRcap, rCap, setRdes, rDes, setRtype, rType, roomId, show, edate, modalShow, handleCancelConfirmation, handleClose, setRprice, rPrice, handleSubmit, handleShow, filter, setFilter, filterRooms, handleEdit, handleEventCancel, enableRoom }
+  return { setRno, rNo, setRcap, rCap, setRdes, rDes, setRtype, rType, roomId, show, edate, modalShow, handleImageChange, handleCancelConfirmation, handleClose, setRprice, rPrice, handleSubmit, handleShow, filter, setFilter, filterRooms, handleEdit, handleEventCancel, enableRoom, images }
 }
 
 export default AllRoomsLogic

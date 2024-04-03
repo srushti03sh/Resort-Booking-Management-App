@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 
-function ThemeModal({ handleSubmit, handleClose, show, nename, themeShow, setTcap, setTname, setTprice, setTdes, tcap, tname, tdes, tprice, ename, setEname, tid, onSaveStatus, addEvent, addTheme }) {
+function ThemeModal({ handleSubmit, handleClose, show, nename, themeShow, setTcap, setTname, setTprice, setTdes, tcap, tname, tdes, tprice, ename, setEname, tid, onSaveStatus, handleImageChange, images }) {
 
   const [eventData, setEventData] = useState([]);
 
@@ -27,6 +27,22 @@ function ThemeModal({ handleSubmit, handleClose, show, nename, themeShow, setTca
       onSaveStatus('failed'); // Pass save status to parent component
     }
   };
+
+  const imagesArray = Array.isArray(images) ? images : [];
+
+  const handleImageChangeRestricted = (e) => {
+    const selectedImages = Array.from(e.target.files);
+
+    // Check if number of selected images is exactly 3
+    if (selectedImages.length === 3) {
+      handleImageChange(e);
+    } else {
+      // Reset the input field if number of images is not 3
+      e.target.value = null;
+      alert("Please select exactly 3 images.");
+    }
+  };
+
   return (
     <>
       <Modal
@@ -54,7 +70,27 @@ function ThemeModal({ handleSubmit, handleClose, show, nename, themeShow, setTca
               <input type='text' placeholder='Event Name' value={nename} readOnly />
             }
             <input type='text' placeholder='Theme Capacity' value={tcap} onChange={(e) => setTcap(e.target.value)} />
+            <input type='file' name="images[]" onChange={handleImageChangeRestricted} accept="image/*" multiple />
           </form>
+          {
+            tid ?
+              (imagesArray?.length > 0 && (
+                <div className="selected-images">
+                  <p>Inserted Images:</p>
+                  <ul>
+                    {imagesArray.map((imageName, index) => (
+                      <img
+                        key={index}
+                        src={`http://localhost/Resort-API/uploads/${imageName}`}
+                        alt={`Image ${index + 1}`}
+                        style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px", marginRight: "10px" }}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              ))
+              : ""
+          }
         </Modal.Body>
         <Modal.Footer>
           <button onClick={handleClose} className='add-form-btn'>
