@@ -40,16 +40,14 @@ function RoomModal({ roomId, handleClose, images, handleSubmit, setRno, rNo, set
           imagesArray?.length > 0 && (
             <div className="selected-images">
               <p>Inserted Images:</p>
-              <ul>
-                {imagesArray.map((imageName, index) => (
-                  <img
-                    key={index}
-                    src={`http://localhost/Resort-API/uploads/${imageName}`}
-                    alt={`Image ${index + 1}`}
-                    style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px", marginRight: "10px" }}
-                  />
-                ))}
-              </ul>
+              {imagesArray.map((imageName, index) => (
+                <img
+                  key={index}
+                  src={`http://localhost/Resort-API/uploads/${imageName}`}
+                  alt={`Image ${index + 1}`}
+                  style={{ maxWidth: '100px', border: "2px solid #aa8453", height: "65px", marginRight: "10px" }}
+                />
+              ))}
             </div>
           )
         ) : ""}

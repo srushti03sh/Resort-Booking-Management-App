@@ -9,7 +9,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import "./Restaurant.css"
-import { resMenu } from '../../Data/Data';
+import { indianMenu } from '../../Data/Data';
 import { resSlider } from '../../Data/Data';
 
 function Restaurant() {
@@ -91,7 +91,7 @@ function Restaurant() {
               <div className="section-title">The Restaurant</div>
             </div>
             <div className="col-md-12">
-              <p className="mb-30">Led by Chef de Micheal Martin, The Restaurant is celebrated for its excellent cuisine and unique ambience. The gorgeous dining room features three open studio kitchens, allowing you to enjoy the sights and sounds of the culinary artistry on display. The menu showcases both Asian and European influences, with a tempting selection of classic favorites and creative dishes for you to sample. Cheese connoisseurs will be drawn to the The Wine and Cheese Cellar, housed in five-meter-high glass walls, where our knowledgeable staff can introduce you to some of New York's greatest culinary treasures.</p>
+              <p className="mb-30">Led by Chef de Micheal Martin, The Restaurant is celebrated for its excellent cuisine and unique ambience. The gorgeous dining room features three open studio kitchens, allowing you to enjoy the sights and sounds of the culinary artistry on display. The menu showcases both Asian and European influences, with a tempting selection of classic favorites and creative dishes for you to sample. Cheese connoisseurs will be drawn to the The Wine and Cheese Cellar, housed in five-meter-high glass walls, where our knowledgeable staff can introduce you to some of India's greatest culinary treasures.</p>
               <h6>Hours</h6>
               <ul className="list-unstyled page-list mb-30">
                 <li>
@@ -134,41 +134,41 @@ function Restaurant() {
           <div className='row'>
             <div className='col-md-12 text-center'>
               <Tabs
-                defaultActiveKey="Starters"
+                defaultActiveKey="Appetizers"
                 className="mb-3"
                 justify
               >
                 {
-                  resMenu.map((data, index) => (
-                    <Tab eventKey={data.eventKey} title={data.title} key={index}>
+                  indianMenu.map((data, index) => (
+                    <Tab eventKey={data.category} title={data.category} key={index}>
                       <div className="cont">
                         <div className="row">
                           <div className="col-md-5">
                             <div className="menu-info">
-                              <h5>{data.i1}<span className="price">{data.ip1}<LiaRupeeSignSolid /></span></h5>
-                              <p>{data.ides1}</p>
+                              <h5>{data.item1}<span className="price">{data.price1}</span></h5>
+                              <p>{data.description1}</p>
                             </div>
                             <div className="menu-info">
-                              <h5>{data.i2}<span className="price">{data.ip2}<LiaRupeeSignSolid /></span></h5>
-                              <p>{data.ides2}</p>
+                              <h5>{data.item2}<span className="price">{data.price2}</span></h5>
+                              <p>{data.description2}</p>
                             </div>
                             <div className="menu-info">
-                              <h5>{data.i3}<span className="price">{data.ip3}<LiaRupeeSignSolid /></span></h5>
-                              <p>{data.ides3}</p>
+                              <h5>{data.item3}<span className="price">{data.price3}</span></h5>
+                              <p>{data.description3}</p>
                             </div>
                           </div>
                           <div className="col-md-5 offset-md-2">
                             <div className="menu-info">
-                              <h5>{data.i4}<span className="price">{data.ip4}<LiaRupeeSignSolid /></span></h5>
-                              <p>{data.ides4}</p>
+                              <h5>{data.item4}<span className="price">{data.price4}</span></h5>
+                              <p>{data.description4}</p>
                             </div>
                             <div className="menu-info">
-                              <h5>{data.i5}<span className="price">{data.ip5}<LiaRupeeSignSolid /></span></h5>
-                              <p>{data.ides5}</p>
+                              <h5>{data.item5}<span className="price">{data.price5}</span></h5>
+                              <p>{data.description5}</p>
                             </div>
                             <div className="menu-info">
-                              <h5>{data.i6}<span className="price">{data.ip6}<LiaRupeeSignSolid /></span></h5>
-                              <p>{data.ides6}</p>
+                              <h5>{data.item6}<span className="price">{data.price6}</span></h5>
+                              <p>{data.description6}</p>
                             </div>
                           </div>
                         </div>

@@ -27,7 +27,9 @@ function Testimonial() {
     const fetchData = async () => {
       try {
         const response = await axios.post("http://localhost/Resort-API/Admin/TestimonialsPage/TestimonialsPage.php", {});
-        setAllTestimonials(response.data.allTestimonials.slice(0, 10));
+        const allTest = response.data.allTestimonials;
+        const enabledTest = allTest.filter(test => test.Status === 'enable');
+        setAllTestimonials(enabledTest.slice(0, 10));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching testimonials:", error);

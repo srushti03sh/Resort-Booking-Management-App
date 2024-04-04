@@ -62,7 +62,7 @@ function CalendarEvents() {
             <div>
               <div className='cal-label'>
                 <div className='label-cal'>
-                  <span></span><div>Bookings / Current Date</div>
+                  <span></span><div style={{ color: "#1b1b1b" }}>Bookings / Current Date</div>
                 </div>
               </div>
               <Calendar

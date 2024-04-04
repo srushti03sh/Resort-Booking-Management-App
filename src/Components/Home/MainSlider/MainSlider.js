@@ -41,13 +41,6 @@ const MainSlider = () => {
     }
   };
 
-  const RoomRef = useRef(null);
-  const handleBtnClick = () => {
-    if (RoomRef.current) {
-      RoomRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <>
       <div className="video-fullscreen-wrap">
@@ -75,7 +68,7 @@ const MainSlider = () => {
                             {data.title}
                           </h1>
                           <div className="butn-dark wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".9s">
-                            <Link to="#" onClick={handleBtnClick}><span>Rooms & Suites</span></Link>
+                            <Link to="/AllRooms"><span>Rooms & Suites</span></Link>
                           </div>
                         </div>
                       </div>
@@ -101,7 +94,6 @@ const MainSlider = () => {
         </Link>
       </div>
       <About Aboutref={Aboutref} />
-      <Rooms RoomRef={RoomRef} />
     </>
   )
 }

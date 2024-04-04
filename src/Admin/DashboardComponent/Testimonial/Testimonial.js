@@ -16,7 +16,6 @@ function Testimonial() {
             </p>
           </div>
           <div className='rev-data'>
-            <img src={test2} />
             <div className='rev-name'>
               <h6>Nolan White</h6>
             </div>
@@ -31,7 +30,6 @@ function Testimonial() {
             </p>
           </div>
           <div className='rev-data'>
-            <img src={test1} />
             <div className='rev-name'>
               <h6>Emily Brown</h6>
             </div>

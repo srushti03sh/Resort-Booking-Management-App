@@ -1,7 +1,7 @@
 .pagination {
     --bs-pagination-color: #aa8453;
-    --bs-pagination-bg: #1b1b1b;
-    --bs-pagination-border-color: #1b1b1b;
+    --bs-pagination-bg: #fff;
+    --bs-pagination-border-color: #fff;
     --bs-pagination-hover-color: #aa8453;
     --bs-pagination-focus-color: #aa8453;
     --bs-pagination-active-color: #fff;

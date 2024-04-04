@@ -19,7 +19,7 @@
 
 .sticky-header {
     z-index: 20;
-    background: #1b1b1b !important;
+    background: #fff !important;
     position: fixed;
     animation: moveDown 0.5s ease-in-out;
 }

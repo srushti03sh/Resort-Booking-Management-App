@@ -110,7 +110,7 @@ function Report() {
                   <h6>Used Room Today</h6>
                   <h4>{usedRoom}</h4>
                 </div>
-                <ProgressBar now={useRoomNow} />;
+                <ProgressBar now={useRoomNow} />
               </div>
             </div>
           </div>

@@ -205,6 +205,7 @@ select:focus>option:first-child {
 }
 
 .left-panel {
+    align-items: center;
     pointer-events: all;
     padding: 3rem 17% 2rem 12%;
 }
@@ -246,6 +247,16 @@ select:focus>option:first-child {
     transform: translateX(800px);
 }
 
+.for-pswd-link {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.for-pswd-link a {
+    color: #aa8453;
+}
+
 /* ANIMATION */
 
 .lslider.sign-up-mode:before {
@@ -284,6 +295,7 @@ select:focus>option:first-child {
 
 .lslider.sign-up-mode .right-panel {
     pointer-events: all;
+    align-items: center;
 }
 
 .otp-container {

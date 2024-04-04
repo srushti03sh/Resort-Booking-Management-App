@@ -7,7 +7,7 @@ import { HiMiniMapPin } from "react-icons/hi2";
 import OtpInput from 'react-otp-input';
 import { states } from "../../Data/StateCity/StateCity";
 import "./Login.css"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -198,7 +198,6 @@ function Login() {
           }
         }
       } else {
-        // Signup
         if (!signup) {
           if (otp == decryptOtp) {
             const response = await axios.post("http://localhost/Resort-API/Common/Registration.php", {
@@ -277,6 +276,11 @@ function Login() {
               <div className="input-field">
                 <i><FaLock /></i>
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              </div>
+              <div className='for-pswd-link'>
+                <Link to="/ForgotPassword">
+                  Forget Password ?
+                </Link>
               </div>
               <input type="submit" value="Login" className="btn solid" onClick={handleLogin} />
             </form>
@@ -408,10 +412,6 @@ function Login() {
           <div className="panel left-panel">
             <div className="content">
               <h3>New here ?</h3>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                ex ratione. Aliquid!
-              </p>
               <button className="btn transparent" id="sign-up-btn" onClick={handleSignUpClick}>
                 Sign up
               </button>
@@ -420,10 +420,6 @@ function Login() {
           <div className="panel right-panel">
             <div className="content">
               <h3>One of us ?</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                laboriosam ad deleniti.
-              </p>
               <button className="btn transparent" id="sign-in-btn" onClick={handleSignInClick}>
                 Sign in
               </button>

@@ -67,3 +67,13 @@
     font-size: 15px;
     margin: 10px;
 }
+
+.room-price {
+    color: #aa8453;
+    font-size: 25px;
+}
+
+.room-price span {
+    font-size: 15px;
+    color: #aaa;
+}

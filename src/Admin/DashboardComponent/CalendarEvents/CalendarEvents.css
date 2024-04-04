@@ -1,11 +1,12 @@
 .dashboard-cal-card .card-title {
     margin: 20px 0;
-    border-bottom: 1px dashed #fff;
+    border-bottom: 1px dashed #1b1b1b;
     padding-bottom: 10px;
+    color: #1b1b1b;
 }
 
 .up-events {
-    border-bottom: 1px dashed #fff;
+    border-bottom: 1px dashed #1b1b1b;
 }
 
 .up-bookings {
@@ -15,6 +16,7 @@
 .up-events h6,
 .up-bookings h6 {
     padding-top: 10px;
+    color: #1b1b1b;
 }
 
 .dashboard-cal,
@@ -24,7 +26,7 @@
 
 .react-calendar__tile {
     padding: 20px !important;
-    color: #aaa !important;
+    color: #1b1b1b !important;
     font-size: 16px !important;
 }
 
@@ -33,7 +35,7 @@
 }
 
 .react-calendar__navigation button {
-    color: #aaa !important;
+    color: #1b1b1b !important;
 }
 
 .highlight {
@@ -42,6 +44,9 @@
     border: 1px solid #fff !important;
 }
 
+.dashboard-cal-card .card-body {
+    background: #fff;
+}
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus,
@@ -57,11 +62,10 @@
 }
 
 .react-calendar {
-    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px !important;
-    border-radius: 10px !important;
+    box-shadow: 0px 0px 7px 3px #e3e3e3;
     width: 100% !important;
-    background: #1b1b1b !important;
-    color: #fff !important;
+    background: #fff !important;
+    color: #1b1b1b !important
 }
 
 .msg-click {
@@ -84,6 +88,9 @@
     height: 383px !important;
     overflow: hidden;
     overflow-y: scroll;
+    border-radius: 0;
+    box-shadow: 0px 0px 7px 3px #e3e3e3;
+    border: none;
 }
 
 .cal-label {

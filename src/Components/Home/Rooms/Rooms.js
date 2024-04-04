@@ -6,15 +6,17 @@ import { MdOutlineFreeBreakfast } from "react-icons/md";
 import { GiTowel } from "react-icons/gi";
 import { FaArrowRight } from "react-icons/fa6";
 import "./Rooms.css";
+import { LiaRupeeSignSolid } from "react-icons/lia";
 import axios from 'axios';
 
-function Rooms({ RoomRef }) {
+function Rooms() {
   const [allRoomData, setAllRoomData] = useState([]);
 
   const fetchData = async () => {
     const response = await axios.post("http://localhost/Resort-API/Admin/RoomPage/showRooms.php", {});
-    const roomData = response.data.roomData;
-    setAllRoomData(roomData);
+    const allRoom = response.data.roomData;
+    const enabledRoom = allRoom.filter(room => room.Status === 'enable');
+    setAllRoomData(enabledRoom);
   };
 
   useEffect(() => {
@@ -22,7 +24,7 @@ function Rooms({ RoomRef }) {
   }, []);
 
   return (
-    <div className='rooms1 section-padding' ref={RoomRef}>
+    <div className='rooms1 section-padding'>
       <div className='container'>
         <div className='row'>
           <div className="col-md-12">
@@ -44,14 +46,14 @@ function Rooms({ RoomRef }) {
                     )}
                   </div>
                   <span className="category">
-                    <Link to={data.room_id}>Book</Link>
+                    <Link to={`/CommonRoomDetails/${data.room_id}`}>Book</Link>
                   </span>
                   <div className="con">
                     <h6>
-                      <Link to={data.room_id}>{data.price} / Night</Link>
+                      <Link to={`/CommonRoomDetails/${data.room_id}`}><i><LiaRupeeSignSolid /></i>{data.price} / Night</Link>
                     </h6>
                     <h5>
-                      <Link to={data.room_id}>{data.roomType}</Link>
+                      <Link to={`/CommonRoomDetails/${data.room_id}`}>{data.roomType}</Link>
                     </h5>
                     <div className="line"></div>
                     <div className="row facilities">
@@ -65,7 +67,7 @@ function Rooms({ RoomRef }) {
                       </div>
                       <div className="col col-md-5 text-end flex item-center">
                         <div className="permalink">
-                          <Link to={data.room_id}>Details <i><FaArrowRight /></i></Link>
+                          <Link to={`/CommonRoomDetails/${data.room_id}`}>Details <i><FaArrowRight /></i></Link>
                         </div>
                       </div>
                     </div>
@@ -76,7 +78,7 @@ function Rooms({ RoomRef }) {
           ))}
           {allRoomData.slice(3, 5).map((data, index) => (
             <div className="col-md-6" key={index}>
-              <Link to={data.room_id}>
+              <Link to={`/CommonRoomDetails/${data.room_id}`}>
                 <div className="item">
                   <div className="position-re o-hidden">
                     {data.images.split(',')[0] && (
@@ -87,14 +89,14 @@ function Rooms({ RoomRef }) {
                     )}
                   </div>
                   <span className="category">
-                    <Link to={data.room_id}>Book</Link>
+                    <Link to={`/CommonRoomDetails/${data.room_id}`}>Book</Link>
                   </span>
                   <div className="con">
                     <h6>
-                      <Link to={data.room_id}>{data.price} / Night</Link>
+                      <Link to={`/CommonRoomDetails/${data.room_id}`}><i><LiaRupeeSignSolid /></i>{data.price} / Night</Link>
                     </h6>
                     <h5>
-                      <Link to={data.room_id}>{data.roomType}</Link>
+                      <Link to={`/CommonRoomDetails/${data.room_id}`}>{data.roomType}</Link>
                     </h5>
                     <div className="line"></div>
                     <div className="row facilities">
@@ -108,7 +110,7 @@ function Rooms({ RoomRef }) {
                       </div>
                       <div className="col col-md-5 text-end flex item-center">
                         <div className="permalink">
-                          <Link to={data.room_id}>Details <i><FaArrowRight /></i></Link>
+                          <Link to={`/CommonRoomDetails/${data.room_id}`}>Details <i><FaArrowRight /></i></Link>
                         </div>
                       </div>
                     </div>

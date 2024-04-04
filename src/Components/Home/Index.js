@@ -6,12 +6,14 @@ import Testimonial from './Testimonials/Testimonial'
 import Facilities from './Facilities/Facilities'
 import PVideo from './Promotional Video/PVideo'
 import Pricing from './Pricing Section/Pricing'
+import Rooms from './Rooms/Rooms'
 
 const Index = () => {
     window.scrollTo(0, 0)
     return (
         <>
             <MainSlider />
+            <Rooms />
             <PVideo />
             <Pricing />
             <Testimonial />

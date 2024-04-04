@@ -9,7 +9,7 @@
 
 .main-content {
     min-height: 100vh;
-    background: #222;
+    background: #fff;
     margin-left: 300px;
     width: calc(100vw - 300px);
     /* padding: 20px 30px; */

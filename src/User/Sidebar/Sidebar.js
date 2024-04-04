@@ -110,14 +110,6 @@ function Sidebar() {
                 <span>Feedback</span>
               </Link>
             </li>
-            <li className={isActive("/UserPanel/ContactUs") ? "active" : ""}>
-              <Link to="/UserPanel/ContactUs">
-                <span>
-                  <FaPhoneAlt />
-                </span>
-                <span>Contact Us</span>
-              </Link>
-            </li>
           </ul>
         </div>
         <button className="btn-sidebar btn-block" onClick={() => setModalShow(true)}>Logout</button>

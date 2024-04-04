@@ -65,18 +65,6 @@ export const ExtraServices = [
     },
 ];
 
-export const HomeTestimonials = [
-    {
-        id: 1, des: "From the moment we arrived at the hotel, we were greeted with warmth and professionalism. The staff went above and beyond to ensure that our stay was nothing short of exceptional.The room was immaculate, with stunning views and luxurious amenities that exceeded our expectations.The attention to detail in every aspect of our experience, from the personalized service to the exquisite dining options, was truly remarkable.We felt pampered and cared for throughout our stay,and we can't wait to return. Thank you to the entire team for making our getaway unforgettable.", name: "Emily Brown", src: test1
-    },
-    {
-        id: 2, des: "Our stay at the hotel was fantastic! The room was stylish and comfortable, and the staff were incredibly friendly and accommodating.We enjoyed every moment of our time there and can't wait to come back!", name: "Nolan White", src: test2
-    },
-    {
-        id: 3, des: "Our experience at the hotel was phenomenal! The room was luxurious, the amenities were top-notch, and the staff were encredibly attentive.From check-in to check - out, everything exceeded our expectations.We can't wait to return for another unforgettable stay!", name: "Olivia martin", src: test3
-    },
-];
-
 export const HomeClients = [
     { id: 1, src: c1 },
     { id: 2, src: c2 },
@@ -116,62 +104,63 @@ export const faqs = [
     }
 ];
 
-export const resMenu = [
+export const indianMenu = [
     {
-        id: 1, eventKey: "Starters", title: "Starters",
-        i1: "Mozzarella Dippers", ip1: "", ides1: "Fried mozzarella sticks, marinara sauce",
-        i2: "Onion Rings", ip2: "", ides2: "Fried onion rings, smoked aioli",
-        i3: "Fried Jalapeno", ip3: "", ides3: "Fried jalapeno pickles, cheddar sauce",
-        i4: "Mozzarella Dippers", ip4: "", ides4: "Fried mozzarella sticks, marinara sauce",
-        i5: "Onion Rings", ip5: "", ides5: "Fried onion rings, smoked aioli",
-        i6: "Fried Jalapeno", ip6: "", ides6: "Fried jalapeno pickles, cheddar sauce"
+        id: 1, category: "Appetizers", title: "Appetizers",
+        item1: "Samosa", price1: "₹50", description1: "Crispy pastry filled with spiced potatoes and peas",
+        item2: "Pakora", price2: "₹60", description2: "Assorted vegetables dipped in chickpea batter and fried",
+        item3: "Paneer Tikka", price3: "₹80", description3: "Marinated cottage cheese cubes grilled to perfection",
+        item4: "Aloo Tikki", price4: "₹40", description4: "Spiced mashed potato patties served with chutney",
+        item5: "Chicken Tikka", price5: "₹120", description5: "Tender chicken pieces marinated in yogurt and spices, grilled",
+        item6: "Fish Fry", price6: "₹100", description6: "Marinated fish fillets coated in spices and fried"
     },
     {
-        id: 2, eventKey: "Mains", title: "Mains",
-        i1: "Mozzarella Dippers", ip1: "", ides1: "Fried mozzarella sticks, marinara sauce",
-        i2: "Onion Rings", ip2: "", ides2: "Fried onion rings, smoked aioli",
-        i3: "Fried Jalapeno", ip3: "", ides3: "Fried jalapeno pickles, cheddar sauce",
-        i4: "Mozzarella Dippers", ip4: "", ides4: "Fried mozzarella sticks, marinara sauce",
-        i5: "Onion Rings", ip5: "", ides5: "Fried onion rings, smoked aioli",
-        i6: "Fried Jalapeno", ip6: "", ides6: "Fried jalapeno pickles, cheddar sauce"
+        id: 2, category: "Main Course", title: "Main Course",
+        item1: "Butter Chicken", price1: "₹200", description1: "Chicken cooked in a creamy tomato-based sauce",
+        item2: "Paneer Butter Masala", price2: "₹180", description2: "Paneer cubes cooked in a rich buttery tomato gravy",
+        item3: "Palak Paneer", price3: "₹160", description3: "Cottage cheese cubes cooked in spinach gravy",
+        item4: "Chole Bhature", price4: "₹150", description4: "Spicy chickpea curry served with fried bread",
+        item5: "Mutton Rogan Josh", price5: "₹250", description5: "Tender mutton pieces cooked in a flavorful gravy",
+        item6: "Dal Tadka", price6: "₹120", description6: "Yellow lentils tempered with spices and ghee"
     },
     {
-        id: 3, eventKey: "Salads", title: "Salads",
-        i1: "Mozzarella Dippers", ip1: "", ides1: "Fried mozzarella sticks, marinara sauce",
-        i2: "Onion Rings", ip2: "", ides2: "Fried onion rings, smoked aioli",
-        i3: "Fried Jalapeno", ip3: "", ides3: "Fried jalapeno pickles, cheddar sauce",
-        i4: "Mozzarella Dippers", ip4: "", ides4: "Fried mozzarella sticks, marinara sauce",
-        i5: "Onion Rings", ip5: "", ides5: "Fried onion rings, smoked aioli",
-        i6: "Fried Jalapeno", ip6: "", ides6: "Fried jalapeno pickles, cheddar sauce"
+        id: 3, category: "Breads", title: "Breads",
+        item1: "Naan", price1: "₹30", description1: "Soft and fluffy Indian bread baked in a tandoor",
+        item2: "Roti", price2: "₹20", description2: "Whole wheat flatbread cooked on a griddle",
+        item3: "Paratha", price3: "₹40", description3: "Layered whole wheat bread pan-fried with ghee",
+        item4: "Kulcha", price4: "₹35", description4: "Leavened bread stuffed with potato or paneer filling",
+        item5: "Bhatura", price5: "₹25", description5: "Deep-fried fluffy bread made from fermented dough",
+        item6: "Tandoori Roti", price6: "₹25", description6: "Whole wheat bread cooked in a tandoor oven"
     },
     {
-        id: 4, eventKey: "Wine", title: "Wine",
-        i1: "Mozzarella Dippers", ip1: "", ides1: "Fried mozzarella sticks, marinara sauce",
-        i2: "Onion Rings", ip2: "", ides2: "Fried onion rings, smoked aioli",
-        i3: "Fried Jalapeno", ip3: "", ides3: "Fried jalapeno pickles, cheddar sauce",
-        i4: "Mozzarella Dippers", ip4: "", ides4: "Fried mozzarella sticks, marinara sauce",
-        i5: "Onion Rings", ip5: "", ides5: "Fried onion rings, smoked aioli",
-        i6: "Fried Jalapeno", ip6: "", ides6: "Fried jalapeno pickles, cheddar sauce"
+        id: 4, category: "Desserts", title: "Desserts",
+        item1: "Gulab Jamun", price1: "₹60", description1: "Deep-fried milk dumplings soaked in sugar syrup",
+        item2: "Rasgulla", price2: "₹50", description2: "Spongy cottage cheese balls soaked in sugar syrup",
+        item3: "Kheer", price3: "₹70", description3: "Rice pudding flavored with cardamom and saffron",
+        item4: "Jalebi", price4: "₹40", description4: "Crispy fried batter soaked in sugar syrup",
+        item5: "Barfi", price5: "₹80", description5: "Sweet confection made from condensed milk and nuts",
+        item6: "Rasmalai", price6: "₹90", description6: "Soft cottage cheese patties in creamy saffron-flavored milk"
     },
     {
-        id: 5, eventKey: "Breakfast", title: "Breakfast",
-        i1: "Mozzarella Dippers", ip1: "", ides1: "Fried mozzarella sticks, marinara sauce",
-        i2: "Onion Rings", ip2: "", ides2: "Fried onion rings, smoked aioli",
-        i3: "Fried Jalapeno", ip3: "", ides3: "Fried jalapeno pickles, cheddar sauce",
-        i4: "Mozzarella Dippers", ip4: "", ides4: "Fried mozzarella sticks, marinara sauce",
-        i5: "Onion Rings", ip5: "", ides5: "Fried onion rings, smoked aioli",
-        i6: "Fried Jalapeno", ip6: "", ides6: "Fried jalapeno pickles, cheddar sauce"
+        id: 5, category: "Beverages", title: "Beverages",
+        item1: "Masala Chai", price1: "₹20", description1: "Traditional Indian spiced tea served with milk and sugar",
+        item2: "Lassi", price2: "₹40", description2: "Refreshing yogurt-based drink, sweet or salty",
+        item3: "Thandai", price3: "₹60", description3: "Cooling milk-based beverage flavored with nuts and spices",
+        item4: "Aam Panna", price4: "₹30", description4: "Sweet and tangy raw mango drink, flavored with cumin and mint",
+        item5: "Nimbu Pani", price5: "₹25", description5: "Refreshing lemonade with a hint of spices",
+        item6: "Jaljeera", price6: "₹35", description6: "Sour and spicy cumin-flavored beverage, perfect for hot summers"
     },
     {
-        id: 6, eventKey: "Dessert", title: "Dessert",
-        i1: "Mozzarella Dippers", ip1: "", ides1: "Fried mozzarella sticks, marinara sauce",
-        i2: "Onion Rings", ip2: "", ides2: "Fried onion rings, smoked aioli",
-        i3: "Fried Jalapeno", ip3: "", ides3: "Fried jalapeno pickles, cheddar sauce",
-        i4: "Mozzarella Dippers", ip4: "", ides4: "Fried mozzarella sticks, marinara sauce",
-        i5: "Onion Rings", ip5: "", ides5: "Fried onion rings, smoked aioli",
-        i6: "Fried Jalapeno", ip6: "", ides6: "Fried jalapeno pickles, cheddar sauce"
+        id: 6, category: "Snacks", title: "Snacks",
+        item1: "Pani Puri", price1: "₹30", description1: "Hollow crispy puris filled with spicy tangy water and chutneys",
+        item2: "Bhel Puri", price2: "₹40", description2: "Mixed puffed rice with chopped vegetables and tangy tamarind chutney",
+        item3: "Samosa Chaat", price3: "₹50", description3: "Crispy samosas topped with yogurt, chutneys, and spices",
+        item4: "Vada Pav", price4: "₹35", description4: "Spicy potato fritter served in a bun with chutneys",
+        item5: "Dahi Vada", price5: "₹45", description5: "Soft lentil dumplings soaked in yogurt and topped with chutneys",
+        item6: "Chaat Papdi", price6: "₹55", description6: "Crisp papdis topped with potatoes, yogurt, and tangy chutneys"
     }
 ];
+
 
 export const resSlider = [
     { id: 1, src: re1, subTitle: "Restaurant", title: "A dining experience worth sharing." },
@@ -195,8 +184,9 @@ export const spaServiceSlider = [
 ];
 
 export const spaPriceSlider = [
-    { id: 1, price: "", i1: "Full Body Massage", i2: "Deep Tissue Massage", i3: "Hot Stone Massage", i4: "Tissue Body Polish", i5: "Foot & Nail Care" },
-    { id: 2, price: "", i1: "Full Body Massage", i2: "Deep Tissue Massage", i3: "Hot Stone Massage", i4: "Tissue Body Polish", i5: "Foot & Nail Care" },
-    { id: 3, price: "", i1: "Full Body Massage", i2: "Deep Tissue Massage", i3: "Hot Stone Massage", i4: "Tissue Body Polish", i5: "Foot & Nail Care" },
-    { id: 4, price: "", i1: "Full Body Massage", i2: "Deep Tissue Massage", i3: "Hot Stone Massage", i4: "Tissue Body Polish", i5: "Foot & Nail Care" }
+    { id: 1, price: "₹10,000", i1: "Relaxation Retreat Package", i2: "Couples Escape Package", i3: "Detox and Renewal Package", i4: "Ultimate Pampering Package", i5: "Mother-to-Be Package" },
+    { id: 2, price: "₹15,000", i1: "60-minute Swedish Massage", i2: "90-minute Couples Massage", i3: "60-minute Deep Tissue Massage", i4: "90-minute Hot Stone Massage", i5: "Prenatal Massage" },
+    { id: 3, price: "₹20,000", i1: "30-minute Aromatherapy Session", i2: "Romantic Candlelit Jacuzzi Soak", i3: "Detoxifying Body Wrap", i4: "Luxury Anti-Aging Facial", i5: "Soothing Belly Wrap" },
+    { id: 4, price: "₹25,000", i1: "Choice of Facial: Hydrating or Cleansing", i2: "Champagne and Chocolate-Covered Strawberries", i3: "Purifying Facial", i4: "Invigorating Body Scrub", i5: "Gentle Facial for Sensitive Skin" },
+    { id: 5, price: "₹30,000", i1: "Access to Spa Facilities", i2: "Complimentary Spa Gift", i3: "Herbal Tea Infusion", i4: "Manicure and Pedicure", i5: "Pregnancy-Safe Skincare Products to Take Home" }
 ];

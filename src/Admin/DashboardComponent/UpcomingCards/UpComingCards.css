@@ -1,10 +1,10 @@
 .dashboard-card {
-    box-shadow: rgba(17, 17, 26, 1) 2px 0px 16px;
     border: 1px solid #aa8453;
-    background: #1b1b1b;
+    background: #aa8453;
     padding: 13px;
     border-radius: 5px;
     display: flex;
+    box-shadow: 0px 0px 7px 3px #e3e3e3;
 }
 
 .dashboard-card:hover {
@@ -16,7 +16,7 @@
 .dashboard-card i {
     color: #aa8453;
     display: flex;
-    background: #222;
+    background: #fff;
     height: 45px;
     width: 45px;
     border-radius: 50%;
@@ -26,8 +26,10 @@
 }
 
 .card-info h6 {
-    margin: 0 0 10px 0;
+    color: #fff;
+    margin:10px 0;
     line-height: 1.5;
+    font-size: 14px;
 }
 
 .card-info {

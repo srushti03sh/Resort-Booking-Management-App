@@ -5,7 +5,6 @@ import Dashboard from '../Dashboard/Dashboard'
 import Bookings from '../Bookings/Bookings'
 import "./UserPanel.css"
 import EditProfile from '../EditProfile/EditProfile'
-import ContactUs from '../ContactUs/ContactUs'
 import FAQ from '../FAQ/FAQ'
 import CurrentBookings from '../CurrentBookings/CurrentBookings'
 import Events from '../Events/Events'
@@ -36,7 +35,6 @@ function UserPanel() {
                         <Route path="/Bookings" element={<Bookings isChecked={isChecked} />} />
                         <Route path="/Events" element={<Events isChecked={isChecked} />} />
                         <Route path="/EditProfile" element={<EditProfile isChecked={isChecked} />} />
-                        <Route path="/ContactUs" element={<ContactUs isChecked={isChecked} />} />
                         <Route path="/FAQ" element={<FAQ isChecked={isChecked} />} />
                         <Route path="/FeedbackPage" element={<FeedbackPage isChecked={isChecked} />} />
                         <Route path="/CurrentBookings" element={<CurrentBookings isChecked={isChecked} />} />

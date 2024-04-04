@@ -143,9 +143,8 @@ function Spa() {
               </span>
               <div className="section-subtitle">The Cappa Luxury Hotel</div>
               <div className="section-title">The Ultimate Retreat</div>
-              <p>Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan
-                vestibulum aliquam justo in sapien rutrum volutpat. Donec in quis the pellentesque velit.
-                Donec id velit ac arcu posuere blane.
+              <p>
+                The resort's spa offers a serene escape, providing a range of rejuvenating treatments and massages in a tranquil ambiance. From aromatherapy to deep tissue massages, guests can indulge in personalized wellness experiences, promoting relaxation and revitalization during their stay.
               </p>
               <div className="row pt-3">
                 <div className="col-6">
@@ -196,7 +195,7 @@ function Spa() {
                 Find Peace in Paradise
               </h4>
               <p>
-                Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo
+                The resort's spa is a sanctuary of relaxation, offering an array of indulgent treatments designed to soothe the body and calm the mind. With skilled therapists and luxurious amenities, guests can immerse themselves in a world of wellness, experiencing blissful massages, invigorating facials, and holistic therapies that rejuvenate the senses.
               </p>
               <p>
                 <i><MdKeyboardArrowRight /></i><b> Mon - Fri :</b> 9:00 AM - 7:00 PM<br />
@@ -215,7 +214,7 @@ function Spa() {
                   spaPriceSlider.map((data, index) => (
                     <div className="ohrs-pricing-card" key={index}>
                       <div className="desc">
-                        <div className="amount"><LiaRupeeSignSolid />{data.price}<span>/ everytime</span></div>
+                        <div className="amount">{data.price}<span>/ everytime</span></div>
                         <ul className="list-unstyled list">
                           <li>
                             <i><IoCheckmarkOutline /></i>

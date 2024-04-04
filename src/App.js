@@ -17,6 +17,8 @@ import EventBookingPage from './Pages/EventBookingPage/EventBookingPage';
 import AdminPanel from './Admin/AdminPanel/AdminPanel';
 import Facilities from './Pages/Facilities/Facilities';
 import CommonRoomDetails from './Common/CommonRoomDetails/CommonRoomDetails';
+import AllRooms from './Pages/AllRooms/AllRooms';
+import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
 
 function App() {
 
@@ -44,6 +46,8 @@ function App() {
         <Route path="/Restaurant" element={<Restaurant />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/EventBookingPage" element={<EventBookingPage />} />
+        <Route path="/AllRooms" element={<AllRooms />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
         <Route path="/UserPanel/*" element={loginData ? <UserPanel /> : <Navigate to="/Login" />} />
         <Route path="/AdminPanel/*" element={loginData ? <AdminPanel /> : <Navigate to="/Login" />} />
       </Routes>
