@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from "../../../Images/logo.png";
 import Male from "../../../Images/man.png";
@@ -13,8 +13,8 @@ function Navbar() {
   const [stickyClass, setStickyClass] = useState('');
   const [showNavbar, setShowNavbar] = useState(false);
   const [showDropdown1, setShowDropdown1] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const location = useLocation();
+
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -28,10 +28,6 @@ function Navbar() {
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
-  };
-
-  const handleShowDropdown = () => {
-    setShowDropdown(!showDropdown);
   };
 
   const handleShowDropdown1 = () => {

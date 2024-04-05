@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Navbar from '../../Components/Home/Navbar/Navbar';
+import BillComponent from '../../BillComponent/BillComponent';
 
 function BookingPage() {
 
@@ -16,6 +17,7 @@ function BookingPage() {
 
   const [show, setShow] = useState(false);
   const [dateRange, setDateRange] = useState([,]);
+  const [bill, setBill] = useState(false)
   const [startDate, endDate] = dateRange;
   const [roomData, setRoomData] = useState([]);
   const [mno, setMno] = useState('');
@@ -24,6 +26,7 @@ function BookingPage() {
   const [rno, setRno] = useState('');
   const [rType, setRtype] = useState('');
   const [bookingData, setBookingData] = useState('');
+  const [billShow, setBillShow] = useState(false)
 
   const fetchData = async () => {
     const response = await axios.post("http://localhost/Resort-API/User/showBookingForm.php", {
@@ -99,6 +102,8 @@ function BookingPage() {
         setGuest('');
         setRno('');
         setRtype('');
+        setBill(true)
+        setBillShow(true)
       }
     }
     catch {
@@ -243,6 +248,15 @@ function BookingPage() {
           </>
         )
       }
+      {bill ?
+        <BillComponent
+          billShow={billShow}
+          setBillShow={setBillShow}
+          rType={rType}
+          rno={rno}
+        />
+        :
+        ""}
     </>
   )
 }

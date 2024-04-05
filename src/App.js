@@ -19,6 +19,7 @@ import Facilities from './Pages/Facilities/Facilities';
 import CommonRoomDetails from './Common/CommonRoomDetails/CommonRoomDetails';
 import AllRooms from './Pages/AllRooms/AllRooms';
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword';
+import BillComponent from './BillComponent/BillComponent';
 
 function App() {
 
@@ -32,9 +33,7 @@ function App() {
           <Route path="/" element={<Index />} />
         </Route>
         <Route path="/Contact" element={<Contact />} />
-
         <Route path="/CommonRoomDetails/:id" element={<CommonRoomDetails />} />
-
         <Route path="/Facilities" element={<Facilities />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/Gallery" element={<Gallery />} />
@@ -48,6 +47,7 @@ function App() {
         <Route path="/EventBookingPage" element={<EventBookingPage />} />
         <Route path="/AllRooms" element={<AllRooms />} />
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
+        <Route path="/BillComponent" element={<BillComponent />} />
         <Route path="/UserPanel/*" element={loginData ? <UserPanel /> : <Navigate to="/Login" />} />
         <Route path="/AdminPanel/*" element={loginData ? <AdminPanel /> : <Navigate to="/Login" />} />
       </Routes>

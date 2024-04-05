@@ -1,0 +1,100 @@
+.bill-head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bill-head-title {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+
+.bill-head div {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.bill-head i {
+    cursor: pointer;
+}
+
+.body-head {
+    padding-top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.body-name,
+.bill-head-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.bill-date {
+    font-size: 15px;
+}
+
+.des-title {
+    margin-top: 70px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #000;
+    padding: 10px 0;
+}
+
+.bill-component .modal-header,
+.bill-component .modal-body {
+    background: #fff !important;
+    color: #1b1b1b;
+}
+
+.bill-component .modal-header {
+    padding: 0 20px !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.des-body {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.bill-footer {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bill-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    page-break-after: always;
+}
+
+.bill-body {
+    padding: 0 100px;
+}
+
+.bill-footer button {
+    background: #fff;
+    border: 1px solid #000;
+    padding: 10px 45px;
+    border-radius: 5px;
+}
+
+@media print {
+
+    .bill-component i,
+    .bill-footer button {
+        display: none !important;
+    }
+}
